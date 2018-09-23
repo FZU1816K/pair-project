@@ -1,6 +1,6 @@
 //package ccx;
 import java.io.*;import java.net.*;import java.util.regex.*;
-public class Main
+public class Main2
 {
 	static String f(String u)throws Exception
 	{
