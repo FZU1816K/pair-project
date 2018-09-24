@@ -1,0 +1,13 @@
+characters: 1178874
+words: 118469
+lines: 1930
+<learning>: 2858
+<with>: 2716
+<image>: 2346
+<network>: 1807
+<from>: 1796
+<that>: 1742
+<deep>: 1718
+<networks>: 1538
+<this>: 1425
+<object>: 1212
