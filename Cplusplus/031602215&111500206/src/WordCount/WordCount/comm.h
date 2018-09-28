@@ -6,7 +6,7 @@
 std::string inputFileName = "result.txt";
 std::string outputFileName = "output.txt";
 int weightFrequencyOn = 0;
-int phraseFrequencyOn = 0;
+int phraseFrequencyOn = 0; // todo
 int phraseLength = 0;
 int topNWords = 10;
 

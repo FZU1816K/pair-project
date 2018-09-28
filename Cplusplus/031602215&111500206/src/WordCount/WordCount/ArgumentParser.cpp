@@ -7,6 +7,7 @@ extern int phraseFrequencyOn;
 extern int phraseLength;
 extern int topNWords;
 
+bool stringIsNum(string str);
 bool stringIsNum(string str)
 {
 	stringstream sin(str);
@@ -50,7 +51,7 @@ int Parse_Args(int argc, char ** argv)
 				printf("error: -w must follow 0 or 1!\n");
 				return -3;
 			}
-			int num = (argv[i + 1][0] - '0');
+			int num = (argv[i + 1][0] - '0'); // strcmp
 			if (num != 0 && num != 1) {
 				printf("error: -w must follow 0 or 1!\n");
 				return -4;
@@ -64,7 +65,7 @@ int Parse_Args(int argc, char ** argv)
 				printf("error: -m must follow a number!\n");
 				return -5;
 			}
-			int num = (argv[i + 1][0] - '0');
+			int num = (argv[i + 1][0] - '0'); // todo
 			if (num <= 0) {
 				printf("error: -w must follow a positive integer!\n");
 				return -6;

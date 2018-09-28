@@ -110,7 +110,7 @@ vector<pair<int, string>> TopNWords()
 {
 	for (hash_iter = hash_table.begin(); hash_iter != hash_table.end(); hash_iter++) {
 		pair<int, string> currentWord = make_pair(hash_iter->second, hash_iter->first);
-		if (wordQueue.size() == WORDCOUNT) { // 维护最大堆大小
+		if (wordQueue.size() == WORDCOUNT) { // 维护最大堆大小 // to delete
 			pair<int, string> minFreqWord = wordQueue.top();
 			if ((currentWord.first == minFreqWord.first && 
 				currentWord.second < minFreqWord.second) || (currentWord.first > minFreqWord.first)) {
@@ -124,6 +124,7 @@ vector<pair<int, string>> TopNWords()
 	}
 
 	vector<pair<int, string>> TopWords;
+
 	while (!wordQueue.empty()) {
 		TopWords.push_back(wordQueue.top());
 		wordQueue.pop();
