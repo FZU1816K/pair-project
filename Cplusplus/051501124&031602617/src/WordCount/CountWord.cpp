@@ -8,10 +8,20 @@ using namespace std;
 
 unordered_map<string, int> wordFrequency;
 
+extern int phraseLen;
+
 bool inTitle = false;
 bool inAbstract = false;
 int titleWeight = 1;
 int cnt = 0;
+
+void showResult()
+{
+	for (auto iter = wordFrequency.begin(); iter != wordFrequency.end(); iter++)
+	{
+		cout << iter->first << " : " << iter->second << endl;
+	}
+}
 
 void WordClassify(string word)
 {
@@ -78,10 +88,12 @@ void stringCut(string inStr)
 		if (inStr[i] == ' ')
 		{
 			not_a_word = false;
+			// 9/30
+			is_head = true;
 			if (word.length() >= 4)
 			{
 				//cnt++;
-				cout << word << endl;
+				//cout << word << endl;
 				WordClassify(word);
 			}
 			word = "";
@@ -92,10 +104,12 @@ void stringCut(string inStr)
 		if (ispunct(inStr[i]))//deal with punctions (i.e ',')
 		{
 			not_a_word = false;
+			// 9/30
+			is_head = true;
 			if (word.length() >= 4)
 			{
 				//cnt++;
-				cout << word << endl;
+				//cout << word << endl;
 				WordClassify(word);
 			}
 			word = "";
@@ -103,7 +117,9 @@ void stringCut(string inStr)
 		}
 		if (i == slen - 1)
 		{
-			cout << word << endl;
+			//cout << word << endl;
+			// 9/30
+			is_head = true;
 			if (word.length() >= 4)
 			{
 				//cnt++;
@@ -112,7 +128,155 @@ void stringCut(string inStr)
 		}
 
 	}
+
 }
+
+// 9/30
+void stringCutWithLen(string inStr,int phraseLen)
+{
+	int phraseHead = 0;
+	//int phraseTail = 0;
+	int phraseLenCnt = 0;
+	string phrase = "";
+	
+	
+	int slen = inStr.length();
+	bool is_head = true;//at the beginning of a word
+	bool not_a_word = false;
+	string word;
+	for (int i = 0; i < slen; i++)  //todo:avoid digit-first-word
+	{
+		if (!(inStr[i] >= 1 && inStr[i] <= 255))
+		{
+			continue;
+		}
+
+		else if ((inStr[i] <= '9') && (inStr[i]) >= '0') // deal with digit
+		{
+			if (is_head)
+			{
+				not_a_word = true;
+				continue;
+			}
+			else
+			{
+				word += inStr[i];
+			}
+		}
+
+		else if ((inStr[i] >= 'a') && (inStr[i] <= 'z') || (inStr[i] >= 'A') && (inStr[i] <= 'Z'))
+		{
+			if (!not_a_word)
+			{
+				if (is_head)
+				{
+					phraseLenCnt++;  
+					if (phraseLenCnt == 1) //词组首词
+					{
+						phraseHead = i;
+					}
+				}
+				is_head = false;
+				word += tolower(inStr[i]);
+			}
+		}
+
+		else if (inStr[i] == ' ')
+		{
+			not_a_word = false;
+			// 9/30
+			is_head = true;
+			if (word.length() >= 4)
+			{
+				//cnt++;
+				//cout << word << endl;
+				
+				if (phraseLenCnt == phraseLen)
+				{
+					phrase = inStr.substr(phraseHead, i - phraseHead );
+					cout << phrase << endl;
+					//WordClassify(phrase);
+					phraseHead = i;
+					phraseLenCnt = 0;
+				}
+				else
+				{
+
+				}
+			}
+			else
+			{
+				phraseHead = i;  //清空待传词组
+				phraseLenCnt = 0;
+			}
+			word = "";
+			continue;
+		}
+
+
+		else if (ispunct(inStr[i]))//deal with punctions (i.e ',')
+		{
+			not_a_word = false;
+			// 9/30
+			is_head = true;
+			if (word.length() >= 4)
+			{
+				//cout << word << endl;
+				if (phraseLenCnt == phraseLen)
+				{
+					phrase = inStr.substr(phraseHead, i - phraseHead );
+					cout << phrase << endl;
+					//WordClassify(phrase);
+					phraseHead = i;
+					phraseLenCnt = 0;
+				}
+				else
+				{
+					;
+				}
+				
+			}
+			else
+			{
+				phraseHead = i+1; // 10/1 fix
+				phraseLenCnt = 0;
+			}
+			word = "";
+			continue;
+		}
+
+
+		if (i == slen - 1)
+		{
+			//cout << word << endl;
+			// 9/30
+			is_head = true;
+			if (word.length() >= 4)
+			{
+				//cnt++;
+				if (phraseLenCnt == phraseLen)
+				{
+					phrase = inStr.substr(phraseHead, i - phraseHead );
+					WordClassify(phrase);
+					phraseHead = i;
+				}
+				else
+				{
+					
+				}
+			}
+			phraseHead = i;
+			phraseLenCnt -= 1;
+			
+		}
+
+	}
+}
+
+
+
+
+
 int CountWord(string inputFilename, bool weightOn)
 {
 	fstream input;
@@ -133,16 +297,20 @@ int CountWord(string inputFilename, bool weightOn)
 		{
 			
 			oneLine = oneLine.substr(7, oneLine.length());
-			stringCut(oneLine);
+			//stringCut(oneLine);
+			stringCutWithLen(oneLine,5);
 		}
 
 		else if (oneLine.substr(0, 10) == "Abstract: ")
 		{
 			oneLine = oneLine.substr(10, oneLine.length());
-			stringCut(oneLine);
+			//stringCut(oneLine);
+			stringCutWithLen(oneLine,5);
 		}
 	}
-	cout << wordFrequency["hello"] << endl;
+	//showResult();
+	//cout << wordFrequency["hello"] << endl;
 	return 0;
 }
+
 
