@@ -1,13 +1,17 @@
+// stringCut with length:Done in 10/1 afternoon
+// TODO: add shift-window for phrase
 #include "CountWords.h"
 #include "pch.h"
 #include <string>
 #include <fstream>
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
+
 using namespace std;
 
 unordered_map<string, int> wordFrequency;
-
+vector<pair<string, int>> wordRank;
 extern int phraseLen;
 
 bool inTitle = false;
@@ -17,14 +21,54 @@ int cnt = 0;
 
 void showResult()
 {
+	int cnt = 0;
 	for (auto iter = wordFrequency.begin(); iter != wordFrequency.end(); iter++)
 	{
+		cnt++;
 		cout << iter->first << " : " << iter->second << endl;
+	}
+	//cout << cnt << endl;
+}
+
+bool mysort(const pair<string, int> &left, const pair<string, int> &right)
+{
+	if (left.second != right.second)
+	{
+		return left.second > right.second;
+	}
+	else
+	{
+		return left.first < right.first;
+	}
+}
+
+void topNword(int n)
+{
+	for (auto iter = wordFrequency.begin(); iter != wordFrequency.end(); iter++) // iterate all words in WordFrequency
+	{
+		pair<string, int> word = make_pair(iter->first, iter->second);
+		wordRank.push_back(word);
+		
+	}
+	sort(wordRank.begin(),wordRank.end(),mysort);
+	auto iter = wordRank.begin();
+	for (int i = 0; i < n; iter++,i++)
+	{
+		cout << iter->first << ":" << iter->second << endl;
 	}
 }
 
 void WordClassify(string word)
 {
+	int len = word.length();
+	for (int i = 0; i < len; i++)
+	{
+		if (word[i]<='Z'&&word[i]>='A')
+		{
+			word[i] += 32;
+		}
+	}
+
 	if (wordFrequency.count(word) == 0)
 	{
 		if (inTitle)
@@ -135,7 +179,7 @@ void stringCut(string inStr)
 void stringCutWithLen(string inStr,int phraseLen)
 {
 	int phraseHead = 0;
-	//int phraseTail = 0;
+	int secondWordHead = 0;
 	int phraseLenCnt = 0;
 	string phrase = "";
 	
@@ -175,6 +219,10 @@ void stringCutWithLen(string inStr,int phraseLen)
 					{
 						phraseHead = i;
 					}
+					if (phraseLenCnt == 2)
+					{
+						secondWordHead = i;
+					}
 				}
 				is_head = false;
 				word += tolower(inStr[i]);
@@ -188,16 +236,15 @@ void stringCutWithLen(string inStr,int phraseLen)
 			is_head = true;
 			if (word.length() >= 4)
 			{
-				//cnt++;
-				//cout << word << endl;
-				
 				if (phraseLenCnt == phraseLen)
 				{
 					phrase = inStr.substr(phraseHead, i - phraseHead );
-					cout << phrase << endl;
-					//WordClassify(phrase);
-					phraseHead = i;
-					phraseLenCnt = 0;
+					//cout << phrase << endl;
+					WordClassify(phrase);
+					/*phraseHead = i;
+					phraseLenCnt = 0;     10/1 noon right        */
+					phraseHead = secondWordHead;
+					phraseLenCnt -= 1;
 				}
 				else
 				{
@@ -225,10 +272,13 @@ void stringCutWithLen(string inStr,int phraseLen)
 				if (phraseLenCnt == phraseLen)
 				{
 					phrase = inStr.substr(phraseHead, i - phraseHead );
-					cout << phrase << endl;
-					//WordClassify(phrase);
-					phraseHead = i;
-					phraseLenCnt = 0;
+					//cout << phrase << endl;
+					WordClassify(phrase);
+					/*phraseHead = i;
+					phraseLenCnt = 0;   10/1 noon right*/
+					phraseHead = secondWordHead;
+					phraseLenCnt -= 1;
+
 				}
 				else
 				{
@@ -253,10 +303,11 @@ void stringCutWithLen(string inStr,int phraseLen)
 			is_head = true;
 			if (word.length() >= 4)
 			{
-				//cnt++;
+				
 				if (phraseLenCnt == phraseLen)
 				{
 					phrase = inStr.substr(phraseHead, i - phraseHead );
+					//cout << phrase << endl;
 					WordClassify(phrase);
 					phraseHead = i;
 				}
@@ -298,17 +349,18 @@ int CountWord(string inputFilename, bool weightOn)
 			
 			oneLine = oneLine.substr(7, oneLine.length());
 			//stringCut(oneLine);
-			stringCutWithLen(oneLine,5);
+			stringCutWithLen(oneLine,2);
 		}
 
 		else if (oneLine.substr(0, 10) == "Abstract: ")
 		{
 			oneLine = oneLine.substr(10, oneLine.length());
 			//stringCut(oneLine);
-			stringCutWithLen(oneLine,5);
+			stringCutWithLen(oneLine,2);
 		}
 	}
 	//showResult();
+	topNword(20);
 	//cout << wordFrequency["hello"] << endl;
 	return 0;
 }

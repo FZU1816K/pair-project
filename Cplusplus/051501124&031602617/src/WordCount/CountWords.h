@@ -3,6 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include "pch.h"
+#include <algorithm>
 using namespace std;
 
 int CountWord(string inputFilename,bool weightOn);
