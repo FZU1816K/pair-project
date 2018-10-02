@@ -10,7 +10,7 @@ int main()
 	ofstream fout;
 	string f1 = "E:/Users/lenovo/PycharmProjects/PAPER/Eresult.txt";
 	string f2 = "E:/Users/lenovo/PycharmProjects/PAPER/Only_Type.txt";
-	string f3 = "result.txt";
+	string f3 = "result1.txt";
 
 	fin1.open(f1);
 	fin2.open(f2);
