@@ -6,6 +6,7 @@
 using namespace std;
 
 bool stringIsNum(string str);
+int stringIsPositiveInteger(string str);
 /*
 * Function name: Parse_Args
 * Description:

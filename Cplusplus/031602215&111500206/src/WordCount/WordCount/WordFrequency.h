@@ -16,10 +16,8 @@ using namespace std;
 #define P3 3
 #define NotAWord 4 
 #define VALIDWORD 5
-
 #define ERRORSTATE 6
 
-#define WORDCOUNT 320
 
 #define TITLE 1
 #define ABSTRACT 2
@@ -79,7 +77,7 @@ void WordFrequency(string line, int TitleorAbstract);
 * Return:
 *	vector<pair<int, string>> & : List of top ten words with their counter.
 */
-vector<pair<int, string>> TopNWords();
+vector<pair<int, string>> TopWords();
 
 /*
 * Function name: OutputToFile

@@ -78,6 +78,7 @@ void InsertToHashTable(string & word, int TitleorAbstract)
 			hash_iter->second += 10;
 		else if (TitleorAbstract == ABSTRACT)
 			hash_iter->second++;
+
 		else if (TitleorAbstract == NONWEIGHT)
 			hash_iter->second++;
 	}
@@ -106,30 +107,15 @@ void WordFrequency(string line, int TitleorAbstract)
 
 }
 
-vector<pair<int, string>> TopNWords()
+vector<pair<int, string>> TopWords()
 {
-	for (hash_iter = hash_table.begin(); hash_iter != hash_table.end(); hash_iter++) {
-		pair<int, string> currentWord = make_pair(hash_iter->second, hash_iter->first);
-		if (wordQueue.size() == WORDCOUNT) { // 维护最大堆大小 // to delete
-			pair<int, string> minFreqWord = wordQueue.top();
-			if ((currentWord.first == minFreqWord.first && 
-				currentWord.second < minFreqWord.second) || (currentWord.first > minFreqWord.first)) {
-				wordQueue.pop();
-				wordQueue.push(currentWord);
-			}
-		}
-		else {
-			wordQueue.push(currentWord);
-		}
-	}
-
 	vector<pair<int, string>> TopWords;
 
-	while (!wordQueue.empty()) {
-		TopWords.push_back(wordQueue.top());
-		wordQueue.pop();
+	for (hash_iter = hash_table.begin(); hash_iter != hash_table.end(); hash_iter++) {
+		pair<int, string> currentWord = make_pair(hash_iter->second, hash_iter->first);
+		TopWords.push_back(currentWord);
 	}
-	
+
 	sort(TopWords.begin(), TopWords.end(), MySort);
 	hash_table.clear();
 	return TopWords;
@@ -138,9 +124,9 @@ vector<pair<int, string>> TopNWords()
 extern std::string outputFileName; // 用户自定义输出文件
 extern int topNWords; // 用户自定义输出前N个
 
-int OutputToFile(vector<pair<int, string>>& Top10words)
+int OutputToFile(vector<pair<int, string>>& TopWords)
 {
-	if (Top10words.size() == 0) {
+	if (TopWords.size() == 0) {
 		return -1;
 	}
 
@@ -150,13 +136,13 @@ int OutputToFile(vector<pair<int, string>>& Top10words)
 		printf("Failed to create output file.\n");
 		return -1;
 	}
-	int size = Top10words.size();
+	int size = TopWords.size();
 	for (int i = 0;i < size && i < topNWords; i++) {
-		const char *word = (Top10words[i]).second.c_str();
+		const char *word = (TopWords[i]).second.c_str();
 		file << "<";
 		file << word;
 		file << ">: ";
-		file << (Top10words[i]).first;
+		file << (TopWords[i]).first;
 		file << endl;
 	}
 	printf("Top 10 words have been stored in output file\n");
@@ -175,16 +161,16 @@ int OutputToFile(int numChar, int numWords, int numLines)
 	return 0;
 }
 
-int StandardOutput(vector<pair<int, string>>& Top10words)
+int StandardOutput(vector<pair<int, string>>& TopWords)
 {
-	if (Top10words.size() == 0) {
+	if (TopWords.size() == 0) {
 		return -1;
 	}
 
-	vector<pair<int, string>>::iterator iter;
-	for (iter = Top10words.begin(); iter != Top10words.end(); iter++) {
-		const char *word = iter->second.c_str();
-		printf("%s: %d\n", word, iter->first);
+	int size = TopWords.size();
+	for (int i = 0; i < size && i < topNWords; i++) {
+		const char *word = (TopWords[i]).second.c_str();
+		printf("<%s>: %d\n", word, TopWords[i].first);
 	}
 	return 0;
 }

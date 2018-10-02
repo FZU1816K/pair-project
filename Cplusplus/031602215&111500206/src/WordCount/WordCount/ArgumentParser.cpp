@@ -7,17 +7,29 @@ extern int phraseFrequencyOn;
 extern int phraseLength;
 extern int topNWords;
 
-bool stringIsNum(string str);
 bool stringIsNum(string str)
 {
 	stringstream sin(str);
-	double d;
-	char c;
-	if (!(sin >> d))
-		return false;
-	if (sin >> c)
-		return false;
-	return true;
+	int d;
+	if ((sin >> d))
+		return true;
+	else return false;
+}
+
+int stringIsPositiveInteger(string str)
+{
+	stringstream sin(str);
+	int d;
+
+	if (!(sin >> d)) // not a integer
+		return -1;
+
+	std::string::size_type sz;
+	int res = std::stoi(str, &sz);
+	if (res > 0)
+		return res;
+
+	return -1; // zero or a negetive integer
 }
 
 int Parse_Args(int argc, char ** argv)
@@ -51,38 +63,43 @@ int Parse_Args(int argc, char ** argv)
 				printf("error: -w must follow 0 or 1!\n");
 				return -3;
 			}
-			int num = (argv[i + 1][0] - '0'); // strcmp
-			if (num != 0 && num != 1) {
+			bool isOneOrZero = (strcmp(argv[i + 1], "1") || strcmp(argv[i + 1], "0"));
+			if (!isOneOrZero) {
 				printf("error: -w must follow 0 or 1!\n");
 				return -4;
 			}
+			int num = atoi(argv[i + 1]);
 			weightFrequencyOn = num;
 			i += 2;
 		}
+
 		else if (strcmp(argv[i], "-m") == 0)
 		{
 			if (argv[i + 1] == NULL) {
-				printf("error: -m must follow a number!\n");
+				printf("error: -m must follow a positive Integer!\n");
 				return -5;
 			}
-			int num = (argv[i + 1][0] - '0'); // todo
-			if (num <= 0) {
-				printf("error: -w must follow a positive integer!\n");
-				return -6;
+			int res = stringIsPositiveInteger(argv[i + 1]);
+			if (res == -1) {
+				printf("error: -m must follow a positive Integer!\n");
+				return -5;
 			}
 			phraseFrequencyOn = 1;
-			phraseLength = num;
+			phraseLength = res;
 			i += 2;
 		}
 		else if (strcmp(argv[i], "-n") == 0)
 		{
 			if (argv[i + 1] == NULL) {
-				printf("error: -m must follow a number!\n");
+				printf("error: -n must follow a positive Integer!\n");
 				return -7;
 			}
-			string num = argv[i + 1];
-			std::string::size_type sz;
-			topNWords = std::stoi(num, &sz);
+			int res = stringIsPositiveInteger(argv[i + 1]);
+			if (res == -1) {
+				printf("error: -n must follow a positive Integer!\n");
+				return -7;
+			}
+			topNWords = res;
 			i += 2;
 		}
 	}
