@@ -14,7 +14,7 @@ using namespace std;
 #define DEFAULT_PAGE_BUF_SIZE 1048576
 
 
-//解析URL，解析出主机名，资源名
+/***************解析URL，解析出主机名，资源名******************/
 bool ParseURL(const string & url, string & host, string & resource)
 {
 	//这是为了与c语言兼容，在c语言中没有string类型，
@@ -41,7 +41,7 @@ bool ParseURL(const string & url, string & host, string & resource)
 }
 
 
-//使用Get请求，得到响应
+/*******************使用Get请求，得到响应*********************/
 bool GetHttpResponse(const string & url, char * &response, int &bytesRead)
 {
 	string host, resource;
@@ -57,7 +57,7 @@ bool GetHttpResponse(const string & url, char * &response, int &bytesRead)
 		cout << "Can not find host address" << endl;
 		return false;
 	}
-	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP); //https://blog.csdn.net/bian_qing_quan11/article/details/71713647
+	SOCKET sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
 	if (sock == -1 || sock == -2)
 	{
 		cout << "Can not create sock." << endl;
@@ -109,11 +109,11 @@ bool GetHttpResponse(const string & url, char * &response, int &bytesRead)
 	pageBuf[bytesRead] = '\0';
 	response = pageBuf;
 	closesocket(sock);
-
-//	cout << url << "GetHttpResponse finish" << endl;
 	return true;
+
 }
 
+/*******************解析论文的HTML*********************/
 bool Extract(int count, char * &response)
 {
 	string httpResponse = response;
@@ -134,32 +134,68 @@ bool Extract(int count, char * &response)
 		paper += "Title: ";
 		paper += title;
 		paper += "\r\n";
-		delete[] title;  // 释放掉申请的内存                //!!!!!!!!!!!不知道这个会不会很耗cpu!!!!!!!!!!!!!!!!
+		delete[] title;
 	}
 
-//	cout << paper << endl;              ///////////////////////////////////////
-
-	/****************************提取abstract*********************************/
-	char t1[] = "abstract\" >\n";
+	/****************************提取author*********************************/
+	char t1[] = "i>";
 	char *tag1 = t1;
 	const char *pos1 = strstr(p, tag1);
 	pos1 += strlen(tag1);  //跳过tag
 	const char * nextQ1 = strstr(pos1, "<");
 	if (nextQ1)
 	{
-		char * abstract = new char[nextQ1 - pos1 + 1];
-		sscanf(pos1, "%[^<]", abstract);
-		paper += "Abstract: ";
-		paper += abstract;
-		paper += "\r\n\n\n";
-		delete[] abstract;  // 释放掉申请的内存                //!!!!!!!!!!!不知道这个会不会很耗cpu!!!!!!!!!!!!!!!!
+		char * author = new char[nextQ1 - pos1 + 1];
+		sscanf(pos1, "%[^<]", author);
+		paper += "Authors: ";
+		paper += author;
+		paper += "\r\n";
+		delete[] author;
 	}
 
-//	cout << paper << endl;              ///////////////////////////////////////
+	/****************************提取abstract*********************************/
+	char t2[] = "abstract\" >\n";
+	char *tag2 = t2;
+	const char *pos2 = strstr(p, tag2);
+	pos2 += strlen(tag2);  //跳过tag
+	const char * nextQ2 = strstr(pos2, "<");
+	if (nextQ2)
+	{
+		char * abstract = new char[nextQ2 - pos2 + 1];
+		sscanf(pos2, "%[^<]", abstract);
+		paper += "Abstract: ";
+		paper += abstract;
+		paper += "\r\n";
+		delete[] abstract;
+	}
+
+	/****************************提取pdf link*********************************/
+	char t3[] = "href=\"../../";
+	char *tag3 = t3;
+	const char *pos3 = strstr(p, tag3);
+	while (pos3)
+	{
+		pos3 += strlen(tag3);  //跳过tag
+		const char * nextQ3 = strstr(pos3, "\"");
+		if (nextQ3)
+		{
+			char * pdf = new char[nextQ3 - pos3 + 1];
+			sscanf(pos3, "%[^\"]", pdf);
+			if (strstr(pdf,"papers"))
+			{
+				paper += "PDF_LINK: ";
+				paper += "http://openaccess.thecvf.com/";
+				paper += pdf;
+				paper += "\r\n\n\n";
+			}
+			pos3 = strstr(pos3, tag3);
+			delete[] pdf;
+		}
+	}
 
 	/****************************写入文件*********************************/
 	ofstream fout;
-	string filename = "result.txt";
+	string filename = "Eresult.txt";
 	fout.open(filename, ios::out | ios::app);
 	if (!fout.is_open())
 	{
@@ -175,53 +211,12 @@ bool Extract(int count, char * &response)
 }
 
 
-
-
-
-
-int main()
+/*******************解析助教提供的页面的论文的URL*********************/
+void ParsepaperUrl(char * &response)
 {
-	/**********************************************************/
-	// 提取起始地址urlStart里面的所有论文的链接放入q_url,之后就无需再提取链接了
-	//从q_url里面取出链接访问，并提取title和abstract放入result.txt
-	/**********************************************************/
-
-	/**** 初始化socket，用于tcp网络连接 ****/
-	WSADATA wsaData;                               //存放windows socket初始化信息，Winsock.h
-	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) //使用Socket的程序在使用Socket之前必须调用WSAStartup函数，
-	{	                                           //wsastartup主要就是进行相应的socket库绑定
-		return 0;                                  //https://blog.csdn.net/clemontine/article/details/53141041
-	}
-
-	/**** 遍历的起始地址 ****/
-	string urlStart = "http://openaccess.thecvf.com/CVPR2018.py";
-	//string urlStart = "http://openaccess.thecvf.com/content_cvpr_2018/html/Kanazawa_End-to-End_Recovery_of_CVPR_2018_paper.html";
-	char * response;
 	int bytes;
 	int count = 0;
-	if (!GetHttpResponse(urlStart, response, bytes))  // 获取网页的响应，放入response中。此函数在上面
-	{
-		cout << "The url is wrong! ignore." << endl;
-		return 0;
-	}
 	string httpResponse = response;  //现在首页面的HTML就在httpResponse里面了
-	free(response);
-
-//	Extract(count++, response);
-
-	/*****************测试文件***********************************************************************
-	ofstream fout;
-	string filename = "rootUrl.txt";
-	fout.open(filename, ios::out);
-	if (!fout.is_open())
-	{
-		cerr << "Can't open rootUrl.txt.\n";
-		exit(EXIT_FAILURE);
-	}
-	fout << httpResponse;
-	fout.close();
-	/************************************************************************************************/
-
 	//找所有链接，加入q_Url中，我发现论文链接后面都是.html
 	const char *p = httpResponse.c_str();  //这是一整个页面的HTML信息，现在要进行url的提取
 	char t[] = "href=\"";  //正则匹配用的tag
@@ -245,19 +240,77 @@ int main()
 					{
 						paperUrl.erase(pos, strlen("\r\n1000\r\n"));
 					}
-				}          
+				}
 				if (!GetHttpResponse(paperUrl, response, bytes))
 				{
 					cout << "The paperUrl is wrong! ignore." << endl;
-					return 0;
 				}
 				Extract(count++, response);
+				/*****************File for test***********************************************************************
+				ofstream fout;
+				string filename = "All_Url.txt";
+				fout.open(filename, ios::out| ios::app);
+				if (!fout.is_open())
+				{
+					cerr << "Can't open rootUrl.txt.\n";
+					exit(EXIT_FAILURE);
+				}
+				fout << count++ << " : "<<paperUrl<<endl;
+				fout.close();
+				/************************************************************************************************/
 			}
 			pos = strstr(pos, tag);
 			delete[] url;  // 释放掉申请的内存
 		}
-		free(response);
 	}
+	return;
+}
+
+
+
+int main()
+{
+	/*******************************************************************************/
+	// 提取起始地址urlStart里面的所有论文的链接放入q_url,之后就无需再提取链接了
+	//从q_url里面取出链接访问，并提取title和abstract放入result.txt
+	/*******************************************************************************/
+
+	/**** 初始化socket，用于tcp网络连接 ****/
+	WSADATA wsaData;                               //存放windows socket初始化信息，Winsock.h
+	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) //使用Socket的程序在使用Socket之前必须调用WSAStartup函数，
+	{	                                           //wsastartup主要就是进行相应的socket库绑定
+		return 0;                                  //https://blog.csdn.net/clemontine/article/details/53141041
+	}
+
+	/**** 遍历的起始地址 ****/
+	string urlStart = "http://openaccess.thecvf.com/CVPR2018.py";
+	//string urlStart = "http://openaccess.thecvf.com/content_cvpr_2018/html/Kanazawa_End-to-End_Recovery_of_CVPR_2018_paper.html";
+	char * response;
+	int bytes;
+	if (!GetHttpResponse(urlStart, response, bytes))  // 获取网页的响应，放入response中。此函数在上面
+	{
+		cout << "The url is wrong! ignore." << endl;
+		return 0;
+	}
+	
+	ParsepaperUrl(response);                          //homework requested
+
+//	Extract(count++, response);                       //for test
+
+	/*****************File for test***********************************************************************
+	ofstream fout;
+	string filename = "Nun.txt";
+	fout.open(filename, ios::out);
+	if (!fout.is_open())
+	{
+		cerr << "Can't open rootUrl.txt.\n";
+		exit(EXIT_FAILURE);
+	}
+	fout << response;
+	fout.close();
+	/************************************************************************************************/
+
+	free(response);
 
 	WSACleanup();               //允许WindowsSockets DLL释放任何该应用程序的资源
 

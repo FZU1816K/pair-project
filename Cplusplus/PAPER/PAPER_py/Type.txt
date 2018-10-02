@@ -1,0 +1,1958 @@
+Title: Embodied Question Answering
+Type: Oral
+Title: Learning by Asking Questions
+Type: Oral
+Title: Finding Tiny Faces in the Wild with Generative Adversarial Network
+Type: Oral
+Title: Learning Face Age Progression: A Pyramid Architecture of GANs
+Type: Oral
+Title: PairedCycleGAN: Asymmetric Style Transfer for Applying and Removing Makeup
+Type: Oral
+Title: GANerated Hands for Real-Time 3D Hand Tracking from Monocular RGB
+Type: Oral
+Title: Learning Pose Specific Representations by Predicting Different Views
+Type: Oral
+Title: Weakly and Semi Supervised Human Body Part Parsing via Pose-Guided Knowledge Transfer
+Type: Oral
+Title: Rotation Averaging and Strong Duality
+Type: Oral
+Title: Hybrid Camera Pose Estimation
+Type: Oral
+Title: A Certifiably Globally Optimal Solution to the Non-minimal Relative Pose Problem
+Type: Oral
+Title: Context Contrasted Feature and Gated Multi-scale Aggregation for Scene Segmentation
+Type: Oral
+Title: Deep Layer Aggregation
+Type: Oral
+Title: Convolutional Neural Networks with Alternately Updated Clique
+Type: Oral
+Title: Practical Block-Wise Neural Network Architecture Generation
+Type: Oral
+Title: SPLATNet: Sparse Lattice Networks for Point Cloud Processing
+Type: Oral
+Title: Surface Networks
+Type: Oral
+Title: Self-Supervised Multi-level Face Model Learning for Monocular Reconstruction at Over 250 Hz
+Type: Oral
+Title: CodeSLAM - Learning a Compact, Optimisable Representation for Dense Visual SLAM
+Type: Oral
+Title: Learning to Find Good Correspondences
+Type: Oral
+Title: OATM: Occlusion Aware Template Matching by Consensus Set Maximization
+Type: Oral
+Title: Deep Learning of Graph Matching
+Type: Oral
+Title: Unsupervised Discovery of Object Landmarks as Structural Representations
+Type: Oral
+Title: Relation Networks for Object Detection
+Type: Oral
+Title: Efficient Optimization for Rank-Based Loss Functions
+Type: Oral
+Title: Wasserstein Introspective Neural Networks
+Type: Oral
+Title: Taskonomy: Disentangling Task Transfer Learning
+Type: Oral
+Title: Maximum Classifier Discrepancy for Unsupervised Domain Adaptation
+Type: Oral
+Title: Density Adaptive Point Set Registration
+Type: Oral
+Title: Left-Right Comparative Recurrent Model for Stereo Matching
+Type: Oral
+Title: Im2Pano3D: Extrapolating 360° Structure and Semantics Beyond the Field of View
+Type: Oral
+Title: Polarimetric Dense Monocular SLAM
+Type: Oral
+Title: Im2Flow: Motion Hallucination from Static Images for Action Recognition
+Type: Oral
+Title: Finding "It": Weakly-Supervised Reference-Aware Visual Grounding in Instructional Videos
+Type: Oral
+Title: Actor and Action Video Segmentation from a Sentence
+Type: Oral
+Title: Egocentric Activity Recognition on a Budget
+Type: Oral
+Title: Bottom-Up and Top-Down Attention for Image Captioning and Visual Question Answering
+Type: Oral
+Title: Improved Fusion of Visual and Language Representations by Dense Symmetric Co-attention for Visual Question Answering
+Type: Oral
+Title: FLIPDIAL: A Generative Model for Two-Way Visual Dialogue
+Type: Oral
+Title: Are You Talking to Me? Reasoned Visual Dialog Generation Through Adversarial Learning
+Type: Oral
+Title: Illuminant Spectra-Based Source Separation Using Flash Photography
+Type: Oral
+Title: Trapping Light for Time of Flight
+Type: Oral
+Title: The Perception-Distortion Tradeoff
+Type: Oral
+Title: Squeeze-and-Excitation Networks
+Type: Oral
+Title: Revisiting Salient Object Detection: Simultaneous Detection, Ranking, and Subitizing of Multiple Salient Objects
+Type: Oral
+Title: Context Encoding for Semantic Segmentation
+Type: Oral
+Title: DoubleFusion: Real-Time Capture of Human Performances with Inner Body Shapes from a Single Depth Sensor
+Type: Oral
+Title: DensePose: Dense Human Pose Estimation in the Wild
+Type: Oral
+Title: Ordinal Depth Supervision for 3D Human Pose Estimation
+Type: Oral
+Title: Photometric Stereo in Participating Media Considering Shape-Dependent Forward Scatter
+Type: Oral
+Title: Direction-Aware Spatial Context Features for Shadow Detection
+Type: Oral
+Title: Discriminative Learning of Latent Features for Zero-Shot Recognition
+Type: Oral
+Title: Total Capture: A 3D Deformation Model for Tracking Faces, Hands, and Bodies
+Type: Oral
+Title: Augmented Skeleton Space Transfer for Depth-Based Hand Pose Estimation
+Type: Oral
+Title: Synthesizing Images of Humans in Unseen Poses
+Type: Oral
+Title: MapNet: An Allocentric Spatial Memory for Mapping Environments
+Type: Oral
+Title: Accurate and Diverse Sampling of Sequences Based on a "Best of Many" Sample Objective
+Type: Oral
+Title: VirtualHome: Simulating Household Activities Via Programs
+Type: Oral
+Title: Learning Descriptor Networks for 3D Shape Synthesis and Analysis
+Type: Oral
+Title: Neural Kinematic Networks for Unsupervised Motion Retargetting
+Type: Oral
+Title: Group Consistent Similarity Learning via Deep CRF for Person Re-identification
+Type: Oral
+Title: StarGAN: Unified Generative Adversarial Networks for Multi-domain Image-to-Image Translation
+Type: Oral
+Title: High-Resolution Image Synthesis and Semantic Manipulation with Conditional GANs
+Type: Oral
+Title: Semi-Parametric Image Synthesis
+Type: Oral
+Title: PWC-Net: CNNs for Optical Flow Using Pyramid, Warping, and Cost Volume
+Type: Oral
+Title: Revisiting Deep Intrinsic Image Decompositions
+Type: Oral
+Title: Multi-cell Detection and Classification Using a Generative Convolutional Model
+Type: Oral
+Title: Feature Space Transfer for Data Augmentation
+Type: Oral
+Title: Analytic Expressions for Probabilistic Moments of PL-DNN with Gaussian Input
+Type: Oral
+Title: Detail-Preserving Pooling in Deep Networks
+Type: Oral
+Title: Person Transfer GAN to Bridge Domain Gap for Person Re-identification
+Type: Spotlight
+Title: Cross-Modal Deep Variational Hand Pose Estimation
+Type: Spotlight
+Title: Disentangled Person Image Generation
+Type: Spotlight
+Title: Super-FAN: Integrated Facial Landmark Localization and Super-Resolution of Real-World Low Resolution Faces in Arbitrary Poses with GANs
+Type: Spotlight
+Title: Multistage Adversarial Losses for Pose-Based Human Image Synthesis
+Type: Spotlight
+Title: Single View Stereo Matching
+Type: Spotlight
+Title: Fight Ill-Posedness with Ill-Posedness: Single-shot Variational Depth Super-Resolution from Shading
+Type: Spotlight
+Title: Deep Depth Completion of a Single RGB-D Image
+Type: Spotlight
+Title: Multi-view Harmonized Bilinear Network for 3D Object Recognition
+Type: Spotlight
+Title: PPFNet: Global Context Aware Local Features for Robust 3D Point Matching
+Type: Spotlight
+Title: FoldingNet: Point Cloud Auto-Encoder via Deep Grid Deformation
+Type: Spotlight
+Title: A Papier-Mache Approach to Learning 3D Surface Generation
+Type: Spotlight
+Title: LEGO: Learning Edge with Geometry all at Once by Watching Videos
+Type: Spotlight
+Title: xUnit: Learning a Spatial Activation Function for Efficient Image Restoration
+Type: Spotlight
+Title: Crafting a Toolchain for Image Restoration by Deep Reinforcement Learning
+Type: Spotlight
+Title: Deformation Aware Image Compression
+Type: Spotlight
+Title: Distributable Consistent Multi-object Matching
+Type: Spotlight
+Title: Residual Dense Network for Image Super-Resolution
+Type: Spotlight
+Title: Attentive Generative Adversarial Network for Raindrop Removal from A Single Image
+Type: Spotlight
+Title: FSRNet: End-to-End Learning Face Super-Resolution with Facial Priors
+Type: Spotlight
+Title: Burst Denoising with Kernel Prediction Networks
+Type: Spotlight
+Title: Unsupervised Sparse Dirichlet-Net for Hyperspectral Image Super-Resolution
+Type: Spotlight
+Title: Dynamic Scene Deblurring Using Spatially Variant Recurrent Neural Networks
+Type: Spotlight
+Title: SGPN: Similarity Group Proposal Network for 3D Point Cloud Instance Segmentation
+Type: Spotlight
+Title: PlaneNet: Piece-Wise Planar Reconstruction from a Single RGB Image
+Type: Spotlight
+Title: Deep Parametric Continuous Convolutional Neural Networks
+Type: Spotlight
+Title: FeaStNet: Feature-Steered Graph Convolutions for 3D Shape Analysis
+Type: Spotlight
+Title: Image Collection Pop-up: 3D Reconstruction and Clustering of Rigid and Non-rigid Categories
+Type: Spotlight
+Title: Geometry-Aware Learning of Maps for Camera Localization
+Type: Spotlight
+Title: Recurrent Slice Networks for 3D Segmentation of Point Clouds
+Type: Spotlight
+Title: Depth-Based 3D Hand Pose Estimation: From Current Achievements to Future Goals
+Type: Spotlight
+Title: SobolevFusion: 3D Reconstruction of Scenes Undergoing Free Non-rigid Motion
+Type: Spotlight
+Title: AdaDepth: Unsupervised Content Congruent Adaptation for Depth Estimation
+Type: Spotlight
+Title: Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference
+Type: Spotlight
+Title: Lean Multiclass Crowdsourcing
+Type: Spotlight
+Title: Partial Transfer Learning with Selective Adversarial Networks
+Type: Spotlight
+Title: Self-Supervised Feature Learning by Learning to Spot Artifacts
+Type: Spotlight
+Title: LDMNet: Low Dimensional Manifold Regularized Neural Networks
+Type: Spotlight
+Title: CondenseNet: An Efficient DenseNet Using Learned Group Convolutions
+Type: Spotlight
+Title: Learning Deep Descriptors with Scale-Aware Triplet Networks
+Type: Spotlight
+Title: Decoupled Networks
+Type: Spotlight
+Title: Deep Adversarial Metric Learning
+Type: Spotlight
+Title: Zero-Shot Sketch-Image Hashing
+Type: Spotlight
+Title: VizWiz Grand Challenge: Answering Visual Questions from Blind People
+Type: Spotlight
+Title: Divide and Grow: Capturing Huge Diversity in Crowd Images with Incrementally Growing CNN
+Type: Spotlight
+Title: Structured Set Matching Networks for One-Shot Part Labeling
+Type: Spotlight
+Title: Self-Supervised Learning of Geometrically Stable Features Through Probabilistic Introspection
+Type: Spotlight
+Title: Link and Code: Fast Indexing with Graphs and Compact Regression Codes
+Type: Spotlight
+Title: Textbook Question Answering Under Instructor Guidance with Memory Networks
+Type: Spotlight
+Title: Unsupervised Deep Generative Adversarial Hashing Network
+Type: Spotlight
+Title: Vision-and-Language Navigation: Interpreting Visually-Grounded Navigation Instructions in Real Environments
+Type: Spotlight
+Title: DenseASPP for Semantic Segmentation in Street Scenes
+Type: Spotlight
+Title: Unsupervised Feature Learning via Non-parametric Instance Discrimination
+Type: Spotlight
+Title: Multi-task Adversarial Network for Disentangled Feature Learning
+Type: Spotlight
+Title: Learning from Synthetic Data: Addressing Domain Shift for Semantic Segmentation
+Type: Spotlight
+Title: Empirical Study of the Topology and Geometry of Deep Networks
+Type: Spotlight
+Title: Boosting Domain Adaptation by Discovering Latent Domains
+Type: Spotlight
+Title: Shape from Shading Through Shape Evolution
+Type: Spotlight
+Title: Weakly Supervised Instance Segmentation Using Class Peak Response
+Type: Spotlight
+Title: Collaborative and Adversarial Network for Unsupervised Domain Adaptation
+Type: Spotlight
+Title: Environment Upgrade Reinforcement Learning for Non-differentiable Multi-stage Pipelines
+Type: Spotlight
+Title: Teaching Categories to Human Learners with Visual Explanations
+Type: Spotlight
+Title: A Unifying Contrast Maximization Framework for Event Cameras, with Applications to Motion, Depth, and Optical Flow Estimation
+Type: Spotlight
+Title: Modeling Facial Geometry Using Compositional VAEs
+Type: Spotlight
+Title: Tangent Convolutions for Dense Prediction in 3D
+Type: Spotlight
+Title: RayNet: Learning Volumetric 3D Reconstruction with Ray Potentials
+Type: Spotlight
+Title: Neural 3D Mesh Renderer
+Type: Spotlight
+Title: Structured Attention Guided Convolutional Neural Fields for Monocular Depth Estimation
+Type: Spotlight
+Title: Automatic 3D Indoor Scene Modeling from Single Panorama
+Type: Spotlight
+Title: Extreme 3D Face Reconstruction: Seeing Through Occlusions
+Type: Spotlight
+Title: Beyond Grobner Bases: Basis Selection for Minimal Solvers
+Type: Spotlight
+Title: Lions and Tigers and Bears: Capturing Non-rigid, 3D, Articulated Shape from Images
+Type: Spotlight
+Title: CNN in MRF: Video Object Segmentation via Inference in a CNN-Based Higher-Order Spatio-Temporal MRF
+Type: Spotlight
+Title: Action Sets: Weakly Supervised Action Segmentation Without Ordering Constraints
+Type: Spotlight
+Title: Low-Latency Video Semantic Segmentation
+Type: Spotlight
+Title: Fine-Grained Video Captioning for Sports Narrative
+Type: Spotlight
+Title: End-to-End Learning of Motion Representation for Video Understanding
+Type: Spotlight
+Title: Compressed Video Action Recognition
+Type: Spotlight
+Title: Features for Multi-target Multi-camera Tracking and Re-identification
+Type: Spotlight
+Title: AVA: A Video Dataset of Spatio-Temporally Localized Atomic Visual Actions
+Type: Spotlight
+Title: Who's Better? Who's Best? Pairwise Deep Ranking for Skill Determination
+Type: Spotlight
+Title: MX-LSTM: Mixing Tracklets and Vislets to Jointly Forecast Trajectories and Head Poses
+Type: Spotlight
+Title: Visual Question Generation as Dual Task of Visual Question Answering
+Type: Spotlight
+Title: Unsupervised Textual Grounding: Linking Words to Image Concepts
+Type: Spotlight
+Title: Focal Visual-Text Attention for Visual Question Answering
+Type: Spotlight
+Title: SeGAN: Segmenting and Generating the Invisible
+Type: Spotlight
+Title: Cascade R-CNN: Delving Into High Quality Object Detection
+Type: Spotlight
+Title: Learning Semantic Concepts and Order for Image and Sentence Matching
+Type: Spotlight
+Title: Functional Map of the World
+Type: Spotlight
+Title: MegDet: A Large Mini-Batch Object Detector
+Type: Spotlight
+Title: Learning Globally Optimized Object Detector via Policy Gradient
+Type: Spotlight
+Title: Photographic Text-to-Image Synthesis with a Hierarchically-Nested Adversarial Network
+Type: Spotlight
+Title: Label Denoising Adversarial Network (LDAN) for Inverse Lighting of Faces
+Type: Spotlight
+Title: Optimal Structured Light a la Carte
+Type: Spotlight
+Title: Tracking Multiple Objects Outside the Line of Sight Using Speckle Imaging
+Type: Spotlight
+Title: Inferring Light Fields from Shadows
+Type: Spotlight
+Title: Modifying Non-local Variations Across Multiple Views
+Type: Spotlight
+Title: Robust Video Content Alignment and Compensation for Rain Removal in a CNN Framework
+Type: Spotlight
+Title: SfSNet: Learning Shape, Reflectance and Illuminance of Faces 'in the Wild'
+Type: Spotlight
+Title: Deep Photo Enhancer: Unpaired Learning for Image Enhancement from Photographs with GANs
+Type: Spotlight
+Title: LIME: Live Intrinsic Material Estimation
+Type: Spotlight
+Title: Learning to Detect Features in Texture Images
+Type: Spotlight
+Title: Learning to Extract a Video Sequence from a Single Motion-Blurred Image
+Type: Spotlight
+Title: Lose The Views: Limited Angle CT Reconstruction Via Implicit Sinogram Completion
+Type: Spotlight
+Title: A Common Framework for Interactive Texture Transfer
+Type: Spotlight
+Title: Creating Capsule Wardrobes from Fashion Images
+Type: Spotlight
+Title: Webly Supervised Learning Meets Zero-shot Learning: A Hybrid Approach for Fine-Grained Classification
+Type: Spotlight
+Title: Look, Imagine and Match: Improving Textual-Visual Cross-Modal Retrieval with Generative Models
+Type: Spotlight
+Title: Bidirectional Attentive Fusion with Context Gating for Dense Video Captioning
+Type: Spotlight
+Title: InLoc: Indoor Visual Localization with Dense Matching and View Synthesis
+Type: Spotlight
+Title: Towards High Performance Video Object Detection
+Type: Spotlight
+Title: Neural Baby Talk
+Type: Spotlight
+Title: Few-Shot Image Recognition by Predicting Parameters from Activations
+Type: Spotlight
+Title: Iterative Visual Reasoning Beyond Convolutions
+Type: Spotlight
+Title: Visual Question Reasoning on General Dependency Tree
+Type: Spotlight
+Title: CVM-Net: Cross-View Matching Network for Image-Based Ground-to-Aerial Geo-Localization
+Type: Spotlight
+Title: Revisiting Dilated Convolution: A Simple Approach for Weakly- and Semi-Supervised Semantic Segmentation
+Type: Spotlight
+Title: Low-Shot Learning from Imaginary Data
+Type: Spotlight
+Title: Consensus Maximization for Semantic Region Correspondences
+Type: Spotlight
+Title: Robust Hough Transform Based 3D Reconstruction from Circular Light Fields
+Type: Spotlight
+Title: Alive Caricature from 2D to 3D
+Type: Spotlight
+Title: Nonlinear 3D Face Morphable Model
+Type: Spotlight
+Title: Through-Wall Human Pose Estimation Using Radio Signals
+Type: Spotlight
+Title: What Makes a Video a Video: Analyzing Temporal Information in Video Understanding Models and Datasets
+Type: Spotlight
+Title: Fast Video Object Segmentation by Reference-Guided Mask Propagation
+Type: Spotlight
+Title: NeuralNetwork-Viterbi: A Framework for Weakly Supervised Video Learning
+Type: Spotlight
+Title: Actor and Observer: Joint Modeling of First and Third-Person Videos
+Type: Spotlight
+Title: HSA-RNN: Hierarchical Structure-Adaptive RNN for Video Summarization
+Type: Spotlight
+Title: Fast and Accurate Online Video Object Segmentation via Tracking Parts
+Type: Spotlight
+Title: Now You Shake Me: Towards Automatic 4D Cinema
+Type: Spotlight
+Title: Viewpoint-Aware Video Summarization
+Type: Spotlight
+Title: Learning to Adapt Structured Output Space for Semantic Segmentation
+Type: Spotlight
+Title: Multi-task Learning Using Uncertainty to Weigh Losses for Scene Geometry and Semantics
+Type: Spotlight
+Title: Jointly Localizing and Describing Events for Dense Video Captioning
+Type: Spotlight
+Title: Going from Image to Video Saliency: Augmenting Image Salience with Dynamic Attentional Push
+Type: Spotlight
+Title: M3: Multimodal Memory Modelling for Video Captioning
+Type: Spotlight
+Title: Emotional Attention: A Study of Image Sentiment and Visual Attention
+Type: Spotlight
+Title: A Low Power, High Throughput, Fully Event-Based Stereo System
+Type: Spotlight
+Title: VITON: An Image-Based Virtual Try-on Network
+Type: Spotlight
+Title: Multi-oriented Scene Text Detection via Corner Localization and Region Segmentation
+Type: Spotlight
+Title: Multi-content GAN for Few-Shot Font Style Transfer
+Type: Spotlight
+Title: Audio to Body Dynamics
+Type: Spotlight
+Title: Weakly Supervised Coupled Networks for Visual Sentiment Analysis
+Type: Spotlight
+Title: Future Person Localization in First-Person Videos
+Type: Spotlight
+Title: Generate To Adapt: Aligning Domains Using Generative Adversarial Networks
+Type: Spotlight
+Title: Multi-agent Diverse Generative Adversarial Networks
+Type: Spotlight
+Title: A PID Controller Approach for Stochastic Optimization of Deep Networks
+Type: Spotlight
+Title: Learning-Compression Algorithms for Neural Net Pruning
+Type: Spotlight
+Title: Large-Scale Distance Metric Learning with Uncertainty
+Type: Spotlight
+Title: Guide Me: Interacting with Deep Networks
+Type: Spotlight
+Title: Art of Singular Vectors and Universal Adversarial Perturbations
+Type: Spotlight
+Title: Deflecting Adversarial Attacks with Pixel Deflection
+Type: Spotlight
+Title: MovieGraphs: Towards Understanding Human-Centric Situations from Videos
+Type: Spotlight
+Title: SemStyle: Learning to Generate Stylised Image Captions Using Unaligned Text
+Type: Spotlight
+Title: Benchmarking 6DOF Outdoor Visual Localization in Changing Conditions
+Type: Spotlight
+Title: iVQA: Inverse Visual Question Answering
+Type: Spotlight
+Title: Unsupervised Person Image Synthesis in Arbitrary Poses
+Type: Spotlight
+Title: Learning Compositional Visual Concepts with Mutual Consistency
+Type: Spotlight
+Title: NestedNet: Learning Nested Sparse Structures in Deep Neural Networks
+Type: Spotlight
+Title: Context Embedding Networks
+Type: Spotlight
+Title: Iterative Learning with Open-set Noisy Labels
+Type: Spotlight
+Title: Learning Transferable Architectures for Scalable Image Recognition
+Type: Spotlight
+Title: SBNet: Sparse Blocks Network for Fast Inference
+Type: Spotlight
+Title: Language-Based Image Editing with Recurrent Attentive Models
+Type: Spotlight
+Title: Net2Vec: Quantifying and Explaining How Concepts are Encoded by Filters in Deep Neural Networks
+Type: Spotlight
+Title: End-to-End Dense Video Captioning with Masked Transformer
+Type: Spotlight
+Title: A Neural Multi-sequence Alignment TeCHnique (NeuMATCH)
+Type: Spotlight
+Title: Path Aggregation Network for Instance Segmentation
+Type: Spotlight
+Title: The iNaturalist Species Classification and Detection Dataset
+Type: Spotlight
+Title: Multimodal Explanations: Justifying Decisions and Pointing to the Evidence
+Type: Spotlight
+Title: BlockDrop: Dynamic Inference Paths in Residual Networks
+Type: Spotlight
+Title: Interpretable Convolutional Neural Networks
+Type: Spotlight
+Title: Deep Cross-Media Knowledge Transfer
+Type: Spotlight
+Title: Interleaved Structured Sparse Convolutional Neural Networks
+Type: Spotlight
+Title: A Variational U-Net for Conditional Appearance and Shape Generation
+Type: Spotlight
+Title: Detach and Adapt: Learning Cross-Domain Disentangled Deep Representation
+Type: Spotlight
+Title: Learning Deep Structured Active Contours End-to-End
+Type: Spotlight
+Title: Deep Learning Under Privileged Information Using Heteroscedastic Dropout
+Type: Spotlight
+Title: Smooth Neighbors on Teacher Graphs for Semi-Supervised Learning
+Type: Spotlight
+Title: Interpret Neural Networks by Identifying Critical Data Routing Paths
+Type: Spotlight
+Title: Deep Spatio-Temporal Random Fields for Efficient Video Segmentation
+Type: Spotlight
+Title: Customized Image Narrative Generation via Interactive Visual Question Generation and Answering
+Type: Spotlight
+Title: Learning Spatial-Aware Regressions for Visual Tracking
+Type: Spotlight
+Title: High Performance Visual Tracking with Siamese Region Proposal Network
+Type: Spotlight
+Title: LiteFlowNet: A Lightweight Convolutional Neural Network for Optical Flow Estimation
+Type: Spotlight
+Title: VITAL: VIsual Tracking via Adversarial Learning
+Type: Spotlight
+Title: Super SloMo: High Quality Estimation of Multiple Intermediate Frames for Video Interpolation
+Type: Spotlight
+Title: Real-World Repetition Estimation by Div, Grad and Curl
+Type: Spotlight
+Title: Recurrent Pixel Embedding for Instance Grouping
+Type: Spotlight
+Title: Deep Unsupervised Saliency Detection: A Multiple Noisy Labeling Perspective
+Type: Spotlight
+Title: Learning Intrinsic Image Decomposition from Watching the World
+Type: Spotlight
+Title: TieNet: Text-Image Embedding Network for Common Thorax Disease Classification and Reporting in Chest X-Rays
+Type: Spotlight
+Title: Generating Synthetic X-Ray Images of a Person from the Surface Geometry
+Type: Spotlight
+Title: Gibson Env: Real-World Perception for Embodied Agents
+Type: Spotlight
+Title: Reinforcement Cutting-Agent Learning for Video Object Segmentation
+Type: Spotlight
+Title: Rethinking Feature Distribution for Loss Functions in Image Classification
+Type: Spotlight
+Title: Shift: A Zero FLOP,  Zero Parameter Alternative to Spatial Convolutions
+Type: Spotlight
+Title: Sketch-a-Classifier: Sketch-Based Photo Classifier Generation
+Type: Spotlight
+Title: Light Field Intrinsics with a Deep Encoder-Decoder Network
+Type: Spotlight
+Title: Learning Generative ConvNets via Multi-grid Modeling and Sampling
+Type: Spotlight
+Title: Manifold Learning in Quotient Spaces
+Type: Spotlight
+Title: Learning Intelligent Dialogs for Bounding Box Annotation
+Type: Spotlight
+Title: Boosting Adversarial Attacks with Momentum
+Type: Spotlight
+Title: NISP: Pruning Networks Using Neuron Importance Score Propagation
+Type: Spotlight
+Title: PointGrid: A Deep Network for 3D Shape Understanding
+Type: Spotlight
+Title: Tell Me Where to Look: Guided Attention Inference Network
+Type: Spotlight
+Title: 3D Semantic Segmentation with Submanifold Sparse Convolutional Networks
+Type: Spotlight
+Title: TOM-Net: Learning Transparent Object Matting from a Single Image
+Type: Spotlight
+Title: Five-Point Fundamental Matrix Estimation for Uncalibrated Cameras
+Type: Poster
+Title: PointFusion: Deep Sensor Fusion for 3D Bounding Box Estimation
+Type: Poster
+Title: Scalable Dense Non-rigid Structure-from-Motion: A Grassmannian Perspective
+Type: Poster
+Title: GVCNN: Group-View Convolutional Neural Networks for 3D Shape Recognition
+Type: Poster
+Title: Depth and Transient Imaging with Compressive SPAD Array Cameras
+Type: Poster
+Title: GeoNet: Geometric Neural Network for Joint Depth and Surface Normal Estimation
+Type: Poster
+Title: Real-Time Seamless Single Shot 6D Object Pose Prediction
+Type: Poster
+Title: Factoring Shape, Pose, and Layout from the 2D Image of a 3D Scene
+Type: Poster
+Title: Monocular Relative Depth Perception with Web Stereo Data Supervision
+Type: Poster
+Title: Spline Error Weighting for Robust Visual-Inertial Fusion
+Type: Poster
+Title: Single-Image Depth Estimation Based on Fourier Domain Analysis
+Type: Poster
+Title: Unsupervised Learning of Monocular Depth Estimation and Visual Odometry with Deep Feature Reconstruction
+Type: Poster
+Title: Detect-and-Track: Efficient Pose Estimation in Videos
+Type: Poster
+Title: Supervision-by-Registration: An Unsupervised Approach to Improve the Precision of Facial Landmark Detectors
+Type: Poster
+Title: Diversity Regularized Spatiotemporal Attention for Video-Based Person Re-identification
+Type: Poster
+Title: Style Aggregated Network for Facial Landmark Detection
+Type: Poster
+Title: Learning Deep Models for Face Anti-Spoofing: Binary or Auxiliary Supervision
+Type: Poster
+Title: Deep Cost-Sensitive and Order-Preserving Feature Learning for Cross-Population Age Estimation
+Type: Poster
+Title: First-Person Hand Action Benchmark with RGB-D Videos and 3D Hand Pose Annotations
+Type: Poster
+Title: A Pose-Sensitive Embedding for Person Re-identification with Expanded Cross Neighborhood Re-ranking
+Type: Poster
+Title: Disentangling 3D Pose in a Dendritic CNN for Unconstrained 2D Face Alignment
+Type: Poster
+Title: A Hierarchical Generative Model for Eye Image Synthesis and Eye Gaze Estimation
+Type: Poster
+Title: MiCT: Mixed 3D/2D Convolutional Tube for Human Action Recognition
+Type: Poster
+Title: Learning to Estimate 3D Human Pose and Shape from a Single Color Image
+Type: Poster
+Title: Glimpse Clouds: Human Activity Recognition from Unstructured Feature Points
+Type: Poster
+Title: Context-Aware Deep Feature Compression for High-Speed Visual Tracking
+Type: Poster
+Title: Correlation Tracking via Joint Discrimination and Reliability Learning
+Type: Poster
+Title: PhaseNet for Video Frame Interpolation
+Type: Poster
+Title: The Best of Both Worlds: Combining CNNs and Geometric Constraints for Hierarchical Motion Segmentation
+Type: Poster
+Title: Hyperparameter Optimization for Tracking with Continuous Deep Q-Learning
+Type: Poster
+Title: Scale-Transferrable Object Detection
+Type: Poster
+Title: A Prior-Less Method for Multi-face Tracking in Unconstrained Videos
+Type: Poster
+Title: End-to-End Flow Correlation Tracking with Spatial-Temporal Attention
+Type: Poster
+Title: Deep Texture Manifold for Ground Terrain Recognition
+Type: Poster
+Title: Learning Superpixels with Segmentation-Aware Affinity Loss
+Type: Poster
+Title: Interactive Image Segmentation with Latent Diversity
+Type: Poster
+Title: The Unreasonable Effectiveness of Deep Features as a Perceptual Metric
+Type: Poster
+Title: Local Descriptors Optimized for Average Precision
+Type: Poster
+Title: Recovering Realistic Texture in Image Super-Resolution by Deep Spatial Feature Transform
+Type: Poster
+Title: Deep Extreme Cut: From Extreme Points to Object Segmentation
+Type: Poster
+Title: Learning to Parse Wireframes in Images of Man-Made Environments
+Type: Poster
+Title: Occlusion-Aware Rolling Shutter Rectification of 3D Scenes
+Type: Poster
+Title: Content-Sensitive Supervoxels via Uniform Tessellations on Video Manifolds
+Type: Poster
+Title: Intrinsic Image Transformation via Scale Space Decomposition
+Type: Poster
+Title: Learned Shape-Tailored Descriptors for Segmentation
+Type: Poster
+Title: PAD-Net: Multi-tasks Guided Prediction-and-Distillation Network for Simultaneous Depth Estimation and Scene Parsing
+Type: Poster
+Title: Multi-image Semantic Matching by Mining Consistent Features
+Type: Poster
+Title: Density-Aware Single Image De-raining Using a Multi-stream Dense Network
+Type: Poster
+Title: Joint Cuts and Matching of Partitions in One Graph
+Type: Poster
+Title: Progressive Attention Guided Recurrent Network for Salient Object Detection
+Type: Poster
+Title: Fast and Accurate Single Image Super-Resolution via Information Distillation Network
+Type: Poster
+Title: Hallucinated-IQA: No-Reference Image Quality Assessment via Adversarial Learning
+Type: Poster
+Title: NAG: Network for Adversary Generation
+Type: Poster
+Title: Dynamic-Structured Semantic Propagation Network
+Type: Poster
+Title: Cross-Domain Self-Supervised Multi-task Feature Learning Using Synthetic Imagery
+Type: Poster
+Title: A Two-Step Disentanglement Method
+Type: Poster
+Title: Robust Facial Landmark Detection via a Fully-Convolutional Local-Global Context Network
+Type: Poster
+Title: Decorrelated Batch Normalization
+Type: Poster
+Title: Learning to Sketch with Shortcut Cycle Consistency
+Type: Poster
+Title: Towards a Mathematical Understanding of the Difficulty in Learning with Feedforward Neural Networks
+Type: Poster
+Title: FaceID-GAN: Learning a Symmetry Three-Player GAN for Identity-Preserving Face Synthesis
+Type: Poster
+Title: A Constrained Deep Neural Network for Ordinal Regression
+Type: Poster
+Title: Modulated Convolutional Networks
+Type: Poster
+Title: Learning Steerable Filters for Rotation Equivariant CNNs
+Type: Poster
+Title: Efficient Interactive Annotation of Segmentation Datasets with Polygon-RNN++
+Type: Poster
+Title: SplineCNN: Fast Geometric Deep Learning with Continuous B-Spline Kernels
+Type: Poster
+Title: GAGAN: Geometry-Aware Generative Adversarial Networks
+Type: Poster
+Title: On the Robustness of Semantic Segmentation Models to Adversarial Attacks
+Type: Poster
+Title: Feedback-Prop: Convolutional Neural Network Inference Under Partial Evidence
+Type: Poster
+Title: Super-Resolving Very Low-Resolution Face Images with Supplementary Attributes
+Type: Poster
+Title: Frustum PointNets for 3D Object Detection from RGB-D Data
+Type: Poster
+Title: W2F: A Weakly-Supervised to Fully-Supervised Framework for Object Detection
+Type: Poster
+Title: 3D Object Detection with Latent Support Surfaces
+Type: Poster
+Title: Towards Faster Training of Global Covariance Pooling Networks by Iterative Matrix Square Root Normalization
+Type: Poster
+Title: Recurrent Scene Parsing with Perspective Understanding in the Loop
+Type: Poster
+Title: Improving Occlusion and Hard Negative Handling for Single-Stage Pedestrian Detectors
+Type: Poster
+Title: Learning to Act Properly: Predicting and Explaining Affordances from Images
+Type: Poster
+Title: Pointwise Convolutional Neural Networks
+Type: Poster
+Title: Image-Image Domain Adaptation with Preserved Self-Similarity and Domain-Dissimilarity for Person Re-identification
+Type: Poster
+Title: A Generative Adversarial Approach for Zero-Shot Learning from Noisy Texts
+Type: Poster
+Title: Tensorize, Factorize and Regularize: Robust Visual Relationship Learning
+Type: Poster
+Title: Transductive Unbiased Embedding for Zero-Shot Learning
+Type: Poster
+Title: Hierarchical Novelty Detection for Visual Object Recognition
+Type: Poster
+Title: Zero-Shot Visual Recognition Using Semantics-Preserving Adversarial Embedding Networks
+Type: Poster
+Title: Learning Rich Features for Image Manipulation Detection
+Type: Poster
+Title: Human Semantic Parsing for Person Re-identification
+Type: Poster
+Title: Stacked Latent Attention for Multimodal Reasoning
+Type: Poster
+Title: R-FCN-3000 at 30fps: Decoupling Detection and Classification
+Type: Poster
+Title: CSRNet: Dilated Convolutional Neural Networks for Understanding the Highly Congested Scenes
+Type: Poster
+Title: Revisiting Knowledge Transfer for Training Object Class Detectors
+Type: Poster
+Title: Deep Sparse Coding for Invariant Multimodal Halle Berry Neurons
+Type: Poster
+Title: On the Convergence of PatchMatch and Its Variants
+Type: Poster
+Title: Rethinking the Faster R-CNN Architecture for Temporal Action Localization
+Type: Poster
+Title: MoNet: Deep Motion Exploitation for Video Object Segmentation
+Type: Poster
+Title: Video Representation Learning Using Discriminative Pooling
+Type: Poster
+Title: Recognizing Human Actions as the Evolution of Pose Estimation Maps
+Type: Poster
+Title: Video Person Re-identification with Competitive Snippet-Similarity Aggregation and Co-attentive Snippet Embedding
+Type: Poster
+Title: Mask-Guided Contrastive Attention Model for Person Re-identification
+Type: Poster
+Title: Blazingly Fast Video Object Segmentation with Pixel-Wise Metric Learning
+Type: Poster
+Title: Learning to Compare: Relation Network for Few-Shot Learning
+Type: Poster
+Title: COCO-Stuff: Thing and Stuff Classes in Context
+Type: Poster
+Title: Image Generation from Scene Graphs
+Type: Poster
+Title: Deep Cauchy Hashing for Hamming Space Retrieval
+Type: Poster
+Title: Learning to Look Around: Intelligently Exploring Unseen Environments for Unknown Tasks
+Type: Poster
+Title: Multi-scale Location-Aware Kernel Representation for Object Detection
+Type: Poster
+Title: Clinical Skin Lesion Diagnosis Using Representations Inspired by Dermatologist Criteria
+Type: Poster
+Title: Compare and Contrast: Learning Prominent Visual Differences
+Type: Poster
+Title: Multi-evidence Filtering and Fusion for Multi-label Classification, Object Detection and Semantic Segmentation Based on Weakly Supervised Learning
+Type: Poster
+Title: HashGAN: Deep Learning to Hash with Pair Conditional Wasserstein GAN
+Type: Poster
+Title: Min-Entropy Latent Model for Weakly Supervised Object Detection
+Type: Poster
+Title: MAttNet: Modular Attention Network for Referring Expression Comprehension
+Type: Poster
+Title: AttnGAN: Fine-Grained Text to Image Generation with Attentional Generative Adversarial Networks
+Type: Poster
+Title: Adversarial Complementary Learning for Weakly Supervised Object Localization
+Type: Poster
+Title: Conditional Generative Adversarial Network for Structured Domain Adaptation
+Type: Poster
+Title: GroupCap: Group-Based Image Captioning with Structured Relevance and Diversity Constraints
+Type: Poster
+Title: Weakly-Supervised Semantic Segmentation by Iteratively Mining Common Object Features
+Type: Poster
+Title: Bootstrapping the Performance of Webly Supervised Semantic Segmentation
+Type: Poster
+Title: DeepVoting: A Robust and Explainable Deep Network for Semantic Part Detection Under Partial Occlusion
+Type: Poster
+Title: Geometry-Aware Scene Text Detection with Instance Transformation Network
+Type: Poster
+Title: Optical Flow Guided Feature: A Fast and Robust Motion Representation for Video Action Recognition
+Type: Poster
+Title: Motion-Guided Cascaded Refinement Network for Video Object Segmentation
+Type: Poster
+Title: A Memory Network Approach for Story-Based Temporal Summarization of 360° Videos
+Type: Poster
+Title: Cube Padding for Weakly-Supervised Saliency Prediction in 360° Videos
+Type: Poster
+Title: Appearance-and-Relation Networks for Video Classification
+Type: Poster
+Title: Excitation Backprop for RNNs
+Type: Poster
+Title: One-Shot Action Localization by Learning Sequence Matching Network
+Type: Poster
+Title: Structure Preserving Video Prediction
+Type: Poster
+Title: Person Re-identification with Cascaded Pairwise Convolutions
+Type: Poster
+Title: On the Importance of Label Quality for Semantic Segmentation
+Type: Poster
+Title: Scalable and Effective Deep CCA via Soft Decorrelation
+Type: Poster
+Title: Duplex Generative Adversarial Network for Unsupervised Domain Adaptation
+Type: Poster
+Title: Edit Probability for Scene Text Recognition
+Type: Poster
+Title: Global Versus Localized Generative Adversarial Nets
+Type: Poster
+Title: MoCoGAN: Decomposing Motion and Content for Video Generation
+Type: Poster
+Title: Recurrent Residual Module for Fast Inference in Videos
+Type: Poster
+Title: Improving Landmark Localization with Semi-Supervised Learning
+Type: Poster
+Title: Adversarial Data Programming: Using GANs to Relax the Bottleneck of Curated Labeled Data
+Type: Poster
+Title: Stochastic Variational Inference with Gradient Linearization
+Type: Poster
+Title: Multi-label Zero-Shot Learning with Structured Knowledge Graphs
+Type: Poster
+Title: MorphNet: Fast & Simple Resource-Constrained Structure Learning of Deep Networks
+Type: Poster
+Title: Deep Adversarial Subspace Clustering
+Type: Poster
+Title: Towards Human-Machine Cooperation: Self-Supervised Sample Mining for Object Detection
+Type: Poster
+Title: Discrete-Continuous ADMM for Transductive Inference in Higher-Order MRFs
+Type: Poster
+Title: Robust Physical-World Attacks on Deep Learning Visual Classification
+Type: Poster
+Title: Generating a Fusion Image: One's Identity and Another's Shape
+Type: Poster
+Title: Learning to Promote Saliency Detectors
+Type: Poster
+Title: Image Super-Resolution via Dual-State Recurrent Networks
+Type: Poster
+Title: Deep Back-Projection Networks for Super-Resolution
+Type: Poster
+Title: Focus Manipulation Detection via Photometric Histogram Analysis
+Type: Poster
+Title: Compassionately Conservative Balanced Cuts for Image Segmentation
+Type: Poster
+Title: A High-Quality Denoising Dataset for Smartphone Cameras
+Type: Poster
+Title: Context-Aware Synthesis for Video Frame Interpolation
+Type: Poster
+Title: Salient Object Detection Driven by Fixation Prediction
+Type: Poster
+Title: Enhancing the Spatial Resolution of Stereo Images Using a Parallax Prior
+Type: Poster
+Title: HATS: Histograms of Averaged Time Surfaces for Robust Event-Based Object Classification
+Type: Poster
+Title: A Bi-Directional Message Passing Model for Salient Object Detection
+Type: Poster
+Title: Matching Pixels Using Co-occurrence Statistics
+Type: Poster
+Title: SeedNet: Automatic Seed Generation with Deep Reinforcement Learning for Robust Interactive Segmentation
+Type: Poster
+Title: Jerk-Aware Video Acceleration Magnification
+Type: Poster
+Title: Defense Against Adversarial Attacks Using High-Level Representation Guided Denoiser
+Type: Poster
+Title: Stacked Conditional Generative Adversarial Networks for Jointly Learning Shadow Detection and Shadow Removal
+Type: Poster
+Title: Image Correction via Deep Reciprocating HDR Transformation
+Type: Poster
+Title: PieAPP: Perceptual Image-Error Assessment Through Pairwise Preference
+Type: Poster
+Title: Normalized Cut Loss for Weakly-Supervised CNN Segmentation
+Type: Poster
+Title: ISTA-Net: Interpretable Optimization-Inspired Deep Network for Image Compressive Sensing
+Type: Poster
+Title: Fast End-to-End Trainable Guided Filter
+Type: Poster
+Title: Disentangling Structure and Aesthetics for Style-Aware Image Completion
+Type: Poster
+Title: Learning a Discriminative Feature Network for Semantic Segmentation
+Type: Poster
+Title: Kernelized Subspace Pooling for Deep Local Descriptors
+Type: Poster
+Title: pOSE: Pseudo Object Space Error for Initialization-Free Bundle Adjustment
+Type: Poster
+Title: Deformable Shape Completion with Graph Convolutional Autoencoders
+Type: Poster
+Title: Learning from Millions of 3D Scans for Large-Scale 3D Face Recognition
+Type: Poster
+Title: CarFusion: Combining Point Tracking and Part Detection for Dynamic 3D Reconstruction of Vehicles
+Type: Poster
+Title: Deep Material-Aware Cross-Spectral Stereo Matching
+Type: Poster
+Title: Augmenting Crowd-Sourced 3D Reconstructions Using Semantic Detections
+Type: Poster
+Title: Matryoshka Networks: Predicting 3D Geometry via Nested Shape Layers
+Type: Poster
+Title: Triplet-Center Loss for Multi-view 3D Object Retrieval
+Type: Poster
+Title: Learning 3D Shape Completion from Laser Scan Data with Weak Supervision
+Type: Poster
+Title: End-to-End Learning of Keypoint Detector and Descriptor for Pose Invariant 3D Matching
+Type: Poster
+Title: ICE-BA: Incremental, Consistent and Efficient Bundle Adjustment for Visual-Inertial SLAM
+Type: Poster
+Title: GeoNet: Unsupervised Learning of Dense Depth, Optical Flow and Camera Pose
+Type: Poster
+Title: Radially-Distorted Conjugate Translations
+Type: Poster
+Title: Deep Ordinal Regression Network for Monocular Depth Estimation
+Type: Poster
+Title: Analytical Modeling of Vanishing Points and Curves in Catadioptric Cameras
+Type: Poster
+Title: Learning Depth from Monocular Videos Using Direct Methods
+Type: Poster
+Title: Salience Guided Depth Calibration for Perceptually Optimized Compressive Light Field 3D Display
+Type: Poster
+Title: MegaDepth: Learning Single-View Depth Prediction from Internet Photos
+Type: Poster
+Title: LayoutNet: Reconstructing the 3D Room Layout from a Single RGB Image
+Type: Poster
+Title: CBMV: A Coalesced Bidirectional Matching Volume for Disparity Estimation
+Type: Poster
+Title: Zoom and Learn: Generalizing Deep Stereo Matching to Novel Domains
+Type: Poster
+Title: Exploring Disentangled Feature Representation Beyond Face Identification
+Type: Poster
+Title: Learning Facial Action Units from Web Images with Scalable Weakly Supervised Clustering
+Type: Poster
+Title: Human Pose Estimation with Parsing Induced Learner
+Type: Poster
+Title: Multi-level Factorisation Net for Person Re-identification
+Type: Poster
+Title: Attention-Aware Compositional Network for Person Re-identification
+Type: Poster
+Title: Look at Boundary: A Boundary-Aware Face Alignment Algorithm
+Type: Poster
+Title: Demo2Vec: Reasoning Object Affordances from Online Videos
+Type: Poster
+Title: Monocular 3D Pose and Shape Estimation of Multiple People in Natural Scenes: The Importance of Multiple Scene Constraints
+Type: Poster
+Title: 3D Human Sensing, Action and Emotion Recognition in Robot Assisted Therapy of Children with Autism
+Type: Poster
+Title: Facial Expression Recognition by De-expression Residue Learning
+Type: Poster
+Title: A Causal And-Or Graph Model for Visibility Fluent Reasoning in Tracking Interacting Objects
+Type: Poster
+Title: Weakly Supervised Facial Action Unit Recognition Through Adversarial Training
+Type: Poster
+Title: Non-linear Temporal Subspace Representations for Activity Recognition
+Type: Poster
+Title: Towards Pose Invariant Face Recognition in the Wild
+Type: Poster
+Title: Unifying Identification and Context Learning for Person Recognition
+Type: Poster
+Title: Jointly Optimize Data Augmentation and Network Training: Adversarial Data Augmentation in Human Pose Estimation
+Type: Poster
+Title: Wing Loss for Robust Facial Landmark Localisation with Convolutional Neural Networks
+Type: Poster
+Title: Multiple Granularity Group Interaction Prediction
+Type: Poster
+Title: Social GAN: Socially Acceptable Trajectories with Generative Adversarial Networks
+Type: Poster
+Title: Deep Group-Shuffling Random Walk for Person Re-identification
+Type: Poster
+Title: Transferable Joint Attribute-Identity Deep Learning for Unsupervised Person Re-identification
+Type: Poster
+Title: Harmonious Attention Network for Person Re-identification
+Type: Poster
+Title: Real-Time Rotation-Invariant Face Detection with Progressive Calibration Networks
+Type: Poster
+Title: Deep Regression Forests for Age Estimation
+Type: Poster
+Title: Weakly-Supervised Deep Convolutional Neural Network Learning for Facial Action Unit Intensity Estimation
+Type: Poster
+Title: Memory Based Online Learning of Deep Representations from Video Streams
+Type: Poster
+Title: Efficient and Deep Person Re-identification Using Multi-level Similarity
+Type: Poster
+Title: Multi-level Fusion Based 3D Object Detection from Monocular Images
+Type: Poster
+Title: A Perceptual Measure for Deep Single Image Camera Calibration
+Type: Poster
+Title: Learning to Generate Time-Lapse Videos Using Multi-stage Dynamic Generative Adversarial Networks
+Type: Poster
+Title: Document Enhancement Using Visibility Detection
+Type: Poster
+Title: A Weighted Sparse Sampling and Smoothing Frame Transition Approach for Semantic Fast-Forward First-Person Videos
+Type: Poster
+Title: PU-Net: Point Cloud Upsampling Network
+Type: Poster
+Title: Real-Time Monocular Depth Estimation Using Synthetic Data with Domain Adaptation via Image Style Transfer
+Type: Poster
+Title: Learning for Disparity Estimation Through Feature Constancy
+Type: Poster
+Title: DeepMVS: Learning Multi-view Stereopsis
+Type: Poster
+Title: Self-Calibrating Polarising Radiometric Calibration
+Type: Poster
+Title: Coding Kendall's Shape Trajectories for 3D Action Recognition
+Type: Poster
+Title: Efficient, Sparse Representation of Manifold Distance Matrices for Classical Scaling
+Type: Poster
+Title: Motion Segmentation by Exploiting Complementary Geometric Models
+Type: Poster
+Title: Estimation of Camera Locations in Highly Corrupted Scenarios: All About that Base, No Shape Trouble
+Type: Poster
+Title: 4D Human Body Correspondences from Panoramic Depth Maps
+Type: Poster
+Title: Reconstructing Thin Structures of Manifold Surfaces by Integrating Spatial Curves
+Type: Poster
+Title: Multi-view Consistency as Supervisory Signal for Learning Shape and Pose Prediction
+Type: Poster
+Title: Probabilistic Plant Modeling via Multi-view Image-to-Image Translation
+Type: Poster
+Title: Deep Marching Cubes: Learning Explicit Surface Representations
+Type: Poster
+Title: Tags2Parts: Discovering Semantic Regions from Shape Tags
+Type: Poster
+Title: Uncalibrated Photometric Stereo Under Natural Illumination
+Type: Poster
+Title: Robust Depth Estimation from Auto Bracketed Images
+Type: Poster
+Title: Free Supervision from Video Games
+Type: Poster
+Title: Planar Shape Detection at Structural Scales
+Type: Poster
+Title: Pix3D: Dataset and Methods for Single-Image 3D Shape Modeling
+Type: Poster
+Title: Camera Pose Estimation with Unknown Principal Point
+Type: Poster
+Title: Inverse Composition Discriminative Optimization for Point Cloud Registration
+Type: Poster
+Title: SurfConv: Bridging 3D and 2D Convolution for RGBD Images
+Type: Poster
+Title: A Fast Resection-Intersection Method for the Known Rotation Problem
+Type: Poster
+Title: 3D Pose Estimation and 3D Model Retrieval for Objects in the Wild
+Type: Poster
+Title: Structure from Recurrent Motion: From Rigidity to Recurrency
+Type: Poster
+Title: Learning Patch Reconstructability for Accelerating Multi-view Stereo
+Type: Poster
+Title: Progressively Complementarity-Aware Fusion Network for RGB-D Salient Object Detection
+Type: Poster
+Title: Pixels, Voxels, and Views: A Study of Shape Representations for Single View 3D Object Shape Prediction
+Type: Poster
+Title: Learning Dual Convolutional Neural Networks for Low-Level Vision
+Type: Poster
+Title: Defocus Blur Detection via Multi-stream Bottom-Top-Bottom Fully Convolutional Network
+Type: Poster
+Title: PiCANet: Learning Pixel-Wise Contextual Attention for Saliency Detection
+Type: Poster
+Title: Curve Reconstruction via the Global Statistics of Natural Curves
+Type: Poster
+Title: What do Deep Networks Like to See?
+Type: Poster
+Title: Zero-Shot Super-Resolution Using Deep Internal Learning
+Type: Poster
+Title: Detect Globally, Refine Locally: A Novel Approach to Saliency Detection
+Type: Poster
+Title: Beyond the Pixel-Wise Loss for Topology-Aware Delineation
+Type: Poster
+Title: KIPPI: KInetic Polygonal Partitioning of Images
+Type: Poster
+Title: Image Blind Denoising with Generative Adversarial Network Based Noise Modeling
+Type: Poster
+Title: Multi-Scale Weighted Nuclear Norm Image Restoration
+Type: Poster
+Title: MoNet: Moments Embedding Network
+Type: Poster
+Title: Active Fixation Control to Predict Saccade Sequences
+Type: Poster
+Title: Densely Connected Pyramid Dehazing Network
+Type: Poster
+Title: Universal Denoising Networks : A Novel CNN Architecture for Image Denoising
+Type: Poster
+Title: Learning Convolutional Networks for Content-Weighted Image Compression
+Type: Poster
+Title: Deep Video Super-Resolution Network Using Dynamic Upsampling Filters Without Explicit Motion Compensation
+Type: Poster
+Title: Erase or Fill? Deep Joint Recurrent Rain Removal and Reconstruction in Videos
+Type: Poster
+Title: Flow Guided Recurrent Neural Encoder for Video Salient Object Detection
+Type: Poster
+Title: Gated Fusion Network for Single Image Dehazing
+Type: Poster
+Title: Learning a Single Convolutional Super-Resolution Network for Multiple Degradations
+Type: Poster
+Title: Non-blind Deblurring: Handling Kernel Uncertainty with CNNs
+Type: Poster
+Title: Boundary Flow: A Siamese Network that Predicts Boundary Motion Without Training on Motion
+Type: Poster
+Title: Learning to See in the Dark
+Type: Poster
+Title: BPGrad: Towards Global Optimality in Deep Learning via Branch and Pruning
+Type: Poster
+Title: Perturbative Neural Networks
+Type: Poster
+Title: Unsupervised Correlation Analysis
+Type: Poster
+Title: A Biresolution Spectral Framework for Product Quantization
+Type: Poster
+Title: Domain Adaptive Faster R-CNN for Object Detection in the Wild
+Type: Poster
+Title: Low-Shot Learning with Large-Scale Diffusion
+Type: Poster
+Title: Joint Pose and Expression Modeling for Facial Expression Recognition
+Type: Poster
+Title: Lightweight Probabilistic Deep Networks
+Type: Poster
+Title: Adversarially Learned One-Class Classifier for Novelty Detection
+Type: Poster
+Title: Defense Against Universal Adversarial Perturbations
+Type: Poster
+Title: Disentangling Factors of Variation by Mixing Them
+Type: Poster
+Title: Deformable GANs for Pose-Based Human Image Generation
+Type: Poster
+Title: Hierarchical Recurrent Attention Networks for Structured Online Maps
+Type: Poster
+Title: Sliced Wasserstein Distance for Learning Gaussian Mixture Models
+Type: Poster
+Title: Aligning Infinite-Dimensional Covariance Matrices in Reproducing Kernel Hilbert Spaces for Domain Adaptation
+Type: Poster
+Title: CLEAR: Cumulative LEARning for One-Shot One-Class Image Recognition
+Type: Poster
+Title: Local and Global Optimization Techniques in Graph-Based Clustering
+Type: Poster
+Title: Multi-task Learning by Maximizing Statistical Dependence
+Type: Poster
+Title: Robust Classification with Convolutional Prototype Learning
+Type: Poster
+Title: Generative Modeling Using the Sliced Wasserstein Distance
+Type: Poster
+Title: Learning Time/Memory-Efficient Deep Architectures with Budgeted Super Networks
+Type: Poster
+Title: Cross-View Image Synthesis Using Conditional GANs
+Type: Poster
+Title: Sparse, Smart Contours to Represent and Edit Images
+Type: Poster
+Title: Anticipating Traffic Accidents with Adaptive Loss and Large-Scale Incident DB
+Type: Poster
+Title: A Minimalist Approach to Type-Agnostic Detection of Quadrics in Point Clouds
+Type: Poster
+Title: Facelet-Bank for Fast Portrait Manipulation
+Type: Poster
+Title: Visual to Sound: Generating Natural Sound for Videos in the Wild
+Type: Poster
+Title: 3D-RCNN: Instance-Level 3D Object Reconstruction via Render-and-Compare
+Type: Poster
+Title: Fast and Furious: Real Time End-to-End 3D Detection, Tracking and Motion Forecasting with a Single Convolutional Net
+Type: Poster
+Title: An Analysis of Scale Invariance in Object Detection - SNIP
+Type: Poster
+Title: Deep Cocktail Network: Multi-source Unsupervised Domain Adaptation with Category Shift
+Type: Poster
+Title: DOTA: A Large-Scale Dataset for Object Detection in Aerial Images
+Type: Poster
+Title: Finding Beans in Burgers: Deep Semantic-Visual Embedding with Localization
+Type: Poster
+Title: Feature Super-Resolution: Make Machine See More Clearly
+Type: Poster
+Title: ClusterNet: Detecting Small Objects in Large Scenes by Exploiting Spatio-Temporal Information
+Type: Poster
+Title: MaskLab: Instance Segmentation by Refining Object Detection with Semantic and Direction Features
+Type: Poster
+Title: Hashing as Tie-Aware Learning to Rank
+Type: Poster
+Title: Classification-Driven Dynamic Image Enhancement
+Type: Poster
+Title: Knowledge Aided Consistency for Weakly Supervised Phrase Grounding
+Type: Poster
+Title: Who Let the Dogs Out? Modeling Dog Behavior from Visual Data
+Type: Poster
+Title: Pseudo Mask Augmented Object Detection
+Type: Poster
+Title: Dual Skipping Networks
+Type: Poster
+Title: Memory Matching Networks for One-Shot Image Recognition
+Type: Poster
+Title: IQA: Visual Question Answering in Interactive Environments
+Type: Poster
+Title: Pose Transferrable Person Re-identification
+Type: Poster
+Title: Large Scale Fine-Grained Categorization and Domain-Specific Transfer Learning
+Type: Poster
+Title: Data Distillation: Towards Omni-Supervised Learning
+Type: Poster
+Title: Object Referring in Videos with Language and Human Gaze
+Type: Poster
+Title: Feature Selective Networks for Object Detection
+Type: Poster
+Title: Learning a Discriminative Filter Bank Within a CNN for Fine-Grained Recognition
+Type: Poster
+Title: Grounding Referring Expressions in Images by Variational Context
+Type: Poster
+Title: Dynamic Graph Generation Network: Generating Relational Knowledge from Diagrams
+Type: Poster
+Title: A Network Architecture for Point Cloud Classification via Automatic Depth Images Generation
+Type: Poster
+Title: Towards Dense Object Tracking in a 2D Honeybee Hive
+Type: Poster
+Title: Long-Term On-board Prediction of People in Traffic Scenes Under Uncertainty
+Type: Poster
+Title: Single-Shot Refinement Neural Network for Object Detection
+Type: Poster
+Title: Video Captioning via Hierarchical Reinforcement Learning
+Type: Poster
+Title: Tips and Tricks for Visual Question Answering: Learnings from the 2017 Challenge
+Type: Poster
+Title: Learning to Segment Every Thing
+Type: Poster
+Title: Self-Supervised Adversarial Hashing Networks for Cross-Modal Retrieval
+Type: Poster
+Title: Parallel Attention: A Unified Framework for Visual Object Discovery Through Dialogs and Queries
+Type: Poster
+Title: Zigzag Learning for Weakly Supervised Object Detection
+Type: Poster
+Title: Attentive Fashion Grammar Network for Fashion Landmark Detection and Clothing Category Classification
+Type: Poster
+Title: Generalized Zero-Shot Learning via Synthesized Examples
+Type: Poster
+Title: Partially Shared Multi-task Convolutional Neural Network with Local Constraint for Face Attribute Learning
+Type: Poster
+Title: SYQ: Learning Symmetric Quantization for Efficient Deep Neural Networks
+Type: Poster
+Title: DS*: Tighter Lifting-Free Convex Relaxations for Quadratic Matching Problems
+Type: Poster
+Title: Deep Mutual Learning
+Type: Poster
+Title: Coupled End-to-End Transfer Learning with Generalized Fisher Information
+Type: Poster
+Title: Residual Parameter Transfer for Deep Domain Adaptation
+Type: Poster
+Title: High-Order Tensor Regularization with Application to Attribute Ranking
+Type: Poster
+Title: Learning to Localize Sound Source in Visual Scenes
+Type: Poster
+Title: Dynamic Few-Shot Visual Learning Without Forgetting
+Type: Poster
+Title: Two-Step Quantization for Low-bit Neural Networks
+Type: Poster
+Title: Improved Lossy Image Compression with Priming and Spatially Adaptive Bit Rates for Recurrent Networks
+Type: Poster
+Title: Conditional Probability Models for Deep Image Compression
+Type: Poster
+Title: Deep Diffeomorphic Transformer Networks
+Type: Poster
+Title: The Lovasz-Softmax Loss: A Tractable Surrogate for the Optimization of the Intersection-Over-Union Measure in Neural Networks
+Type: Poster
+Title: Generative Adversarial Perturbations
+Type: Poster
+Title: Learning Strict Identity Mappings in Deep Residual Networks
+Type: Poster
+Title: Geometric Robustness of Deep Networks: Analysis and Improvement
+Type: Poster
+Title: View Extrapolation of Human Body from a Single Image
+Type: Poster
+Title: Geometry Aware Constrained Optimization Techniques for Deep Learning
+Type: Poster
+Title: PointNetVLAD: Deep Point Cloud Based Retrieval for Large-Scale Place Recognition
+Type: Poster
+Title: An Efficient and Provable Approach for Mixture Proportion Estimation Using Linear Independence Assumption
+Type: Poster
+Title: VoxelNet: End-to-End Learning for Point Cloud Based 3D Object Detection
+Type: Poster
+Title: Image to Image Translation for Domain Adaptation
+Type: Poster
+Title: MobileNetV2: Inverted Residuals and Linear Bottlenecks
+Type: Poster
+Title: Im2Struct: Recovering 3D Shape Structure from a Single RGB Image
+Type: Poster
+Title: Trust your Model: Light Field Depth Estimation with Inline Occlusion Handling
+Type: Poster
+Title: Baseline Desensitizing in Translation Averaging
+Type: Poster
+Title: Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling
+Type: Poster
+Title: Large-Scale Point Cloud Semantic Segmentation with Superpoint Graphs
+Type: Poster
+Title: Very Large-Scale Global SfM by Distributed Motion Averaging
+Type: Poster
+Title: ScanComplete: Large-Scale Scene Completion and Semantic Segmentation for 3D Scans
+Type: Poster
+Title: Solving the Perspective-2-Point Problem for Flying-Camera Photo Composition
+Type: Poster
+Title: Reflection Removal for Large-Scale 3D Point Clouds
+Type: Poster
+Title: Attentional ShapeContextNet for Point Cloud Recognition
+Type: Poster
+Title: Geometry-Aware Deep Network for Single-Image Novel View Synthesis
+Type: Poster
+Title: InverseFaceNet: Deep Monocular Inverse Face Rendering
+Type: Poster
+Title: Sparse Photometric 3D Face Reconstruction Guided by Morphable Models
+Type: Poster
+Title: Texture Mapping for 3D Reconstruction with RGB-D Sensor
+Type: Poster
+Title: Learning Less is More - 6D Camera Localization via 3D Surface Regression
+Type: Poster
+Title: Feature Mapping for Learning Fast and Accurate 3D Pose Inference from Synthetic Images
+Type: Poster
+Title: Indoor RGB-D Compass from a Single Line and Plane
+Type: Poster
+Title: Geometry-Aware Network for Non-rigid Shape Prediction from a Single View
+Type: Poster
+Title: Sim2Real Viewpoint Invariant Visual Servoing by Recurrent Control
+Type: Poster
+Title: DocUNet: Document Image Unwarping via a Stacked U-Net
+Type: Poster
+Title: Analysis of Hand Segmentation in the Wild
+Type: Poster
+Title: RoadTracer: Automatic Extraction of Road Networks from Aerial Images
+Type: Poster
+Title: Alternating-Stereo VINS: Observability Analysis and Performance Evaluation
+Type: Poster
+Title: Soccer on Your Tabletop
+Type: Poster
+Title: EPINET: A Fully-Convolutional Neural Network Using Epipolar Geometry for Depth from Light Field Images
+Type: Poster
+Title: A Hybrid l1-l0 Layer Decomposition Model for Tone Mapping
+Type: Poster
+Title: Deeply Learned Filter Response Functions for Hyperspectral Reconstruction
+Type: Poster
+Title: CRRN: Multi-scale Guided Concurrent Reflection Removal Network
+Type: Poster
+Title: Single Image Reflection Separation with Perceptual Losses
+Type: Poster
+Title: A Robust Method for Strong Rolling Shutter Effects Correction Using Lines with Automatic Feature Selection
+Type: Poster
+Title: Time-Resolved Light Transport Decomposition for Thermal Photometric Stereo
+Type: Poster
+Title: Efficient Diverse Ensemble for Discriminative Co-tracking
+Type: Poster
+Title: Rolling Shutter and Radial Distortion are Features for High Frame Rate Multi-camera Tracking
+Type: Poster
+Title: A Twofold Siamese Network for Real-Time Object Tracking
+Type: Poster
+Title: Multi-cue Correlation Filters for Robust Visual Tracking
+Type: Poster
+Title: Learning Attentions: Residual Attentional Siamese Network for High Performance Online Visual Tracking
+Type: Poster
+Title: SINT++: Robust Visual Tracking via Adversarial Positive Instance Generation
+Type: Poster
+Title: High-Speed Tracking with Multi-kernel Correlation Filters
+Type: Poster
+Title: Occlusion Aware Unsupervised Learning of Optical Flow
+Type: Poster
+Title: Revisiting Video Saliency: A Large-Scale Benchmark and a New Model
+Type: Poster
+Title: Learning Spatial-Temporal Regularized Correlation Filters for Visual Tracking
+Type: Poster
+Title: Multimodal Visual Concept Learning with Weakly Supervised Techniques
+Type: Poster
+Title: Efficient Large-Scale Approximate Nearest Neighbor Search on OpenCL FPGA
+Type: Poster
+Title: Learning a Complete Image Indexing Pipeline
+Type: Poster
+Title: Transparency by Design: Closing the Gap Between Performance and Interpretability in Visual Reasoning
+Type: Poster
+Title: Fooling Vision and Language Models Despite Localization and Attention Mechanism
+Type: Poster
+Title: Categorizing Concepts with Basic Level for Vision-to-Language
+Type: Poster
+Title: Don't Just Assume; Look and Answer: Overcoming Priors for Visual Question Answering
+Type: Poster
+Title: Learning Pixel-Level Semantic Affinity with Image-Level Supervision for Weakly Supervised Semantic Segmentation
+Type: Poster
+Title: From Lifestyle Vlogs to Everyday Interactions
+Type: Poster
+Title: Cross-Domain Weakly-Supervised Object Detection Through Progressive Domain Adaptation
+Type: Poster
+Title: RotationNet: Joint Object Categorization and Pose Estimation Using Multiviews from Unsupervised Viewpoints
+Type: Poster
+Title: An End-to-End TextSpotter with Explicit Alignment and Attention
+Type: Poster
+Title: WILDTRACK: A Multi-camera HD Dataset for Dense Unscripted Pedestrian Detection
+Type: Poster
+Title: Direct Shape Regression Networks for End-to-End Face Alignment
+Type: Poster
+Title: Natural and Effective Obfuscation by Head Inpainting
+Type: Poster
+Title: 3D Semantic Trajectory Reconstruction from 3D Pixel Continuum
+Type: Poster
+Title: Optimizing Filter Size in Convolutional Neural Networks for Facial Action Unit Recognition
+Type: Poster
+Title: V2V-PoseNet: Voxel-to-Voxel Prediction Network for Accurate 3D Hand and Human Pose Estimation from a Single Depth Map
+Type: Poster
+Title: Ring Loss: Convex Feature Normalization for Face Recognition
+Type: Poster
+Title: Adversarially Occluded Samples for Person Re-identification
+Type: Poster
+Title: Classifier Learning with Prior Probabilities for Facial Action Unit Recognition
+Type: Poster
+Title: 4DFAB: A Large Scale 4D Database for Facial Expression Analysis and Biometric Applications
+Type: Poster
+Title: Seeing Small Faces from Robust Anchor's Perspective
+Type: Poster
+Title: 2D/3D Pose Estimation and Action Recognition Using Multitask Deep Learning
+Type: Poster
+Title: Dense 3D Regression for Hand Pose Estimation
+Type: Poster
+Title: Camera Style Adaptation for Person Re-identification
+Type: Poster
+Title: PoseTrack: A Benchmark for Human Pose Estimation and Tracking
+Type: Poster
+Title: Exploit the Unknown Gradually: One-Shot Video-Based Person Re-identification by Stepwise Learning
+Type: Poster
+Title: Pose-Robust Face Recognition via Deep Residual Equivariant Mapping
+Type: Poster
+Title: DecideNet: Counting Varying Density Crowds Through Attention Guided Detection and Density Estimation
+Type: Poster
+Title: LSTM Pose Machines
+Type: Poster
+Title: Disentangling Features in 3D Face Shapes for Joint Face Reconstruction and Recognition
+Type: Poster
+Title: Convolutional Sequence to Sequence Model for Human Dynamics
+Type: Poster
+Title: Gesture Recognition: Focus on the Hands
+Type: Poster
+Title: Crowd Counting via Adversarial Cross-Scale Consistency Pursuit
+Type: Poster
+Title: 3D Human Pose Estimation in the Wild by Adversarial Learning
+Type: Poster
+Title: CosFace: Large Margin Cosine Loss for Deep Face Recognition
+Type: Poster
+Title: Encoding Crowd Interaction with Deep Neural Network for Pedestrian Trajectory Prediction
+Type: Poster
+Title: Mean-Variance Loss for Deep Age Estimation from a Face
+Type: Poster
+Title: Probabilistic Joint Face-Skull Modelling for Facial Reconstruction
+Type: Poster
+Title: Learning Latent Super-Events to Detect Multiple Activities in Videos
+Type: Poster
+Title: Temporal Hallucinating for Action Recognition with Few Still Images
+Type: Poster
+Title: Deep Progressive Reinforcement Learning for Skeleton-Based Action Recognition
+Type: Poster
+Title: Gaze Prediction in Dynamic 360° Immersive Videos
+Type: Poster
+Title: When will you do what? - Anticipating Temporal Occurrences of Activities
+Type: Poster
+Title: Fusing Crowd Density Maps and Visual Object Trackers for People Tracking in Crowd Scenes
+Type: Poster
+Title: Dual Attention Matching Network for Context-Aware Feature Sequence Based Person Re-identification
+Type: Poster
+Title: Easy Identification from Better Constraints: Multi-shot Person Re-identification from Reference Constraints
+Type: Poster
+Title: Crowd Counting with Deep Negative Correlation Learning
+Type: Poster
+Title: Human Appearance Transfer
+Type: Poster
+Title: Domain Generalization with Adversarial Feature Learning
+Type: Poster
+Title: Pyramid Stereo Matching Network
+Type: Poster
+Title: Event-Based Vision Meets Deep Learning on Steering Prediction for Self-Driving Cars
+Type: Poster
+Title: Learning Answer Embeddings for Visual Question Answering
+Type: Poster
+Title: Good View Hunting: Learning Photo Composition from Dense View Pairs
+Type: Poster
+Title: CleanNet: Transfer Learning for Scalable Image Classifier Training with Label Noise
+Type: Poster
+Title: Independently Recurrent Neural Network (IndRNN): Building A Longer and Deeper RNN
+Type: Poster
+Title: Mix and Match Networks: Encoder-Decoder Alignment for Zero-Pair Image Translation
+Type: Poster
+Title: Structured Uncertainty Prediction Networks
+Type: Poster
+Title: Between-Class Learning for Image Classification
+Type: Poster
+Title: Adversarial Feature Augmentation for Unsupervised Domain Adaptation
+Type: Poster
+Title: Generative Image Inpainting with Contextual Attention
+Type: Poster
+Title: CSGNet: Neural Shape Parser for Constructive Solid Geometry
+Type: Poster
+Title: Conditional Image-to-Image Translation
+Type: Poster
+Title: Continuous Relaxation of MAP Inference: A Nonconvex Perspective
+Type: Poster
+Title: Feature Generating Networks for Zero-Shot Learning
+Type: Poster
+Title: Joint Optimization Framework for Learning with Noisy Labels
+Type: Poster
+Title: Convolutional Image Captioning
+Type: Poster
+Title: AON: Towards Arbitrarily-Oriented Text Recognition
+Type: Poster
+Title: Wrapped Gaussian Process Regression on Riemannian Manifolds
+Type: Poster
+Title: Geometry Guided Convolutional Neural Networks for Self-Supervised Video Representation Learning
+Type: Poster
+Title: DiverseNet: When One Right Answer is not Enough
+Type: Poster
+Title: Deep Face Detector Adaptation Without Negative Transfer or Catastrophic Forgetting
+Type: Poster
+Title: Analyzing Filters Toward Efficient ConvNet
+Type: Poster
+Title: Regularizing Deep Networks by Modeling and Predicting Label Structure
+Type: Poster
+Title: In-place Activated BatchNorm for Memory-Optimized Training of DNNs
+Type: Poster
+Title: DVQA: Understanding Data Visualizations via Question Answering
+Type: Poster
+Title: DA-GAN: Instance-Level Image Translation by Deep Attention Generative Adversarial Networks
+Type: Poster
+Title: Unsupervised Learning of Depth and Ego-Motion from Monocular Video Using 3D Geometric Constraints
+Type: Poster
+Title: FOTS: Fast Oriented Text Spotting with a Unified Network
+Type: Poster
+Title: Mobile Video Object Detection with Temporally-Aware Feature Maps
+Type: Poster
+Title: Weakly Supervised Phrase Localization with Multi-scale Anchored Transformer Network
+Type: Poster
+Title: Revisiting Oxford and Paris: Large-Scale Image Retrieval Benchmarking
+Type: Poster
+Title: Cross-Dataset Adaptation for Visual Question Answering
+Type: Poster
+Title: Globally Optimal Inlier Set Maximization for Atlanta Frame Estimation
+Type: Poster
+Title: End-to-End Convolutional Semantic Embeddings
+Type: Poster
+Title: Referring Image Segmentation via Recurrent Refinement Networks
+Type: Poster
+Title: Two Can Play This Game: Visual Dialog with Discriminative Question Generation and Answering
+Type: Poster
+Title: Generative Adversarial Learning Towards Fast Weakly Supervised Detection
+Type: Poster
+Title: A Deeper Look at Power Normalizations
+Type: Poster
+Title: Dimensionality's Blessing: Clustering Images by Underlying Distribution
+Type: Poster
+Title: Eliminating Background-bias for Robust Person Re-identification
+Type: Poster
+Title: Learning to Evaluate Image Captioning
+Type: Poster
+Title: Single-Shot Object Detection with Enriched Semantics
+Type: Poster
+Title: Low-Shot Learning with Imprinted Weights
+Type: Poster
+Title: Neural Motifs: Scene Graph Parsing with Global Context
+Type: Poster
+Title: Variational Autoencoders for Deforming 3D Mesh Models
+Type: Poster
+Title: Fast Monte-Carlo Localization on Aerial Vehicles Using Approximate Continuous Belief Representations
+Type: Poster
+Title: DeLS-3D: Deep Localization and Segmentation with a 3D Semantic Map
+Type: Poster
+Title: LiDAR-Video Driving Dataset: Learning Driving Policies Effectively
+Type: Poster
+Title: Logo Synthesis and Manipulation with Clustered Generative Adversarial Networks
+Type: Poster
+Title: Egocentric Basketball Motion Planning from a Single First-Person Image
+Type: Poster
+Title: Human-Centric Indoor Scene Synthesis Using Stochastic Grammar
+Type: Poster
+Title: Rotation-Sensitive Regression for Oriented Scene Text Detection
+Type: Poster
+Title: Separating Self-Expression and Visual Content in Hashtag Supervision
+Type: Poster
+Title: Distort-and-Recover: Color Enhancement Using Deep Reinforcement Learning
+Type: Poster
+Title: AMNet: Memorability Estimation with Attention
+Type: Poster
+Title: Blind Predicting Similar Quality Map for Image Quality Assessment
+Type: Poster
+Title: Deep End-to-End Time-of-Flight Imaging
+Type: Poster
+Title: Aperture Supervision for Monocular Depth Estimation
+Type: Poster
+Title: Seeing Temporal Modulation of Lights from Standard Cameras
+Type: Poster
+Title: Statistical Tomography of Microscopic Life
+Type: Poster
+Title: Divide and Conquer for Full-Resolution Light Field Deblurring
+Type: Poster
+Title: Multispectral Image Intrinsic Decomposition via Subspace Constraint
+Type: Poster
+Title: Improving Color Reproduction Accuracy on Cameras
+Type: Poster
+Title: A Closer Look at Spatiotemporal Convolutions for Action Recognition
+Type: Poster
+Title: Inferring Shared Attention in Social Scene Videos
+Type: Poster
+Title: Making Convolutional Networks Recurrent for Visual Sequence Learning
+Type: Poster
+Title: Real-World Anomaly Detection in Surveillance Videos
+Type: Poster
+Title: Viewpoint-Aware Attentive Multi-view Inference for Vehicle Re-identification
+Type: Poster
+Title: Efficient Video Object Segmentation via Network Modulation
+Type: Poster
+Title: Weakly-Supervised Action Segmentation with Iterative Soft Boundary Assignment
+Type: Poster
+Title: Depth-Aware Stereo Video Retargeting
+Type: Poster
+Title: Instance Embedding Transfer to Unsupervised Video Object Segmentation
+Type: Poster
+Title: Future Frame Prediction for Anomaly Detection - A New Baseline
+Type: Poster
+Title: Can Spatiotemporal 3D CNNs Retrace the History of 2D CNNs and ImageNet?
+Type: Poster
+Title: Dynamic Video Segmentation Network
+Type: Poster
+Title: Recognize Actions by Disentangling Components of Dynamics
+Type: Poster
+Title: Motion-Appearance Co-memory Networks for Video Question Answering
+Type: Poster
+Title: Learning to Understand Image Blur
+Type: Poster
+Title: Dense Decoder Shortcut Connections for Single-Pass Semantic Segmentation
+Type: Poster
+Title: Generative Adversarial Image Synthesis with Decision Tree Latent Controller
+Type: Poster
+Title: Learning a Discriminative Prior for Blind Image Deblurring
+Type: Poster
+Title: Frame-Recurrent Video Super-Resolution
+Type: Poster
+Title: Discovering Point Lights with Intensity Distance Fields
+Type: Poster
+Title: Video Rain Streak Removal by Multiscale Convolutional Sparse Coding
+Type: Poster
+Title: Stereoscopic Neural Style Transfer
+Type: Poster
+Title: Multi-Frame Quality Enhancement for Compressed Video
+Type: Poster
+Title: CNN Based Learning Using Reflection and Retinex Models for Intrinsic Image Decomposition
+Type: Poster
+Title: Image Restoration by Estimating Frequency Distribution of Local Patches
+Type: Poster
+Title: Latent RANSAC
+Type: Poster
+Title: Two-Stream Convolutional Networks for Dynamic Texture Synthesis
+Type: Poster
+Title: Towards Open-Set Identity Preserving Face Synthesis
+Type: Poster
+Title: A Revised Underwater Image Formation Model
+Type: Poster
+Title: Graph-Cut RANSAC
+Type: Poster
+Title: Temporal Deformable Residual Networks for Action Segmentation in Videos
+Type: Poster
+Title: Weakly Supervised Action Localization by Sparse Temporal Pooling Network
+Type: Poster
+Title: PoseFlow: A Deep Motion Representation for Understanding Human Behaviors in Videos
+Type: Poster
+Title: FFNet: Video Fast-Forwarding via Reinforcement Learning
+Type: Poster
+Title: Multi-shot Pedestrian Re-identification via Sequential Decision Making
+Type: Poster
+Title: Attend and Interact: Higher-Order Object Interactions for Video Understanding
+Type: Poster
+Title: Where and Why are They Looking? Jointly Inferring Human Attention and Intentions in Complex Tasks
+Type: Poster
+Title: Fully Convolutional Adaptation Networks for Semantic Segmentation
+Type: Poster
+Title: Semantic Video Segmentation by Gated Recurrent Flow Propagation
+Type: Poster
+Title: Interpretable Video Captioning via Trajectory Structured Localization
+Type: Poster
+Title: Deep Hashing via Discrepancy Minimization
+Type: Poster
+Title: ShuffleNet: An Extremely Efficient Convolutional Neural Network for Mobile Devices
+Type: Poster
+Title: Zero-Shot Recognition via Semantic Embeddings and Knowledge Graphs
+Type: Poster
+Title: Referring Relationships
+Type: Poster
+Title: Improving Object Localization with Fitness NMS and Bounded IoU Loss
+Type: Poster
+Title: End-to-End Deep Kronecker-Product Matching for Person Re-identification
+Type: Poster
+Title: Semantic Visual Localization
+Type: Poster
+Title: Objects as Context for Detecting Their Semantic Parts
+Type: Poster
+Title: End-to-End Weakly-Supervised Semantic Alignment
+Type: Poster
+Title: Dynamic Zoom-in Network for Fast Object Detection in Large Images
+Type: Poster
+Title: Learning Markov Clustering Networks for Scene Text Detection
+Type: Poster
+Title: Deep Reinforcement Learning of Region Proposal Networks for Object Detection
+Type: Poster
+Title: Beyond Holistic Object Recognition: Enriching Image Understanding with Part States
+Type: Poster
+Title: Discriminability Objective for Training Descriptive Captions
+Type: Poster
+Title: Visual Question Answering with Memory-Augmented Networks
+Type: Poster
+Title: Structure Inference Net: Object Detection Using Scene-Level Context and Instance-Level Relationships
+Type: Poster
+Title: Occluded Pedestrian Detection Through Guided Attention in CNNs
+Type: Poster
+Title: Reward Learning from Narrated Demonstrations
+Type: Poster
+Title: Weakly-Supervised Semantic Segmentation Network with Deep Seeded Region Growing
+Type: Poster
+Title: PoTion: Pose MoTion Representation for Action Recognition
+Type: Poster
+Title: Bilateral Ordinal Relevance Multi-instance Regression for Facial Action Unit Intensity Estimation
+Type: Poster
+Title: Pulling Actions out of Context: Explicit Separation for Effective Combination
+Type: Poster
+Title: Dynamic Feature Learning for Partial Face Recognition
+Type: Poster
+Title: Exploiting Transitivity for Learning Person Re-identification Models on a Budget
+Type: Poster
+Title: Deep Spatial Feature Reconstruction for Partial Person Re-identification: Alignment-free Approach
+Type: Poster
+Title: Every Smile is Unique: Landmark-Guided Diverse Smile Generation
+Type: Poster
+Title: UV-GAN: Adversarial Facial UV Map Completion for Pose-Invariant Face Recognition
+Type: Poster
+Title: Cascaded Pyramid Network for Multi-person Pose Estimation
+Type: Poster
+Title: A Face-to-Face Neural Conversation Model
+Type: Poster
+Title: End-to-End Recovery of Human Shape and Pose
+Type: Poster
+Title: Preserving Semantic Relations for Zero-Shot Learning
+Type: Poster
+Title: Show Me a Story: Towards Coherent Neural Story Illustration
+Type: Poster
+Title: Reconstruction Network for Video Captioning
+Type: Poster
+Title: Fast Spectral Ranking for Similarity Search
+Type: Poster
+Title: Mining on Manifolds: Metric Learning Without Labels
+Type: Poster
+Title: PIXOR: Real-time 3D Object Detection from Point Clouds
+Type: Poster
+Title: Leveraging Unlabeled Data for Crowd Counting by Learning to Rank
+Type: Poster
+Title: Zero-Shot Kernel Learning
+Type: Poster
+Title: Differential Attention for Visual Question Answering
+Type: Poster
+Title: Learning from Noisy Web Data with Category-Level Supervision
+Type: Poster
+Title: Toward Driving Scene Understanding: A Dataset for Learning Driver Behavior and Causal Reasoning
+Type: Poster
+Title: Learning Attribute Representations with Localization for Flexible Fashion Search
+Type: Poster
+Title: Bidirectional Retrieval Made Simple
+Type: Poster
+Title: Learning Multi-instance Enriched Image Representations via Non-greedy Ratio Maximization of the l1-Norm Distances
+Type: Poster
+Title: Learning Visual Knowledge Memory Networks for Visual Question Answering
+Type: Poster
+Title: Visual Grounding via Accumulated Attention
+Type: Poster
+Title: Beyond Trade-Off: Accelerate FCN-Based Face Detector with Higher Accuracy
+Type: Poster
+Title: PackNet: Adding Multiple Tasks to a Single Network by Iterative Pruning
+Type: Poster
+Title: Repulsion Loss: Detecting Pedestrians in a Crowd
+Type: Poster
+Title: Neural Sign Language Translation
+Type: Poster
+Title: Non-local Neural Networks
+Type: Poster
+Title: LAMV: Learning to Align and Match Videos with Kernelized Temporal Layers
+Type: Poster
+Title: Optimizing Video Object Detection via a Scale-Time Lattice
+Type: Poster
+Title: Learning Compressible 360° Video Isomers
+Type: Poster
+Title: Attention Clusters: Purely Attention Based Local Feature Integration for Video Classification
+Type: Poster
+Title: What have We Learned from Deep Representations for Action Recognition?
+Type: Poster
+Title: Controllable Video Generation with Sparse Trajectories
+Type: Poster
+Title: Representing and Learning High Dimensional Data with the Optimal Transport Map from a Probabilistic Viewpoint
+Type: Poster
+Title: CLIP-Q: Deep Network Compression Learning by In-parallel Pruning-Quantization
+Type: Poster
+Title: Inference in Higher Order MRF-MAP Problems with Small and Large Cliques
+Type: Poster
+Title: ROAD: Reality Oriented Adaptation for Semantic Segmentation of Urban Scenes
+Type: Poster
+Title: Eye In-painting with Exemplar Generative Adversarial Networks
+Type: Poster
+Title: clcNet: Improving the Efficiency of Convolutional Neural Network Using Channel Local Convolutions
+Type: Poster
+Title: Towards Effective Low-Bitwidth Convolutional Neural Networks
+Type: Poster
+Title: Stochastic Downsampling for Cost-Adjustable Inference and Improved Regularization in Convolutional Networks
+Type: Poster
+Title: Face Aging with Identity-Preserved Conditional Generative Adversarial Networks
+Type: Poster
+Title: Unsupervised Cross-Dataset Person Re-identification by Transfer Learning of Spatial-Temporal Patterns
+Type: Poster
+Title: Feature Quantization for Defending Against Distortion of Images
+Type: Poster
+Title: Tagging Like Humans: Diverse and Distinct Image Annotation
+Type: Poster
+Title: Re-weighted Adversarial Adaptation Network for Unsupervised Domain Adaptation
+Type: Poster
+Title: Inferring Semantic Layout for Hierarchical Text-to-Image Synthesis
+Type: Poster
+Title: Regularizing RNNs for Caption Generation by Reconstructing the Past with the Present
+Type: Poster
+Title: Unsupervised Domain Adaptation with Similarity Learning
+Type: Poster
+Title: Learning Deep Sketch Abstraction
+Type: Poster
+Title: Matching Adversarial Networks
+Type: Poster
+Title: SoS-RSC: A Sum-of-Squares Polynomial Approach to Robustifying Subspace Clustering Algorithms
+Type: Poster
+Title: Resource Aware Person Re-identification Across Multiple Resolutions
+Type: Poster
+Title: Learning and Using the Arrow of Time
+Type: Poster
+Title: Neural Style Transfer via Meta Networks
+Type: Poster
+Title: People, Penguins and Petri Dishes: Adapting Object Counting Models to New Visual Domains and Object Types Without Forgetting
+Type: Poster
+Title: HydraNets: Specialized Dynamic Architectures for Efficient Inference
+Type: Poster
+Title: SketchMate: Deep Hashing for Million-Scale Human Sketch Retrieval
+Type: Poster
+Title: From Source to Target and Back: Symmetric Bi-Directional Adaptive GAN
+Type: Poster
+Title: OLE: Orthogonal Low-rank Embedding, A Plug and Play Geometric Loss for Deep Learning
+Type: Poster
+Title: Efficient Parametrization of Multi-domain Deep Neural Networks
+Type: Poster
+Title: Deep Density Clustering of Unconstrained Faces
+Type: Poster
+Title: Geometric Multi-model Fitting with a Convex Relaxation Algorithm
+Type: Poster
+Title: Fast and Robust Estimation for Unit-Norm Constrained Linear Fitting Problems
+Type: Poster
+Title: Importance Weighted Adversarial Nets for Partial Domain Adaptation
+Type: Poster
+Title: Efficient Subpixel Refinement with Symbolic Linear Predictors
+Type: Poster
+Title: Scale-Recurrent Network for Deep Image Deblurring
+Type: Poster
+Title: DeblurGAN: Blind Motion Deblurring Using Conditional Adversarial Networks
+Type: Poster
+Title: A2-RL: Aesthetics Aware Reinforcement Learning for Image Cropping
+Type: Poster
+Title: Single Image Dehazing via Conditional Generative Adversarial Network
+Type: Poster
+Title: On the Duality Between Retinex and Image Dehazing
+Type: Poster
+Title: Arbitrary Style Transfer with Deep Feature Reshuffle
+Type: Poster
+Title: Nonlocal Low-Rank Tensor Factor Analysis for Image Restoration
+Type: Poster
+Title: Avatar-Net: Multi-scale Zero-Shot Style Transfer by Feature Decoration
+Type: Poster
+Title: Missing Slice Recovery for Tensors Using a Low-Rank Model in Embedded Space
+Type: Poster
+Title: Deep Semantic Face Deblurring
+Type: Poster
+Title: GraphBit: Bitwise Interaction Mining via Deep Reinforcement Learning
+Type: Poster
+Title: Recurrent Saliency Transformation Network: Incorporating Multi-stage Visual Cues for Small Organ Segmentation
+Type: Poster
+Title: Thoracic Disease Identification and Localization with Limited Supervision
+Type: Poster
+Title: Quantization of Fully Convolutional Networks for Accurate Biomedical Image Segmentation
+Type: Poster
+Title: Visual Feature Attribution Using Wasserstein GANs
+Type: Poster
+Title: SSNet: Scale Selection Network for Online 3D Action Prediction
+Type: Poster
+Title: Detecting and Recognizing Human-Object Interactions
+Type: Poster
+Title: Unsupervised Learning and Segmentation of Complex Activities from Video
+Type: Poster
+Title: Unsupervised Training for 3D Morphable Model Regression
+Type: Poster
+Title: Video Based Reconstruction of 3D People Models
+Type: Poster
+Title: Pose-Guided Photorealistic Face Rotation
+Type: Poster
+Title: Mesoscopic Facial Geometry Inference Using Deep Neural Networks
+Type: Poster
+Title: Hand PointNet: 3D Hand Pose Estimation Using Point Sets
+Type: Poster
+Title: Seeing Voices and Hearing Faces: Cross-Modal Biometric Matching
+Type: Poster
+Title: Learning Monocular 3D Human Pose Estimation from Multi-view Images
+Type: Poster
+Title: Separating Style and Content for Generalized Style Transfer
+Type: Poster
+Title: TextureGAN: Controlling Deep Image Synthesis with Texture Patches
+Type: Poster
+Title: Connecting Pixels to Privacy and Utility: Automatic Redaction of Private Information in Images
+Type: Poster
+Title: Translating and Segmenting Multimodal Medical Volumes with Cycle- and Shape-Consistency Generative Adversarial Network
+Type: Poster
+Title: An Unsupervised Learning Model for Deformable Medical Image Registration
+Type: Poster
+Title: Deep Lesion Graphs in the Wild: Relationship Learning and Organization of Significant Radiology Image Findings in a Diverse Large-Scale Lesion Database
+Type: Poster
+Title: Learning Distributions of Shape Trajectories from Longitudinal Datasets: A Hierarchical Model on a Manifold of Diffeomorphisms
+Type: Poster
+Title: CNN Driven Sparse Multi-level B-Spline Image Registration
+Type: Poster
+Title: Anatomical Priors in Convolutional Networks for Unsupervised Biomedical Segmentation
+Type: Poster
+Title: 3D Registration of Curves and Surfaces Using Local Differential Information
+Type: Poster
+Title: Weakly Supervised Learning of Single-Cell Feature Embeddings
+Type: Poster
+Title: Guided Proofreading of Automatic Segmentations for Connectomics
+Type: Poster
+Title: Wide Compression: Tensor Ring Nets
+Type: Poster
+Title: Improvements to Context Based Self-Supervised Learning
+Type: Poster
+Title: Learning Structure and Strength of CNN Filters for Small Sample Size Training
+Type: Poster
+Title: Boosting Self-Supervised Learning via Knowledge Transfer
+Type: Poster
+Title: The Power of Ensembles for Active Learning in Image Classification
+Type: Poster
+Title: Learning Compact Recurrent Neural Networks with Block-Term Tensor Decomposition
+Type: Poster
+Title: Spatially-Adaptive Filter Units for Deep Neural Networks
+Type: Poster
+Title: SO-Net: Self-Organizing Network for Point Cloud Analysis
+Type: Poster
+Title: SGAN: An Alternative Training of Generative Adversarial Networks
+Type: Poster
+Title: SketchyGAN: Towards Diverse and Realistic Sketch to Image Synthesis
+Type: Poster
+Title: Explicit Loss-Error-Aware Quantization for Low-Bit Deep Neural Networks
+Type: Poster
+Title: Towards Universal Representation for Unseen Action Recognition
+Type: Poster
+Title: Deep Image Prior
+Type: Poster
+Title: ST-GAN: Spatial Transformer Generative Adversarial Networks for Image Compositing
+Type: Poster
+Title: CartoonGAN: Generative Adversarial Networks for Photo Cartoonization
+Type: Poster
