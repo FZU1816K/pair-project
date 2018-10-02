@@ -1,6 +1,8 @@
-characters: 74
-words: 9
-lines: 2
-<thursday>: 11
-<tuesday>: 11
-<wednesday>: 11
+characters: 1196954
+words: 120374
+lines: 1959
+<deep convolutional neural networks (cnns>: 11
+<convolutional neural networks (cnns) have>: 6
+<extensive experimental results show that>: 5
+<method performs favorably against state>: 5
+<proposed method performs favorably against>: 5
