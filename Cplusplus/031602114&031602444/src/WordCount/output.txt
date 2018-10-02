@@ -1,0 +1,6 @@
+characters: 74
+words: 9
+lines: 2
+<thursday>: 11
+<tuesday>: 11
+<wednesday>: 11
