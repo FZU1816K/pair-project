@@ -21,3 +21,4 @@ lines: 1958
 <methods>: 547
 <networks>: 534
 <data>: 521
+E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i shit.txt -n 20 -w 0 -o fuck1.txt 

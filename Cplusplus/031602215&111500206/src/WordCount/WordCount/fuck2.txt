@@ -1,0 +1,24 @@
+characters: 1196572
+words: 120320
+lines: 1958
+<convolutional neural network>: 96
+<convolutional neural networks>: 88
+<deep neural networks>: 65
+<results show that>: 56
+<experiments show that>: 45
+<generative adversarial networks>: 43
+<visual question answering>: 39
+<neural networks cnns>: 36
+<deep convolutional neural>: 33
+<experimental results show>: 32
+<generative adversarial network>: 32
+<zero shot learning>: 30
+<human pose estimation>: 28
+<this paper presents>: 27
+<this paper proposes>: 25
+<deep neural network>: 24
+<unsupervised domain adaptation>: 23
+<video object segmentation>: 23
+<experiments demonstrate that>: 21
+<datasets demonstrate that>: 20
+E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i shit.txt -m 3 -n 20 -w 0 -o fuck2.txt 

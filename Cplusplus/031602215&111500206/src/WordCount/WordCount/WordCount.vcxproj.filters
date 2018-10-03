@@ -33,6 +33,9 @@
     <ClInclude Include="WordFrequency.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="PhraseFrequency.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WordFrequency.cpp">
@@ -51,6 +54,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ArgumentParser.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PhraseFrequency.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

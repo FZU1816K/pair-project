@@ -2,7 +2,6 @@
 
 unordered_map<string, int> hash_table;
 unordered_map<string, int>::iterator hash_iter;
-priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int,string>>> wordQueue;
 
 bool MySort(const pair<int, string>& word1, const pair<int, string>& word2)
 {
@@ -104,7 +103,6 @@ void WordFrequency(string line, int TitleorAbstract)
 	if (state == VALIDWORD) {
 		InsertToHashTable(word, TitleorAbstract);
 	}
-
 }
 
 vector<pair<int, string>> TopWords()
@@ -153,11 +151,31 @@ int OutputToFile(int numChar, int numWords, int numLines)
 {
 	fstream file;
 	file.open(outputFileName.c_str(), ios::out);
+	if (!file) {
+		printf("Failed to create output file.\n");
+		return -1;
+	}
 	file << "characters: " << numChar << endl;
 	file << "words: " << numWords << endl;
 	file << "lines: " << numLines << endl;
 	file.close();
 
+	return 0;
+}
+
+int OutputToFile(int argc, char ** argv)
+{
+	fstream file;
+	file.open(outputFileName.c_str(), ios::app);
+	if (!file) {
+		printf("Failed to create output file.\n");
+		return -1;
+	}
+	for (int i = 0; i < argc; i++)
+	{
+		file << argv[i] << " ";
+	}
+	file << endl;
 	return 0;
 }
 

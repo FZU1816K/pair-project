@@ -90,6 +90,8 @@ vector<pair<int, string>> TopWords();
 */
 int OutputToFile(vector<pair<int, string>> & Top10words);
 int OutputToFile(int numChar, int numWords, int numLines);
+int OutputToFile(int argc, char **argv);
+
 /*
 * Function name: StandardOutput
 * Description:

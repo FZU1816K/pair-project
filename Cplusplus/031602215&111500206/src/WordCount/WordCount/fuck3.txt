@@ -1,0 +1,24 @@
+characters: 1196572
+words: 120320
+lines: 1958
+<convolutional neural networks>: 196
+<generative adversarial networks>: 178
+<convolutional neural network>: 159
+<visual question answering>: 156
+<deep neural networks>: 128
+<human pose estimation>: 109
+<video object segmentation>: 104
+<generative adversarial network>: 95
+<zero shot learning>: 93
+<unsupervised domain adaptation>: 86
+<salient object detection>: 73
+<monocular depth estimation>: 62
+<hand pose estimation>: 60
+<deep reinforcement learning>: 58
+<image super resolution>: 58
+<results show that>: 56
+<supervised semantic segmentation>: 55
+<facial action unit>: 52
+<weakly supervised object>: 48
+<conditional generative adversarial>: 46
+E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i shit.txt -m 3 -n 20 -w 1 -o fuck3.txt 

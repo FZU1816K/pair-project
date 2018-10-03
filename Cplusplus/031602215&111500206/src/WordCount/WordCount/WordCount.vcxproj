@@ -120,6 +120,7 @@
     <ClInclude Include="CountChar.h" />
     <ClInclude Include="CountLines.h" />
     <ClInclude Include="CountWords.h" />
+    <ClInclude Include="PhraseFrequency.h" />
     <ClInclude Include="WordFrequency.h" />
   </ItemGroup>
   <ItemGroup>
@@ -128,6 +129,7 @@
     <ClCompile Include="CountLines.cpp" />
     <ClCompile Include="CountWords.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PhraseFrequency.cpp" />
     <ClCompile Include="WordFrequency.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
