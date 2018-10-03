@@ -187,26 +187,26 @@ void Psort::PS()
 		{
 			if (!flags)
 			{
-				P = P.substr(p);           //Delete the first word
+				P = P.substr(p);
 			}
 			PWord sign = phrase_t.front();
 			phrase_t.pop();
-			if (sign.f == -1)              //break point 
+			if (sign.f == -1)
 			{
 				start = 0;
 				continue;
 			}
-			else if (sign.f == 1)          //word component with letter 
+			else if (sign.f == 1)
 			{
 				if ((P[P.size()] >= 48 && P[P.size()] <= 57) || (P[P.size()] >= 65 && P[P.size()] <= 90) || (P[P.size()] >= 97 && P[P.size()] <= 122))
 				{
 					P.append(" " + sign.pw);
-				} 
-				else                       //privious is separator or without word component with letter
+				}
+				else
 				{
 					P.append(sign.pw);
 				}
-				bool flagi = 1;            //Flag the second word witch have not be marked yet
+				bool flagi = 1;
 				for (int i = 0; i < P.size(); i++)
 				{
 					if (flagi)
@@ -216,11 +216,11 @@ void Psort::PS()
 						else
 							flagi = 0;
 					}
-					else                  //The next word is the second word
+					else
 					{
 						if ((P[i] >= 65 && P[i] <= 90) || (P[i] >= 97 && P[i] <= 122))
 						{
-							p = i;        //record the second word's position
+							p = i;
 							break;
 						}
 						else
@@ -230,44 +230,49 @@ void Psort::PS()
 				++phrase_count[P];
 				flags = 0;
 			}
-			else                          //(sign.flag==0)//separator 
+			else //(sign.flag==0)
 			{
 				flags = 1;
 				P.append(sign.pw);
 			}
 		}
-		else                              //Constitute in the first time or once again
+		else
 		{
 			P = "";
 			short int l = len;
-			short int flagl = 0;          //Is word component by letter or not
-			flag = 1;                     //Use the "flag" previous to Judge the length of phrase is enough or not
+			short int flagl = 0;
+			flag = 1;
 			while (l)
 			{
+				if (phrase_t.empty())
+				{
+					flag = 0;
+					break;
+				}
 				PWord sign = phrase_t.front();
 				phrase_t.pop();
-				if (sign.f == -1)          //separator
+				if (sign.f == -1)
 				{
 					flag = 0;
 					flagl = 0;
 					break;
 				}
-				else if (sign.f == 1)      //Is word component by letter 
+				else if (sign.f == 1)
 				{
 					if (flagl)
 					{
 						P.append(" " + sign.pw);
 					}
-					else                   //privious is separator or without word component with letter 
+					else
 					{
 						flagl = 1;
 						P.append(sign.pw);
 					}
 					l--;
 				}
-				else //(sign.flag==0)      //The string with separator 
+				else //(sign.flag==0)
 				{
-					if (flagl)             //Is word component by letter
+					if (flagl)
 					{
 						flagl = 0;
 						P.append(sign.pw);
@@ -277,8 +282,9 @@ void Psort::PS()
 			if (flag)
 			{
 				++phrase_count[P];
+				flags = 0;
 				start = 1;
-				bool flagi = 1;             //Flag the second word witch have not be marked yet
+				bool flagi = 1;
 				for (int i = 0; i < P.size(); i++)
 				{
 					if (flagi)
@@ -288,11 +294,11 @@ void Psort::PS()
 						else
 							flagi = 0;
 					}
-					else                    //The next word is the second word
+					else
 					{
 						if ((P[i] >= 65 && P[i] <= 90) || (P[i] >= 97 && P[i] <= 122))
 						{
-							p = i;          //record the second word's position
+							p = i;
 							break;
 						}
 						else
@@ -373,6 +379,11 @@ void Psort::PS()
 			flag = 1;
 			while (l)
 			{
+				if (phrase_a.empty())
+				{
+					flag = 0;
+					break;
+				}
 				PWord sign = phrase_a.front();
 				phrase_a.pop();
 				if (sign.f == -1)
@@ -406,6 +417,7 @@ void Psort::PS()
 			if (flag)
 			{
 				++phrase_count[P];
+				flags = 0;
 				start = 1;
 				bool flagi = 1;
 				for (int i = 0; i < P.size(); i++)

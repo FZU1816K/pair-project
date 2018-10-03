@@ -14,23 +14,23 @@ soup = BeautifulSoup(driver.page_source)  # 返回的HTML
 
 
 ###########################Only Type#####################################
-Oral=re.compile(r'O\d')
-Spotlight=re.compile(r'S\d')
-Poster=re.compile(r'P')
-
-f = open('./Only_Type.txt', 'a',encoding='utf-8')
-
-for t in soup.find_all('a',class_='text-bold ng-binding'):
-     k=t.parent.parent.find('h3').text
-     if re.search('O',k):
-         f.write('Oral\n')
-     elif re.search('S\d',k):
-         f.write('Spotlight\n')
-     elif re.search('P',k):
-         f.write('Poster\n')
-
-f.close()
-################################################################
+#
+###################################################Oral=re.compile(r'O\d')
+# Spotlight=re.compile(r'S\d')
+# Poster=re.compile(r'P')
+#
+# f = open('./Only_Type.txt', 'a',encoding='utf-8')
+#
+# for t in soup.find_all('a',class_='text-bold ng-binding'):
+#      k=t.parent.parent.find('h3').text
+#      if re.search('O',k):
+#          f.write('Oral\n')
+#      elif re.search('S\d',k):
+#          f.write('Spotlight\n')
+#      elif re.search('P',k):
+#          f.write('Poster\n')
+#
+# f.close()
 
 ###########################Type#####################################
 # f = open('./Type.txt', 'a',encoding='utf-8')
@@ -73,11 +73,12 @@ f.close()
 
 
 #############################Author###################################
-# f = open('./Authors.txt', 'a',encoding='utf-8')
-#
-# for author in soup.find_all('em', class_='ng-binding'):
-#     f.write(author.text)
-#
-# f.close()
+f = open('./Authors.txt', 'a',encoding='utf-8')
+
+for author in soup.find_all('em', class_='ng-binding'):
+#    print(author.text)
+    f.write(author.text)
+
+f.close()
 ################################################################
 driver.close()

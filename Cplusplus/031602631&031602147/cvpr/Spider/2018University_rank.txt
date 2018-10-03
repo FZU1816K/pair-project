@@ -1,0 +1,10 @@
+<University of California>: 105
+<Tsinghua University>: 94
+<The Chinese University of Hong Kong>: 73
+<Carnegie Mellon University>: 65
+<Adobe Research>: 58
+<Nanyang Technological University>: 51
+<SenseTime Research>: 49
+<ETH Zurich>: 48
+<Stanford University>: 47
+<Shanghai Jiao Tong University>: 47

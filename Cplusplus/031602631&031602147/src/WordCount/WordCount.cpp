@@ -113,7 +113,6 @@ int main(int argc, char * argv[])       //FOR windows IDE
 	{
 		string f = argv[file];
 	*/
-	/*********************************************************/
 
 	/*********************************************************/
 		Character cc(para.inFile,para.outFile);
