@@ -6,9 +6,9 @@ int CountChar(std::string line)
 
 	int count = 0;
 
-	for (int i = 0; i < size; i++)  // 需要跳过非 ASCII 字符
+	for (int i = 0; i < size; i++)  // Don't consider non-ascii characters here.
 		if (isascii(line[i]))
 			count++;
 
-	return count + 1;
+	return count + 1;  // '\n' in the end of a line.
 }

@@ -9,10 +9,6 @@
 /*
 * Function name: CountLines
 * Description: 
-*	Count the number of lines of the file, skip empty lines.
-* Parameter:
-*	@filename: File that need to be counted
-* Return:
-*	@int: total number of lines
+	A function no longer been used.
 */
 int CountLines(std::string line);

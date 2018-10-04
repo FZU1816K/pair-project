@@ -34,8 +34,8 @@ int Transition(int state, char input, int * count);
 *	Count the total number of words. 'Word' starts with four consecutive 
 *	letters, followed by letters and numbers
 * Parameter:
-*	@filename: File that need to be counted
+*	@line: A line need to be counted.
 * Return:
-*	@int: total number of words
+*	@int: total number of words in a line
 */
 int CountWords(std::string line);

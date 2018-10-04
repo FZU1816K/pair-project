@@ -1,9 +1,7 @@
 #include "PhraseFrequency.h"
 
-deque<string> q_phrase;
+static deque<string> q_phrase;
 extern int phraseLength;
-
-/*We present a new AI task -- Embodied Question Answering (EmbodiedQA) -- where an agent is spawned at a random location in a 3D environment*/
 
 int TransitionStorePhrase(int state, char input, string & word, int TitleorAbstract)
 {
@@ -37,8 +35,8 @@ int TransitionStorePhrase(int state, char input, string & word, int TitleorAbstr
 	case VALIDWORD:
 		if (isalnum(input)) { word += input; return VALIDWORD; }
 		else {
-			string phrase = ConstructPhrase(word); // 尝试构成词组 
-			if (phrase != ""){ // 若可以构成词组，就和以往一样插入哈希表即可
+			string phrase = ConstructPhrase(word); // try to construct a phrase 
+			if (phrase != ""){ // If a phrase can be constructed then insert it to hashtable.
 				InsertToHashTable(phrase, TitleorAbstract);
 			}
 			word.clear();
@@ -48,11 +46,11 @@ int TransitionStorePhrase(int state, char input, string & word, int TitleorAbstr
 	return ERRORSTATE;
 }
 
-string ConstructPhrase(string & word) // 尝试构成一个词组，长度为 phraseLength
+string ConstructPhrase(string & word)
 {
 	q_phrase.push_back(word);
 	string phrase = "";
-	if (q_phrase.size() == phraseLength) // 如果队列容纳了 phraseLength 个 word，就取出一个词组
+	if (q_phrase.size() == phraseLength) // if queue has 'phraseLength' words, we can get a phrase
 	{
 		string top;
 		for (int i = 0; i < phraseLength; i++)
@@ -68,7 +66,7 @@ string ConstructPhrase(string & word) // 尝试构成一个词组，长度为 phraseLength
 		return phrase;
 	}
 	else 
-		return phrase; // 没进入上一个分钟，意味着不够取出一个phrase，会返回一个空string
+		return phrase; // return "" if failed to form a phrase.
 }
 
 void PhraseFrequency(string line, int TitleorAbstract)

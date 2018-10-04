@@ -1,7 +1,7 @@
 #include "WordFrequency.h"
 
-unordered_map<string, int> hash_table;
-unordered_map<string, int>::iterator hash_iter;
+static unordered_map<string, int> hash_table;
+static unordered_map<string, int>::iterator hash_iter;
 
 bool MySort(const pair<int, string>& word1, const pair<int, string>& word2)
 {
@@ -56,28 +56,27 @@ int TransitionStoreWord(int state, char input, string & word, int TitleorAbstrac
 void InsertToHashTable(string & word, int TitleorAbstract)
 {
 	if ((hash_iter = hash_table.find(word)) == hash_table.end()) { // a new word
-		if (TitleorAbstract == TITLE) // 开启权重词频功能后，title 行的单词frequency权重算为10
+		if (TitleorAbstract == TITLE) // 开启权重词频功能后，title行的单词frequency权重算为10
 		{
 			pair<string, int> newWord = pair<string, int>(word, 10);
 			hash_table.insert(newWord);
 		}
-		else if (TitleorAbstract == ABSTRACT)// abstract 行的单词frequency权重算为1
+		else if (TitleorAbstract == ABSTRACT)// abstract行的单词frequency权重算为1
 		{
 			pair<string, int> newWord = pair<string, int>(word, 1);
 			hash_table.insert(newWord);
 		}
-		else if (TitleorAbstract == NONWEIGHT) // 没有开启权重词频功能
+		else if (TitleorAbstract == NONWEIGHT) // 没有开启权重词频功能，frequency统统算为1
 		{
 			pair<string, int> newWord = pair<string, int>(word, 1);
 			hash_table.insert(newWord);
 		}
 	}
 	else { // A word previously appeared
-		if (TitleorAbstract == TITLE) // title 行的单词frequency权重算为10
+		if (TitleorAbstract == TITLE) // title行的单词frequency权重增加10
 			hash_iter->second += 10;
 		else if (TitleorAbstract == ABSTRACT)
 			hash_iter->second++;
-
 		else if (TitleorAbstract == NONWEIGHT)
 			hash_iter->second++;
 	}
@@ -119,8 +118,8 @@ vector<pair<int, string>> TopWords()
 	return TopWords;
 }
 
-extern std::string outputFileName; // 用户自定义输出文件
-extern int topNWords; // 用户自定义输出前N个
+extern std::string outputFileName;
+extern int topNWords;
 
 int OutputToFile(vector<pair<int, string>>& TopWords)
 {
@@ -176,19 +175,5 @@ int OutputToFile(int argc, char ** argv)
 		file << argv[i] << " ";
 	}
 	file << endl;
-	return 0;
-}
-
-int StandardOutput(vector<pair<int, string>>& TopWords)
-{
-	if (TopWords.size() == 0) {
-		return -1;
-	}
-
-	int size = TopWords.size();
-	for (int i = 0; i < size && i < topNWords; i++) {
-		const char *word = (TopWords[i]).second.c_str();
-		printf("<%s>: %d\n", word, TopWords[i].first);
-	}
 	return 0;
 }

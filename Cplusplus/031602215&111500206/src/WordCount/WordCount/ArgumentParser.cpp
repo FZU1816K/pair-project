@@ -51,7 +51,7 @@ int Parse_Args(int argc, char ** argv)
 		{
 			if (argv[i + 1] == NULL) {
 				printf("error: no output file name!\n");
-				return -2;
+				return -1;
 			}
 			outputFileName = argv[i + 1];
 			i += 2;
@@ -61,12 +61,12 @@ int Parse_Args(int argc, char ** argv)
 		{
 			if (argv[i + 1] == NULL) {
 				printf("error: -w must follow 0 or 1!\n");
-				return -3;
+				return -1;
 			}
 			bool isOneOrZero = (strcmp(argv[i + 1], "1") || strcmp(argv[i + 1], "0"));
 			if (!isOneOrZero) {
 				printf("error: -w must follow 0 or 1!\n");
-				return -4;
+				return -1;
 			}
 			int num = atoi(argv[i + 1]);
 			weightFrequencyOn = num;
@@ -77,12 +77,12 @@ int Parse_Args(int argc, char ** argv)
 		{
 			if (argv[i + 1] == NULL) {
 				printf("error: -m must follow a positive Integer!\n");
-				return -5;
+				return -1;
 			}
 			int res = stringIsPositiveInteger(argv[i + 1]);
 			if (res == -1) {
 				printf("error: -m must follow a positive Integer!\n");
-				return -5;
+				return -1;
 			}
 			phraseFrequencyOn = 1;
 			phraseLength = res;
@@ -92,12 +92,12 @@ int Parse_Args(int argc, char ** argv)
 		{
 			if (argv[i + 1] == NULL) {
 				printf("error: -n must follow a positive Integer!\n");
-				return -7;
+				return -1;
 			}
 			int res = stringIsPositiveInteger(argv[i + 1]);
 			if (res == -1) {
 				printf("error: -n must follow a positive Integer!\n");
-				return -7;
+				return -1;
 			}
 			topNWords = res;
 			i += 2;

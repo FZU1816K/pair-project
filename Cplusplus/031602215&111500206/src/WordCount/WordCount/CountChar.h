@@ -5,9 +5,9 @@
 /*
 * Function name: CountChar
 * Description: 
-*	Count the number of characters in a file
+*	Count the number of characters in a line
 * Parameter:
-*	@filename: File that need to be counted
+*	@line: a line of content
 * Return:
 *	@int: total number of characters
 */
