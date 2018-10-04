@@ -1,0 +1,93 @@
+package parse;
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+import org.jsoup.Jsoup;
+
+import org.jsoup.nodes.Document;
+
+import org.jsoup.nodes.Element;
+
+import org.jsoup.select.Elements;
+
+import model.papermodel;
+
+/*
+
+
+
+采用Jsoup解析
+
+
+*/
+
+public class paperparse {
+
+public static List<papermodel> getData (String html) throws Exception{
+
+//获取的数据，存放在集合中
+
+List<papermodel> data = new ArrayList<papermodel>();
+
+//采用Jsoup解析
+
+Document doc = Jsoup.connect("http://openaccess.thecvf.com/CVPR2018.py") .userAgent("Mozilla/4.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)")
+.get();
+
+
+//获取html标签中的内容
+
+Element elements1 = doc.getElementById("content");
+
+
+Elements elementss2 = elements1.getElementsByTag("dl");
+
+Elements elements3 = elementss2.first().getElementsByTag("dt");
+
+Elements elements4 = elementss2.first().getElementsByTag("dd");
+
+Elements elements5 = elements4.select("id");
+
+for (Element element:elementss2) {
+
+     
+Element link = elements3.select("a").first();
+
+String paperID=link.attr("href");//链接
+
+String paperName=elements3.text(); //标题
+
+
+
+
+String papercento=elements5.attr("form-");
+
+//使用Model， 直接封装
+
+papermodel papermodel=new papermodel();
+
+//对象的值
+
+papermodel.setPaperID(paperID);
+
+papermodel.setPaperName(paperName);
+
+papermodel.setPapercento(papercento);
+
+
+
+//将每一个对象的值，保存到List集合中
+
+data.add(papermodel);
+
+}
+
+//返回数据
+
+return data;
+
+}
+
+}
