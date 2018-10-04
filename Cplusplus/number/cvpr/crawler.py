@@ -32,18 +32,18 @@ def go(htmls):
             #获取文本
             section_text=soup.select('#content #abstract')[0].text
             #获取作者
-            section_person=soup.select('#content #authors i')[0].text
+            #section_person=soup.select('#content #authors i')[0].text
             #获取链接
-            section_abstract=req_url_base+'CameraReady/'+html+'.pdf'
+            #section_abstract=req_url_base+'CameraReady/'+html+'.pdf'
             #格式转换
             section_namee=section_name.replace('\n',' ')
             section_textt=section_text.replace('\n',' ')
             #输出
             ff.write(str(No)+'\n')
             ff.write('Title:'+section_namee+'\n')
-            ff.write('Authors: '+section_person+'\n')
+            #ff.write('Authors: '+section_person+'\n')
             ff.write('Abstract:'+section_textt+'\n')
-            ff.write('PDF_LINK: '+section_abstract+'\n')
+            #ff.write('PDF_LINK: '+section_abstract+'\n')
             ff.write('\n')
             No=No+1
         except IndexError as e:   #抓取 IndexError 这个异常

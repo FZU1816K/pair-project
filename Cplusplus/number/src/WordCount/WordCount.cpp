@@ -17,7 +17,7 @@ int main(int args,char* argv[])
     char* ipath=NULL;
 	char* opath = NULL;
 	while (argv[p] != NULL) {
-		//printf("%c\n", argv[p][0]);
+		//printf("%d:%s\n", p,argv[p]);
 		if (argv[p][0]!= '-') {
 			//printf("%c\n", argv[p][0]);
 			printf("错误输入格式\n");
@@ -42,6 +42,9 @@ int main(int args,char* argv[])
 			continue;
 		}
 		else if (argv[p][1] == 'n') {
+			if (argv[p + 1] == NULL) {
+				break;
+			}
 			if (isdigit(argv[p + 1][0]) == NULL) {
 				p++;
 			}
@@ -52,10 +55,17 @@ int main(int args,char* argv[])
 			continue;
 		}
 		else if (argv[p][1] == 'm') {
+			if (argv[p + 1]== NULL) {
+				break;
+			}
 			if (isdigit(argv[p + 1][0]) == NULL) {
 				p++;
 			}
 			else {
+				if (atoi(argv[p + 1]) < 2 || atoi(argv[p + 1]) > 10){
+					printf("错误词组长度");
+					return -1;
+				}
 				cizulen = atoi(argv[p + 1]);
 				p = p + 2;
 			}
@@ -75,7 +85,7 @@ int main(int args,char* argv[])
 			return -1;
 		}
 	}
-	printf("cizulen:%d weight:%d diy:%d ipath:%s opath:%s\n", cizulen, weight, diy, ipath, opath);
+	//printf("cizulen:%d weight:%d diy:%d ipath:%s opath:%s\n", cizulen, weight, diy, ipath, opath);
 	vector<pair<string, int>> tVector;
 	ofstream fout("result.txt");
 	ifstream input;
@@ -87,16 +97,17 @@ int main(int args,char* argv[])
 	}
 	input.close();
 
-	/*
 	int characters,words;
 	//输出统计字符数
 	characters = character(ipath);
 	fout << "characters: " << characters << endl;
+	/*
 	//输出统计单词数
 	words = word(ipath);
 	fout << "words: " << words << endl;
 	int lines = line(ipath);
 	fout << "lines: " << lines << endl;
+	
 	//输出统计前十词频
 	tVector=WordsFrequency(ipath);
 	for (int i = 0; i<tVector.size(); i++)
@@ -106,6 +117,7 @@ int main(int args,char* argv[])
 		fout << "<" << tVector[i].first << ">" << ": " << tVector[i].second << endl;
 	}
 	fout.close();
+
 	*/
 	return 0;
 }

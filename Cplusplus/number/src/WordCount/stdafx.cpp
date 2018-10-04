@@ -66,6 +66,8 @@ string mytolower(string s) {
 }
 //判断字符串是否符合要求
 int isstring(string c) {
+	if(c[c.size()]==':'&&(c[c.size()-1]=='e'|| c[c.size() - 1] == 't'))
+		return 0;
 	if (isdigit(c[0]) != NULL || isdigit(c[1]) != NULL || isdigit(c[2]) != NULL || isdigit(c[3]) != NULL)
 		return 0;
 	else
@@ -74,23 +76,56 @@ int isstring(string c) {
 
 //统计字符数
 int character(char* path) {
-	int count = 0;
-	char c;
-	int i = 0;
 	ifstream infile;
 	infile.open(path);   //将文件流对象与文件连接起来 
+	char c;
+	int j = 0;
+	int i = 0;
+	int count = 0;
+	string ff = ".";
 	infile >> noskipws;
 	while (!infile.eof())
 	{
 		infile >> c;
+		if (c == '\n') {
+			c = ' ';
+		}
+		ff += c;
 		count++;
 		i++;
 	}
+	ff[i] = '\0';
 	infile.close();
 	count--;
+	ff = mytolower(ff);
+	//cout << ff;
+	//cout << count << endl;
+	map <string, int> m1;
+	map <string, int>::iterator m1_Iter;
+	vector<string> split = splitt(ff);
+	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
+		string key = split[i];
+		cout << "before:" << key << endl;
+		if (i+2<=split.size()&&split[i + 1] == "title"&&key.size() <= 3) {
+			count = count - key.size()-1;
+			cout << count << endl;
+		}
+			
+		if (m1.count(key) == 0)
+		{
+			m1.insert(pair <string, int>(key, 1));
+		}
+		else
+		{
+			m1[key]++;
+		}
+	}
+	cout << count << endl;
+	count = count - m1["title"] * 17;
+	cout << count << endl;
 	return count;
 }
-//统计单词数
+//统计词组/单词数
 int word(char* path) {
 	ifstream infile;
 	infile.open(path);   //将文件流对象与文件连接起来 
@@ -110,13 +145,14 @@ int word(char* path) {
 	ff[i] = '\0';
 	infile.close();
 	ff = mytolower(ff);
+	cout << ff;
 	int count = 0;
 	map <string, int> m1;
 	map <string, int>::iterator m1_Iter;
 	vector<string> split = splitt(ff);
 	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
 		string key = split[i];
-		//cout << "before:"<<key << endl;
+		cout << "before:"<<key << endl;
 		if (key.size() >= 4 && isstring(key) == 1) {
 			if (m1.count(key) == 0)
 			{
@@ -131,6 +167,7 @@ int word(char* path) {
 			}
 		}
 	}
+	//if()
 	return count;
 }
 //统计行数
@@ -149,7 +186,7 @@ int line(char* path) {
 		infile >> c;
 		if (c!=' '&&c!='\0'&&c!='\n')
 			flag = 1;
-		if (c == '\n') {
+		if (c == '\n'&& isdigit(ff[i])==NULL) {
 			if (flag==1) {
 				lines++;
 			}
@@ -169,7 +206,7 @@ int line(char* path) {
 	return lines;
 }
 //统计词频并输出
-vector<pair<string, int>> WordsFrequency(char* path) {
+vector<pair<string, int>> WordsFrequency(char* path, int w, int m, int n) {
 	ifstream infile;
 	infile.open(path); //将文件流对象与文件连接起来 
 	infile >> noskipws;
