@@ -14,10 +14,7 @@ soup = BeautifulSoup(driver.page_source)  # 返回的HTML
 
 
 ###########################Only Type#####################################
-#
-###################################################Oral=re.compile(r'O\d')
-# Spotlight=re.compile(r'S\d')
-# Poster=re.compile(r'P')
+
 #
 # f = open('./Only_Type.txt', 'a',encoding='utf-8')
 #
