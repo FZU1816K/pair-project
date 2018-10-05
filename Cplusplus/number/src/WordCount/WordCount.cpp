@@ -101,13 +101,12 @@ int main(int args,char* argv[])
 	//输出统计字符数
 	characters = character(ipath);
 	fout << "characters: " << characters << endl;
-	/*
 	//输出统计单词数
 	words = word(ipath);
 	fout << "words: " << words << endl;
 	int lines = line(ipath);
 	fout << "lines: " << lines << endl;
-	
+	/*
 	//输出统计前十词频
 	tVector=WordsFrequency(ipath);
 	for (int i = 0; i<tVector.size(); i++)

@@ -66,8 +66,6 @@ string mytolower(string s) {
 }
 //判断字符串是否符合要求
 int isstring(string c) {
-	if(c[c.size()]==':'&&(c[c.size()-1]=='e'|| c[c.size() - 1] == 't'))
-		return 0;
 	if (isdigit(c[0]) != NULL || isdigit(c[1]) != NULL || isdigit(c[2]) != NULL || isdigit(c[3]) != NULL)
 		return 0;
 	else
@@ -105,10 +103,10 @@ int character(char* path) {
 	vector<string> split = splitt(ff);
 	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
 		string key = split[i];
-		cout << "before:" << key << endl;
+		//cout << "before:" << key << endl;
 		if (i+2<=split.size()&&split[i + 1] == "title"&&key.size() <= 3) {
 			count = count - key.size()-1;
-			cout << count << endl;
+			//cout << count << endl;
 		}
 			
 		if (m1.count(key) == 0)
@@ -120,9 +118,9 @@ int character(char* path) {
 			m1[key]++;
 		}
 	}
-	cout << count << endl;
+	//cout << count << endl;
 	count = count - m1["title"] * 17;
-	cout << count << endl;
+	//cout << count << endl;
 	return count;
 }
 //统计词组/单词数
@@ -145,29 +143,23 @@ int word(char* path) {
 	ff[i] = '\0';
 	infile.close();
 	ff = mytolower(ff);
-	cout << ff;
+	//cout << ff;
 	int count = 0;
+	int tcount = 0;
 	map <string, int> m1;
 	map <string, int>::iterator m1_Iter;
 	vector<string> split = splitt(ff);
 	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
 		string key = split[i];
-		cout << "before:"<<key << endl;
+		//cout << "before:"<<key << endl;
+		if (key == "title") {
+			tcount++;
+		}
 		if (key.size() >= 4 && isstring(key) == 1) {
-			if (m1.count(key) == 0)
-			{
-				//cout << "ok:" << key << endl;
-				count++;
-				m1.insert(pair <string, int>(key, 1));
-			}
-			else
-			{
-				count++;
-				m1[key]++;
-			}
+			count++;
 		}
 	}
-	//if()
+	count = count - 2 * tcount;
 	return count;
 }
 //统计行数
