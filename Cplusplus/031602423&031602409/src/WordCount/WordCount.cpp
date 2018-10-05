@@ -106,17 +106,14 @@ int main(int args,char* argv[])
 	fout << "words: " << words << endl;
 	int lines = line(ipath);
 	fout << "lines: " << lines << endl;
-	/*
 	//输出统计前十词频
-	tVector=WordsFrequency(ipath);
+	tVector=WordsFrequency(ipath,weight,cizulen,diy);
 	for (int i = 0; i<tVector.size(); i++)
 	{
-		if (i == 10)
+		if (i == diy)
 			break;
 		fout << "<" << tVector[i].first << ">" << ": " << tVector[i].second << endl;
 	}
 	fout.close();
-
-	*/
 	return 0;
 }

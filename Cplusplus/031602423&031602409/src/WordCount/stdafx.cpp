@@ -221,24 +221,109 @@ vector<pair<string, int>> WordsFrequency(char* path, int w, int m, int n) {
 	map <string, int> m1;
 	map <string, int>::iterator m1_Iter;
 	vector<pair<string, int>> tVector;
+	int lt = 0, rt = 0, la = 0, ra = 0;
 	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
 		//cout << split[i] << endl;
 		string key = split[i];
-		if (key.size() >= 4 && isstring(key) == 1) {
+		//cout << key << endl;
 			//cout << "符合条件的字符串是：" << key << endl;
-			if (m1.count(key) == 0)
-			{
-				m1.insert(pair <string, int>(key, 1));
+			int t = 0,a = 0;
+			if (key == "title") {
+				t = i + 2;
+				if (split[i + 1].size() >= 4 && isstring(split[i + 1]) == 1) {
+					//tf = split[i + 1];
+					lt = i + 1;
+				}
+				while (!split[t].empty()&&split[t] != "abstract") {
+					t++;
+				}
+				rt = t-1;
+				//cout << tf << endl;
+				i = t - 1;
+				//cout << lt << " " << rt << endl;
+				for (int x = lt; x <= rt - m+1; x++) {
+					if (split[x].size() >= 4 && isstring(split[x]) == 1)
+						key = split[x];
+					else
+						continue;
+					int xx = 1;
+					//cout << x << endl;
+					while (xx <= m-1) {
+						if (split[x + xx].size() < 4 || isstring(split[x + xx]) != 1) {
+							key = "#";
+							break;
+						}
+						key += " ";
+						key += split[x + xx];
+						xx++;
+					}
+					if (key == "#")
+						continue;
+					if (m1.count(key) == 0)
+					{
+						if (w == 1) {
+							m1.insert(pair <string, int>(key, 10));
+						}
+						else {
+							m1.insert(pair <string, int>(key, 1));
+						}
+					}
+					else
+					{
+						m1[key]+=10;
+					}
+				}
+				continue;
 			}
-			else
-			{
-				m1[key]++;
+		
+			if (key == "abstract") {
+				a = i + 2;
+				if (split[i + 1].size() >= 4 && isstring(split[i + 1]) == 1) {
+					la = i + 1;
+				}
+				while (!split[a].empty()&&split[a] != "title") {
+					a++;
+				}
+				ra = a-1;
+				//cout << af << endl;
+				i = a - 1;
+				//cout << la << " " << ra << endl;
+				for (int y = la; y <= ra-m+1; y++) {
+					if (split[y].size() >= 4 && isstring(split[y]) == 1)
+						key = split[y];
+					else
+						continue;
+					int yy = 1;
+					while (yy <= m-1) {
+						//cout<<split[y + yy] << endl;
+						if (split[y + yy].size() < 4 || isstring(split[y + yy]) != 1) {
+							key = "#";
+							break;
+						}
+						key += " ";
+						key += split[y + yy];
+						yy++;
+					}
+					//cout <<y<<" "<<key << endl;
+					if (key == "#")
+						continue;
+					if (m1.count(key) == 0)
+					{
+						m1.insert(pair <string, int>(key, 1));
+					}
+					else
+					{
+						m1[key]++;
+					}
+				}
 			}
-		}
+		
 	}
 	//map <string, int>::iterator m1_temp;
-	for (map<string, int>::iterator curr = m1.begin(); curr != m1.end(); curr++)
+	for (map<string, int>::iterator curr = m1.begin(); curr != m1.end(); curr++){
 		tVector.push_back(make_pair(curr->first, curr->second));
+		//cout << curr->first << " " << curr->second << endl;
+	}
 	sort(tVector.begin(), tVector.end(), cmp);
 	return tVector;
 }
