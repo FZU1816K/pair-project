@@ -68,6 +68,17 @@ bool WordCheck(string word)
 	return true;
 }
 
+// 添加带有权重的单词
+void AddWordWeight(string &word, bool in_title)
+{
+	int current_weight = 1;
+	if (in_title && p_weight) current_weight = 10;
+
+	if (g_word_count_map.count(word) == 0)
+		g_word_count_map[word] = current_weight;
+	else g_word_count_map[word] += current_weight;
+}
+
 // 解析参数
 void ParserParam(int argc, char *argv[])
 {
@@ -383,9 +394,7 @@ void GetWordCountMap(string input_path)
 
 								// cout << word << endl;
 
-								if (g_word_count_map.count(word) == 0)
-									g_word_count_map[word] = 1;
-								else g_word_count_map[word] += 1;
+								AddWordWeight(word, line[0] == 'T');
 
 								for (size_t i = 0; i < word.size(); i++)
 								{
@@ -455,9 +464,7 @@ void GetWordCountMap(string input_path)
 
 									// cout << word << endl;
 
-									if (g_word_count_map.count(word) == 0)
-										g_word_count_map[word] = 1;
-									else g_word_count_map[word] += 1;
+									AddWordWeight(word, line[0] == 'T');
 
 									for (size_t i = 0; i < word.size(); i++)
 									{
