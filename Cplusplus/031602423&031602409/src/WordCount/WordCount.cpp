@@ -107,7 +107,7 @@ int main(int args,char* argv[])
 	int lines = line(ipath);
 	fout << "lines: " << lines << endl;
 	//输出统计前十词频
-	tVector=WordsFrequency(ipath,weight,cizulen,diy);
+	tVector=WordsFrequency(ipath,weight,cizulen);
 	for (int i = 0; i<tVector.size(); i++)
 	{
 		if (i == diy)

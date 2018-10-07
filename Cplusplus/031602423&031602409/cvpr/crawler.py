@@ -17,7 +17,7 @@ req_header={
 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
 }
 def go(htmls):
-    ff=open("E:\ALL\github\pair-project\Cplusplus\\result.txt","a+",encoding='utf-8')
+    ff=open("result.txt","a+",encoding='utf-8')
     No=0
     for html in htmls:
         try:
@@ -44,6 +44,7 @@ def go(htmls):
             #ff.write('Authors: '+section_person+'\n')
             ff.write('Abstract:'+section_textt+'\n')
             #ff.write('PDF_LINK: '+section_abstract+'\n')
+            ff.write('\n')
             ff.write('\n')
             No=No+1
         except IndexError as e:   #抓取 IndexError 这个异常

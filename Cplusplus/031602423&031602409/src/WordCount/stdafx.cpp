@@ -95,7 +95,6 @@ int character(char* path) {
 	ff[i] = '\0';
 	infile.close();
 	count--;
-	ff = mytolower(ff);
 	//cout << ff;
 	//cout << count << endl;
 	map <string, int> m1;
@@ -104,7 +103,7 @@ int character(char* path) {
 	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
 		string key = split[i];
 		//cout << "before:" << key << endl;
-		if (i+2<=split.size()&&split[i + 1] == "title"&&key.size() <= 3) {
+		if (i+2<=split.size()&&split[i + 1] == "Title"&&key.size() <= 3) {
 			count = count - key.size()-1;
 			//cout << count << endl;
 		}
@@ -119,7 +118,7 @@ int character(char* path) {
 		}
 	}
 	//cout << count << endl;
-	count = count - m1["title"] * 17;
+	count = count - m1["Title"] * 17;
 	//cout << count << endl;
 	return count;
 }
@@ -198,7 +197,7 @@ int line(char* path) {
 	return lines;
 }
 //统计词频并输出
-vector<pair<string, int>> WordsFrequency(char* path, int w, int m, int n) {
+vector<pair<string, int>> WordsFrequency(char* path, int w, int m) {
 	ifstream infile;
 	infile.open(path); //将文件流对象与文件连接起来 
 	infile >> noskipws;
@@ -270,7 +269,10 @@ vector<pair<string, int>> WordsFrequency(char* path, int w, int m, int n) {
 					}
 					else
 					{
-						m1[key]+=10;
+						if(w==0)
+							m1[key]+=1;
+						else
+							m1[key] += 10;
 					}
 				}
 				continue;
