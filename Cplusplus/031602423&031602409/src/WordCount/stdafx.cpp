@@ -118,7 +118,7 @@ int character(char* path) {
 		}
 	}
 	//cout << count << endl;
-	count = count - m1["Title"] * 17;
+	count = count - m1["Title"] * 19 + 2;
 	//cout << count << endl;
 	return count;
 }
