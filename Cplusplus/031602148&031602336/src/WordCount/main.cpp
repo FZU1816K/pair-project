@@ -11,29 +11,29 @@ int main(int argc, char *argv[])
 		if (strcmp(argv[j], "-i") == 0)
 		{
 			i = j + 1;
-			cout << "i=" << i << "   " << endl;
-			cout << argv[i] << endl;
+			//cout << "i=" << i << "   " << endl;
+			//cout << argv[i] << endl;
 		}
 		if (strcmp(argv[j], "-o") == 0)
 		{
 			o = j + 1;
-			cout << "o=" << o << "   " << endl;
-			cout << argv[o] << endl;
+			//cout << "o=" << o << "   " << endl;
+			//cout << argv[o] << endl;
 		}
 		if (strcmp(argv[j], "-w") == 0)
 		{
 			w = atoi(argv[j + 1]);;
-			cout << "w=" << w << "   " << endl;
+			//cout << "w=" << w << "   " << endl;
 		}
 		if (strcmp(argv[j], "-m") == 0)
 		{
 			m = atoi(argv[j + 1]);;
-			cout << "m=" << m << "   " << endl;
+			//cout << "m=" << m << "   " << endl;
 		}
 		if (strcmp(argv[j], "-n") == 0)
 		{
 			n = atoi(argv[j + 1]);;
-			cout << "n=" << n << "   " << endl;
+			//cout << "n=" << n << "   " << endl;
 		}
 	}
 	if (o==-1||i==-1||w==-1)//检测输入的命令行参数是否正确

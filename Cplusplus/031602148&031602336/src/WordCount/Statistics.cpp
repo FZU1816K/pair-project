@@ -309,7 +309,7 @@ int Statistics::nw_words(ifstream& in)//统计无权重单词
 	in.seekg(0, ios::beg);
 	return sum;
 }
-int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
+int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 {
 	string str = "";
 	string temp = "";
@@ -318,14 +318,12 @@ int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
 	string te = "";
 	int flag = 0;
 	int sum = 0;
-	int fstar = 0;
-	int sstar = 0;
 	int start = 0;
 	int t = 0;
 	int a = 0;
 	int turn = 0;
 	int mark = 0;
-	int lon = 0;
+	int star = 0;
 	while (getline(in, str))//逐行读取
 	{
 		te = str;
@@ -339,134 +337,143 @@ int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
 			flag = 0;
 			start = 0;
 			mark = 0;
-			sstar = 0;
-			fstar = 0;
-			if (abst != ""&&turn == 1)
+			//cout << "deal abst" << endl;
+			//cout << abst << endl;
+			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				flag = 0;
-				start = 0;
-				mark = 0;
-				sstar = 0;
-				fstar = 0;
-				for (unsigned j = 0; j < abst.length(); j++)//提取合法单词并统计 
+				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
-					if (abst[j] == 'A'&&abst[j+1] == 'b'&&abst[j+2] == 's'&&abst[j+3] == 't'&&abst[j+4] == 'r' && abst[j+5] == 'a'&&abst[j+6] == 'c'&&abst[j+7] == 't' && (abst[j+8] == ':' || abst[j+8] == '：'))
+					j = 9;
+					continue;
+				}
+				if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
+				{
+					if (flag == 0)
 					{
-						j = 9;
-						fstar = 9;
-						continue;
+						star = j;
 					}
-					if (sstar > fstar)
+					flag++;
+				}
+				else
+				{
+					if (flag >= 4)
 					{
-						fstar = sstar;
-					}
-					if (j == abst.length() - 1 && ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z')) && flag >= 3 && mark == m - 1)//特殊处理
-					{
-						flag++;
-						if (start >= 1)//修改部分
+						if (abst[j] >= '0'&&abst[j] <= '9')
 						{
-							if (abst[start - 1] >= '0'&&abst[start - 1] <= '9')
+							if (j == abst.length() - 1)
+							{
+								flag++;
+							}
+							else
+							{
+								flag++;
+								continue;
+							}
+						}
+						if (star >= 1)//修改部分
+						{
+							if (abst[star - 1] >= '0'&&abst[star - 1] <= '9')
 							{
 								flag = 0;
-								mark = 0;
-								break;
+								continue;
 							}
 						}
-						temp = abst.substr(sstar, lon - sstar + 1);//截取合法单词 
-						for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
+						//temp = abst.substr(star, flag);//截取合法单词
+						flag = 0;
+						mark = 1;
+						for (unsigned i = j; i < abst.length(); i++)
 						{
-							if (temp[i] >= 'A'&&temp[i] <= 'Z')
+							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
-								temp[i] = temp[i] + 32;
-							}
-						}
-						if (arecord.count(temp))
-						{
-							arecord[temp]++;
-							sum++;//修改部分
-						}
-						else
-						{
-							arecord[temp] = 1;
-							sum++;
-						}
-					}
-					if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
-					{
-						if (flag == 0)
-						{
-							if (mark == 0)
-							{
-								sstar = j;
-							}
-							if (mark == 1)
-							{
-								fstar = j;
-							}
-						}
-						start = j;
-						flag++;
-						lon = j;
-					}
-					else
-					{
-						if (flag >= 4)
-						{
-							if (abst[j] >= '0'&&abst[j] <= '9')
-							{
-								if (j == abst.length() - 1)
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
 								{
-									flag++;
-									lon = j;
-								}
-								else
-								{
-									flag++;
-									lon = j;
-									continue;
-								}
-							}
-							if (start >= 1)//修改部分
-							{
-								if (abst[start - 1] >= '0'&&abst[start - 1] <= '9')
-								{
-									flag = 0;
-									mark = 0;
-									sstar = j;
-									fstar = j;
-									continue;
-								}
-							}
-							mark++;
-							if (mark == m)
-							{
-								temp = abst.substr(sstar, lon - sstar + 1);//截取合法词组
-								for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
-								{
-									if (temp[i] >= 'A'&&temp[i] <= 'Z')
+									temp = abst.substr(star, (i - star + 1));//截取合法词组
 									{
-										temp[i] = temp[i] + 32;
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (arecord.count(temp))
+										{
+											arecord[temp]++;
+											sum++;//修改部分
+										}
+										else
+										{
+											arecord[temp] = 1;
+											sum++;
+										}
 									}
 								}
-								if (arecord.count(temp))
+								mark = 0;
+								flag = 0;
+								break;
+							}
+							if ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z'))
+							{
+								flag++;
+							}
+							else
+							{
+								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
 								{
-									arecord[temp]++;
-									sum++;//修改部分
+									continue;
 								}
-								else
+								if (flag < 4)
 								{
-									arecord[temp] = 1;
-									sum++;
+									for (unsigned k = i; k < abst.length(); k++)
+									{
+										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
+										{
+											j = k - 1;
+											break;
+										}
+									}
+									break;
 								}
-								if (sstar != 0)
+								if (flag >= 4 && (abst[i] >= '0'&&abst[i] <= '9'))
 								{
-									j = sstar;
+									continue;
+								}
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = abst.substr(star, (i - star));//截取合法词组
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (arecord.count(temp))
+										{
+											arecord[temp]++;
+											sum++;//修改部分
+											mark = 0;
+											flag = 0;
+										}
+										else
+										{
+											arecord[temp] = 1;
+											sum++;
+											mark = 0;
+											flag = 0;
+										}
+									}
+									mark = 0;
+									flag = 0;
+									break;
 								}
 							}
 						}
-						flag = 0;
-						lon = 0;
-						mark = 0;
 					}
 				}
 			}
@@ -483,67 +490,22 @@ int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
 			flag = 0;
 			start = 0;
 			mark = 0;
-			sstar = 0;
-			fstar = 0;
-			for (unsigned j = 0; j < titl.length(); j++)//提取合法单词并统计 
+			//cout << "deal titl" << endl;
+			//cout << titl << endl;
+			for (unsigned j = 0; j < titl.length(); j++)//提取合法词组并统计 
 			{
-				if (titl[j + 0] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
+				if (titl[j] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
 				{
 					j = 6;
-					fstar = 6;
 					continue;
-				}
-				if (sstar > fstar)
-				{
-					fstar = sstar;
-				}
-				if (j == titl.length() - 1 && ((titl[j] >= 'a'&&titl[j] <= 'z') || (titl[j] >= 'A'&&titl[j] <= 'Z')) && flag >= 3 && mark == m - 1)//特殊处理
-				{
-					flag++;
-					if (start >= 1)//修改部分
-					{
-						if (titl[start - 1] >= '0'&&titl[start - 1] <= '9')
-						{
-							flag = 0;
-							mark = 0;
-							break;
-						}
-					}
-					temp = titl.substr(sstar, lon - sstar + 1);//截取合法单词 
-					for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
-					{
-						if (temp[i] >= 'A'&&temp[i] <= 'Z')
-						{
-							temp[i] = temp[i] + 32;
-						}
-					}
-					if (trecord.count(temp))
-					{
-						trecord[temp]++;
-						sum++;//修改部分
-					}
-					else
-					{
-						trecord[temp] = 1;
-						sum++;
-					}
 				}
 				if ((titl[j] >= 'a'&&titl[j] <= 'z') || (titl[j] >= 'A'&&titl[j] <= 'Z'))
 				{
 					if (flag == 0)
 					{
-						if (mark == 0)
-						{
-							sstar = j;
-						}
-						if (mark == 1)
-						{
-							fstar = j;
-						}
+						star = j;
 					}
-					start = j;
 					flag++;
-					lon = j;
 				}
 				else
 				{
@@ -554,56 +516,125 @@ int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
 							if (j == titl.length() - 1)
 							{
 								flag++;
-								lon = j;
 							}
 							else
 							{
 								flag++;
-								lon = j;
 								continue;
 							}
 						}
-						if (start >= 1)//修改部分
+						if (star >= 1)//修改部分
 						{
-							if (titl[start - 1] >= '0'&&titl[start - 1] <= '9')
+							if (titl[star - 1] >= '0'&&titl[star - 1] <= '9')
 							{
 								flag = 0;
-								mark = 0;
-								sstar = j;
-								fstar = j;
 								continue;
 							}
 						}
-						mark++;
-						if (mark == m)
+						//temp = titl.substr(star, flag);//截取合法单词
+						flag = 0;
+						mark = 1;
+						for (unsigned i = j; i < titl.length(); i++)
 						{
-							temp = titl.substr(sstar, lon - sstar + 1);//截取合法词组
-							for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
+							if (i == titl.length() - 1 && ((titl[i] >= 'a'&&titl[i] <= 'z') || (titl[i] >= 'A'&&titl[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
-								if (temp[i] >= 'A'&&temp[i] <= 'Z')
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
 								{
-									temp[i] = temp[i] + 32;
+									temp = titl.substr(star, (i - star + 1));//截取合法词组
+									//cout << "i2   " << i << endl;
+									//cout << "star2    " << star << endl;
+									//cout << "i2-star2   " << (i - star) << endl;
+									//cout << "length" << titl.length() << endl;
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (trecord.count(temp))
+										{
+											trecord[temp]++;
+											sum++;//修改部分
+										}
+										else
+										{
+											trecord[temp] = 1;
+											sum++;
+										}
+									}
 								}
+								mark = 0;
+								flag = 0;
+								break;
 							}
-							if (trecord.count(temp))
+							if ((titl[i] >= 'a'&&titl[i] <= 'z') || (titl[i] >= 'A'&&titl[i] <= 'Z'))
 							{
-								trecord[temp]++;
-								sum++;//修改部分
+								flag++;
 							}
 							else
 							{
-								trecord[temp] = 1;
-								sum++;
-							}
-							if (sstar != 0)
-							{
-								j = sstar;
+								if (flag == 0 && ((titl[i] < '0') || (titl[i] > '9'&&titl[i] < 'A') || (titl[i] > 'Z'&&titl[i] < 'a') && (titl[i] > 'z')))
+								{
+									continue;
+								}
+								if (flag < 4)
+								{
+									for (unsigned k = i; k < titl.length(); k++)
+									{
+										if ((titl[k] >= 'a'&&titl[k] <= 'z') || (titl[k] >= 'A'&&titl[k] <= 'Z'))
+										{
+											j = k - 1;
+											break;
+										}
+									}
+									break;
+								}
+								if (flag >= 4 && (titl[i] >= '0'&&titl[i] <= '9'))
+								{
+									continue;
+								}
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = titl.substr(star, (i - star));//截取合法词组
+									//cout <<"i"<< i << endl;
+									//cout <<"star"<< star << endl;
+									//cout << "i-star" <<(i - star) << endl;
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (trecord.count(temp))
+										{
+											trecord[temp]++;
+											sum++;//修改部分
+											mark = 0;
+											flag = 0;
+										}
+										else
+										{
+											trecord[temp] = 1;
+											sum++;
+											mark = 0;
+											flag = 0;
+										}
+									}
+									mark = 0;
+									flag = 0;
+									break;
+								}
 							}
 						}
 					}
-					flag = 0;
-					lon = 0;
-					mark = 0;
 				}
 			}
 			titl = "";
@@ -622,6 +653,155 @@ int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
 		{
 			str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
 			abst = abst + str;
+		}
+		if (turn == 1 && abst != "")
+		{
+			//摘要段处理
+			flag = 0;
+			start = 0;
+			mark = 0;
+			//cout << "deal abst" << endl;
+			//cout << abst << endl;
+			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
+			{
+				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
+				{
+					j = 9;
+					continue;
+				}
+				if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
+				{
+					if (flag == 0)
+					{
+						star = j;
+					}
+					flag++;
+				}
+				else
+				{
+					if (flag >= 4)
+					{
+						if (abst[j] >= '0'&&abst[j] <= '9')
+						{
+							if (j == abst.length() - 1)
+							{
+								flag++;
+							}
+							else
+							{
+								flag++;
+								continue;
+							}
+						}
+						if (star >= 1)//修改部分
+						{
+							if (abst[star - 1] >= '0'&&abst[star - 1] <= '9')
+							{
+								flag = 0;
+								continue;
+							}
+						}
+						//temp = abst.substr(star, flag);//截取合法单词
+						flag = 0;
+						mark = 1;
+						for (unsigned i = j; i < abst.length(); i++)
+						{
+							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
+							{
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = abst.substr(star, (i - star + 1));//截取合法词组
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (arecord.count(temp))
+										{
+											arecord[temp]++;
+											sum++;//修改部分
+										}
+										else
+										{
+											arecord[temp] = 1;
+											sum++;
+										}
+									}
+								}
+								mark = 0;
+								flag = 0;
+								break;
+							}
+							if ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z'))
+							{
+								flag++;
+							}
+							else
+							{
+								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
+								{
+									continue;
+								}
+								if (flag < 4)
+								{
+									for (unsigned k = i; k < abst.length(); k++)
+									{
+										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
+										{
+											j = k - 1;
+											break;
+										}
+									}
+									break;
+								}
+								if (flag >= 4 && (abst[i] >= '0'&&abst[i] <= '9'))
+								{
+									continue;
+								}
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = abst.substr(star, (i - star));//截取合法词组
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (arecord.count(temp))
+										{
+											arecord[temp]++;
+											sum++;//修改部分
+											mark = 0;
+											flag = 0;
+										}
+										else
+										{
+											arecord[temp] = 1;
+											sum++;
+											mark = 0;
+											flag = 0;
+										}
+									}
+									mark = 0;
+									flag = 0;
+									break;
+								}
+							}
+						}
+					}
+				}
+			}
+			turn = 0;
+			abst = "";
 		}
 	}
 	map<string, int>::iterator tit;
@@ -645,7 +825,7 @@ int Statistics::w_phrase(ifstream& in,int m)//统计权重词组
 		}
 		else
 		{
-			word[(*ait).first] = (*ait).second * 1
+			word[(*ait).first] = (*ait).second * 1;
 		}
 	}
 	in.clear();//指针重新定位至文件头部 
@@ -661,15 +841,11 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 	string te="";
 	int flag = 0;
 	int sum = 0;
-	int fstar = 0;
-	int sstar = 0;
 	int start = 0;
 	int t=0;
 	int a=0;
 	int turn = 0;
 	int mark=0;
-	int lon = 0;
-	int num = 0;
 	int star=0;
 	while (getline(in, str))//逐行读取
 	{
@@ -684,136 +860,143 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			flag = 0;
 			start = 0;
 			mark = 0;
-			sstar = 0;
-			fstar = 0;
-			if (abst != ""&&turn==1)
+			//cout << "deal abst" << endl;
+			//cout << abst << endl;
+			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				cout << "deal abst" << endl;
-				cout << abst << endl;
-				flag = 0;
-				start = 0;
-				mark = 0;
-				sstar = 0;
-				fstar = 0;
-				for (unsigned j = 0; j < abst.length(); j++)//提取合法单词并统计 
+				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
-					if (abst[j + 0] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' && abst[j + 5] == 'a'&&abst[j + 6] == 'c'&&abst[j + 7] == 't'&&(abst[j + 8] == ':' || abst[j + 8] == '：'))
+					j = 9;
+					continue;
+				}
+				if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
+				{
+					if (flag == 0)
 					{
-						j = 9;
-						fstar = 9;
-						continue;
+						star = j;
 					}
-					if (sstar > fstar)
+					flag++;
+				}
+				else
+				{
+					if (flag >= 4)
 					{
-						fstar = sstar;
-					}
-					if (j == abst.length() - 1 && ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z')) && flag >= 3 && mark == m - 1)//特殊处理
-					{
-						flag++;
-						if (start >= 1)//修改部分
+						if (abst[j] >= '0'&&abst[j] <= '9')
 						{
-							if (abst[start - 1] >= '0'&&abst[start - 1] <= '9')
+							if (j == abst.length() - 1)
+							{
+								flag++;
+							}
+							else
+							{
+								flag++;
+								continue;
+							}
+						}
+						if (star >= 1)//修改部分
+						{
+							if (abst[star - 1] >= '0'&&abst[star - 1] <= '9')
 							{
 								flag = 0;
-								mark = 0;
-								break;
+								continue;
 							}
 						}
-						temp = abst.substr(sstar, lon - sstar + 1);//截取合法单词组
-						for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
+						//temp = abst.substr(star, flag);//截取合法单词
+						flag = 0;
+						mark = 1;
+						for (unsigned i = j; i < abst.length(); i++)
 						{
-							if (temp[i] >= 'A'&&temp[i] <= 'Z')
+							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
-								temp[i] = temp[i] + 32;
-							}
-						}
-						if (word.count(temp))
-						{
-							word[temp]++;
-							sum++;//修改部分
-						}
-						else
-						{
-							word[temp] = 1;
-							sum++;
-						}
-					}
-					if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
-					{
-						if (flag == 0)
-						{
-							if (mark == 0)
-							{
-								sstar = j;
-							}
-							if (mark == 1)
-							{
-								fstar = j;
-							}
-						}
-						start = j;
-						flag++;
-						lon = j;
-					}
-					else
-					{
-						if (flag >= 4)
-						{
-							if (abst[j] >= '0'&&abst[j] <= '9')
-							{
-								if (j == abst.length() - 1)
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
 								{
-									flag++;
-									lon = j;
-								}
-								else
-								{
-									flag++;
-									lon = j;
-									continue;
-								}
-							}
-							if (start >= 1)//修改部分
-							{
-								if (abst[start - 1] >= '0'&&abst[start - 1] <= '9')
-								{
-									flag = 0;
-									mark = 0;
-									sstar = j;
-									fstar = j;
-									continue;
-								}
-							}
-							mark++;
-							if (mark == m)
-							{
-								temp = abst.substr(sstar, lon - sstar + 1);//截取合法词组
-								for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
-								{
-									if (temp[i] >= 'A'&&temp[i] <= 'Z')
+									temp = abst.substr(star, (i - star+1));//截取合法词组
 									{
-										temp[i] = temp[i] + 32;
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (word.count(temp))
+										{
+											word[temp]++;
+											sum++;//修改部分
+										}
+										else
+										{
+											word[temp] = 1;
+											sum++;
+										}
 									}
 								}
-								if (word.count(temp))
+								mark = 0;
+								flag = 0;
+								break;
+							}
+							if ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z'))
+							{
+								flag++;
+							}
+							else
+							{
+								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
 								{
-									word[temp]++;
-									sum++;//修改部分
+									continue;
 								}
-								else
+								if (flag < 4)
 								{
-									word[temp] = 1;
-									sum++;
+									for (unsigned k = i; k < abst.length(); k++)
+									{
+										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
+										{
+											j = k - 1;
+											break;
+										}
+									}
+									break;
 								}
-								if (sstar != 0)
+								if (flag >= 4 && (abst[i] >= '0'&&abst[i] <= '9'))
 								{
-									j = sstar;
+									continue;
+								}
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = abst.substr(star, (i - star));//截取合法词组
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (word.count(temp))
+										{
+											word[temp]++;
+											sum++;//修改部分
+											mark = 0;
+											flag = 0;
+										}
+										else
+										{
+											word[temp] = 1;
+											sum++;
+											mark = 0;
+											flag = 0;
+										}
+									}
+									mark = 0;
+									flag = 0;
+									break;
 								}
 							}
 						}
-						flag = 0;
-						lon = 0;
-						mark = 0;
 					}
 				}
 			}
@@ -830,46 +1013,16 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			flag = 0;
 			start = 0;
 			mark = 0;
-			sstar = 0;
-			fstar = 0;
-			for (unsigned j = 0; j < str.length(); j++)//提取合法单词并统计 
+			//cout << "deal titl" << endl;
+			//cout << titl << endl;
+			for (unsigned j = 0; j < titl.length(); j++)//提取合法词组并统计 
 			{
-				if (str[j] == 'T'&&str[j + 1] == 'i'&&str[j + 2] == 't'&&str[j + 3] == 'l'&&str[j + 4] == 'e' && (str[j + 5] == ':' || str[j + 5] == '：'))
+				if (titl[j] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
 				{
 					j = 6;
 					continue;
 				}
-				if (j == str.length() - 1 && ((str[j] >= 'a'&&str[j] <= 'z') || (str[j] >= 'A'&&str[j] <= 'Z')) && flag >= 3)//特殊处理
-				{
-					flag++;
-					if (star >= 1)//修改部分
-					{
-						if (str[star - 1] >= '0'&&str[star - 1] <= '9')
-						{
-							flag = 0;
-							continue;
-						}
-					}
-					temp = str.substr(star, flag);//截取合法单词 
-					for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
-					{
-						if (temp[i] >= 'A'&&temp[i] <= 'Z')
-						{
-							temp[i] = temp[i] + 32;
-						}
-					}
-					if (word.count(temp))
-					{
-						word[temp]++;
-						sum++;//修改部分
-					}
-					else
-					{
-						word[temp] = 1;
-						sum++;
-					}
-				}
-				if ((str[j] >= 'a'&&str[j] <= 'z') || (str[j] >= 'A'&&str[j] <= 'Z'))
+				if ((titl[j] >= 'a'&&titl[j] <= 'z') || (titl[j] >= 'A'&&titl[j] <= 'Z'))
 				{
 					if (flag == 0)
 					{
@@ -881,9 +1034,9 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 				{
 					if (flag >= 4)
 					{
-						if (str[j] >= '0'&&str[j] <= '9')
+						if (titl[j] >= '0'&&titl[j] <= '9')
 						{
-							if (j == str.length() - 1)
+							if (j == titl.length() - 1)
 							{
 								flag++;
 							}
@@ -895,34 +1048,119 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						}
 						if (star >= 1)//修改部分
 						{
-							if (str[star - 1] >= '0'&&str[star - 1] <= '9')
+							if (titl[star - 1] >= '0'&&titl[star - 1] <= '9')
 							{
 								flag = 0;
 								continue;
 							}
 						}
-						 temp = str.substr(star, flag);//截取合法单词 
-						for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
+						//temp = titl.substr(star, flag);//截取合法单词
+						flag = 0;
+						mark = 1;
+						for (unsigned i = j; i < titl.length(); i++)
 						{
-							if (temp[i] >= 'A'&&temp[i] <= 'Z')
+							if (i == titl.length() - 1 && ((titl[i] >= 'a'&&titl[i] <= 'z') || (titl[i] >= 'A'&&titl[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
-								temp[i] = temp[i] + 32;
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = titl.substr(star, (i - star+1));//截取合法词组
+									//cout << "i2   " << i << endl;
+									//cout << "star2    " << star << endl;
+									//cout << "i2-star2   " << (i - star) << endl;
+									//cout << "length" << titl.length() << endl;
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (word.count(temp))
+										{
+											word[temp]++;
+											sum++;//修改部分
+										}
+										else
+										{
+											word[temp] = 1;
+											sum++;
+										}
+									}
+								}
+								mark = 0;
+								flag = 0;
+								break;
+							}
+							if ((titl[i] >= 'a'&&titl[i] <= 'z') || (titl[i] >= 'A'&&titl[i] <= 'Z'))
+							{
+								flag++;
+							}
+							else
+							{
+								if (flag==0&&((titl[i] < '0') || (titl[i] > '9'&&titl[i] < 'A') || (titl[i] > 'Z'&&titl[i] < 'a') && (titl[i] > 'z')))
+								{
+									continue;
+								}
+								if (flag < 4)
+								{
+									for (unsigned k = i; k < titl.length(); k++)
+									{
+										if ((titl[k]>='a'&&titl[k]<='z')||(titl[k]>='A'&&titl[k]<='Z'))
+										{
+											j = k - 1;
+											break;
+										}
+									}
+									break;
+								}
+								if (flag >= 4 && (titl[i] >= '0'&&titl[i] <= '9'))
+								{
+									continue;
+								}
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = titl.substr(star, (i - star));//截取合法词组
+									//cout <<"i"<< i << endl;
+									//cout <<"star"<< star << endl;
+									//cout << "i-star" <<(i - star) << endl;
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (word.count(temp))
+										{
+											word[temp]++;
+											sum++;//修改部分
+											mark = 0;
+											flag = 0;
+										}
+										else
+										{
+											word[temp] = 1;
+											sum++;
+											mark = 0;
+											flag = 0;
+										}
+									}
+									mark = 0;
+									flag = 0;
+									break;
+								}
 							}
 						}
-						if (word.count(temp))
-						{
-							word[temp]++;
-							sum++;//修改部分
-						}
-						else
-						{
-							word[temp] = 1;
-							sum++;
-						}
 					}
-					flag = 0;
 				}
 			}
+			titl = "";
 		}
 		if (str[0] == 'T'&&str[1] == 'i'&&str[2] == 't'&&str[3] == 'l'&&str[4] == 'e' && (str[5] == ':' || str[5] == '：'))
 		{
@@ -939,141 +1177,154 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
 			abst = abst + str;
 		}
-	}
-	if (abst != ""&&turn==1)
-	{
-		flag = 0;
-		start = 0;
-		mark = 0;
-		sstar = 0;
-		fstar = 0;
-		cout << "deal abst" << endl;
-		cout << "abst:" << abst << endl;
-		flag = 0;
-		start = 0;
-		mark = 0;
-		sstar = 0;
-		fstar = 0;
-		for (unsigned j = 0; j < abst.length(); j++)//提取合法单词并统计 
+		if (turn == 1 && abst != "")
 		{
-			if (abst[j + 0] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' && abst[j + 5] == 'a'&&abst[j + 6] == 'c'&&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
+			//摘要段处理
+			flag = 0;
+			start = 0;
+			mark = 0;
+			//cout << "deal abst" << endl;
+			//cout << abst << endl;
+			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				j = 9;
-				fstar = 9;
-				continue;
-			}
-			if (sstar > fstar)
-			{
-				fstar = sstar;
-			}
-			if (j == abst.length() - 1 && ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z')) && flag >= 3 && mark == m - 1)//特殊处理
-			{
-				flag++;
-				if (start >= 1)//修改部分
+				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
-					if (abst[start - 1] >= '0'&&abst[start - 1] <= '9')
-					{
-						flag = 0;
-						mark = 0;
-						break;
-					}
+					j = 9;
+					continue;
 				}
-				temp = abst.substr(sstar, lon - sstar + 1);//截取合法单词组
-				for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
+				if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
 				{
-					if (temp[i] >= 'A'&&temp[i] <= 'Z')
+					if (flag == 0)
 					{
-						temp[i] = temp[i] + 32;
+						star = j;
 					}
-				}
-				if (word.count(temp))
-				{
-					word[temp]++;
-					sum++;//修改部分
+					flag++;
 				}
 				else
 				{
-					word[temp] = 1;
-					sum++;
-				}
-			}
-			if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
-			{
-				if (flag == 0)
-				{
-					if (mark == 0)
+					if (flag >= 4)
 					{
-						sstar = j;
-					}
-					if (mark == 1)
-					{
-						fstar = j;
-					}
-				}
-				start = j;
-				flag++;
-				lon = j;
-			}
-			else
-			{
-				if (flag >= 4)
-				{
-					if (abst[j] >= '0'&&abst[j] <= '9')
-					{
-						if (j == abst.length() - 1)
+						if (abst[j] >= '0'&&abst[j] <= '9')
 						{
-							flag++;
-							lon = j;
-						}
-						else
-						{
-							flag++;
-							lon = j;
-							continue;
-						}
-					}
-					if (start >= 1)//修改部分
-					{
-						if (abst[start - 1] >= '0'&&abst[start - 1] <= '9')
-						{
-							flag = 0;
-							mark = 0;
-							sstar = j;
-							fstar = j;
-							continue;
-						}
-					}
-					mark++;
-					if (mark == m)
-					{
-						temp = abst.substr(sstar, lon - sstar + 1);//截取合法词组
-						for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
-						{
-							if (temp[i] >= 'A'&&temp[i] <= 'Z')
+							if (j == abst.length() - 1)
 							{
-								temp[i] = temp[i] + 32;
+								flag++;
+							}
+							else
+							{
+								flag++;
+								continue;
 							}
 						}
-						if (word.count(temp))
+						if (star >= 1)//修改部分
 						{
-							word[temp]++;
-							sum++;//修改部分
+							if (abst[star - 1] >= '0'&&abst[star - 1] <= '9')
+							{
+								flag = 0;
+								continue;
+							}
 						}
-						else
+						//temp = abst.substr(star, flag);//截取合法单词
+						flag = 0;
+						mark = 1;
+						for (unsigned i = j; i < abst.length(); i++)
 						{
-							word[temp] = 1;
-							sum++;
-						}
-						if (sstar != 0)
-						{
-							j = sstar;
+							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
+							{
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = abst.substr(star, (i - star+1));//截取合法词组
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (word.count(temp))
+										{
+											word[temp]++;
+											sum++;//修改部分
+										}
+										else
+										{
+											word[temp] = 1;
+											sum++;
+										}
+									}
+								}
+								mark = 0;
+								flag = 0;
+								break;
+							}
+							if ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z'))
+							{
+								flag++;
+							}
+							else
+							{
+								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
+								{
+									continue;
+								}
+								if (flag < 4)
+								{
+									for (unsigned k = i; k < abst.length(); k++)
+									{
+										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
+										{
+											j = k - 1;
+											break;
+										}
+									}
+									break;
+								}
+								if (flag >= 4 && (abst[i] >= '0'&&abst[i] <= '9'))
+								{
+									continue;
+								}
+								mark++;
+								flag = 0;
+								if (mark - m == 0)
+								{
+									temp = abst.substr(star, (i - star));//截取合法词组
+									{
+										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
+										{
+											if (temp[g] >= 'A'&&temp[g] <= 'Z')
+											{
+												temp[g] = temp[g] + 32;
+											}
+										}
+										if (word.count(temp))
+										{
+											word[temp]++;
+											sum++;//修改部分
+											mark = 0;
+											flag = 0;
+										}
+										else
+										{
+											word[temp] = 1;
+											sum++;
+											mark = 0;
+											flag = 0;
+										}
+									}
+									mark = 0;
+									flag = 0;
+									break;
+								}
+							}
 						}
 					}
 				}
-				flag = 0;
-				lon = 0;
-				mark = 0;
 			}
+			turn = 0;
+			abst = "";
 		}
 	}
 	in.clear();//指针重新定位至文件头部 
@@ -1134,14 +1385,14 @@ int Statistics::characters(ifstream& in)//统计字符数
 	in.clear();//指针重新定位至文件头部 
 	in.seekg(0, ios::beg);
 	char ch;
-	cout << "rnum" << rnum << endl;
+	//cout << "rnum" << rnum << endl;
 	while (in.peek() != EOF)//按字符读取
 	{
 		in.get(ch);
 		if(ch=='\n')
 			rnum++;
 	}
-	cout << "rnum" << rnum << endl;
+	//cout << "rnum" << rnum << endl;
 	in.clear();//指针重新定位至文件头部 
 	in.seekg(0, ios::beg);
 	return num+rnum;
@@ -1149,6 +1400,7 @@ int Statistics::characters(ifstream& in)//统计字符数
 int Statistics::lines(ifstream& in)	//统计有效行数
 {
 	int line = 0;
+	int mark = 0;
 	string str;
 	while (getline(in, str))
 	{
@@ -1181,32 +1433,34 @@ void Statistics::set(ifstream& in,int w,int m)//调用统计功能
 	wnum = 0;
 	cnum = characters(in);
 	lnum = lines(in);
-	cout << "w=" << w << endl;
-	cout << "m=" << m << endl;
+	//cout << "w=" << w << endl;
+	//cout << "m=" << m << endl;
 	if (w == 0 && m >= 2)
 	{		
-		cout << "nwp" << endl;
+		//cout << "nwp" << endl;
 		wnum=nw_phrase(in,m);
 	}
 	if (w == 1 && m >= 2)
 	{	
-		cout << "wp" << endl;
+		//cout << "wp" << endl;
 		wnum=w_phrase(in,m);
 	}
 	if (w == 0 && m < 2)
 	{		
-		cout << "nww" << endl;
+		//cout << "nww" << endl;
 		wnum=nw_words(in);
 	}
 	if (w == 1 && m < 2)
 	{	
-		cout << "ww" << endl;
+		//cout << "ww" << endl;
 		wnum=w_words(in);
 	}
 }
 void Statistics::display(ofstream& out,int temp)//将结果(词频)输出至指定文档
 {
 	int n = 0;
+	int t;
+	int num = 0;
 	if (temp < 0)
 	{
 		n = 10;
@@ -1215,21 +1469,24 @@ void Statistics::display(ofstream& out,int temp)//将结果(词频)输出至指定文档
 	{
 		n = temp;
 	}
-	cout << "n=" << n << endl;
+	//cout << "n=" << n << endl;
 	out << "characters: " << cnum << endl;
+	//cout << "characters: " << cnum << endl;
 	out << "words: " << wnum << endl;
+	//cout << "words: " << wnum << endl;
 	out << "lines: " << lnum << endl;
+	//cout << "lines: " << lnum << endl;
 	map<string, int>::iterator it;
 	for (it = word.begin(); it != word.end(); it++)
 	{
-		int t = (*it).second;
+		t = (*it).second;
 		a.push_back(t);
+		num++;
 	}
 	sort(a.begin(), a.end(), cmp);
-	for (int i = 0; i < wnum && i < n; i++)//修改部分
+	for (int i = 0; i <num && i < n; i++)//修改部分
 	{
-
-		int t = a[i];
+		t = a[i];
 		for (it = word.begin(); it != word.end(); it++)
 		{
 			if ((*it).second == t)
