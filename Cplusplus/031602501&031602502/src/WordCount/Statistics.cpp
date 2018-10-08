@@ -83,10 +83,15 @@ void Statistics::calcString(string &str, int weight)	// 对给定字符串执行
 	string wordBuf = "";								// 单词缓存
 	list<string> phraseBuf;								// 词组缓存队列
 	string separatorBuf = "";							// 分隔符缓存
+	bool isLine = false;
 
 	while (i < str.size())
 	{
 		c = str[i];
+		if (c > 32)
+		{
+			isLine = true;
+		}
 		if (isLetter(c))								// 如果是字母，向后找到分隔符为止
 		{
 			wordBuf.clear();
@@ -134,6 +139,10 @@ void Statistics::calcString(string &str, int weight)	// 对给定字符串执行
 			i++;
 		}
 	}
+	if (isLine)
+	{
+		m_lineNum++;
+	}
 }
 
 void Statistics::calcAll()								// 对给定的所有文本内容fileContent执行统计功能
@@ -144,15 +153,6 @@ void Statistics::calcAll()								// 对给定的所有文本内容fileContent�
 		calcString(m_fileContent[i].abstract, 1);
 		
 		m_charNum += int(m_fileContent[i].title.size()) + int(m_fileContent[i].abstract.size());
-		
-		if (m_fileContent[i].title.size() > 0)
-		{
-			m_lineNum++;
-		}
-		if (m_fileContent[i].abstract.size() > 0)		// 排除空行的情况
-		{
-			m_lineNum++;
-		}
 	}
 	m_calculated = true;								// 已经执行过统计功能，将标记置为true
 }
