@@ -4,17 +4,15 @@
 #include <iostream>
 
 /*bug1：只会单词只会进入统计一次
- 修复方法：在char数组wordArray中多存一个单词，在达到(要求)个单词时存入phraseLength个单词， 每次读取词组后指针后移一个词缀的距离
+	修复方法：在char数组wordArray中多存一个单词，在达到(要求)个单词时存入phraseLength个单词， 每次读取词组后指针后移一个词缀的距离
   bug2：Abstract行末尾没有换行符时会少统计一次单词
- 修复方法：1.询问助教爬虫文件格式
- */
+	修复方法：1.询问助教爬虫文件格式
+  bug3：在词组长度为1时substr时会产生异常
+	修复方法：仅在phraseLength>1时进入词组判断
+  bug4：读取第二个文件是Title后tempChar不能正常读取字符
 
-/*测试用函数*/
-vector<pair<string, int>> InputFile::getOrderWord()
-{
-	if (orderWord.empty()) sortPair();
-	return orderWord;
-}
+  bug5：文件末尾会多读取一个字符
+ */
 
 InputFile::InputFile(string inputPath, int _phraseLength, int _weight, int _sortNum)
 {
@@ -104,6 +102,7 @@ void InputFile::readFile()
 	
 	while (inputFile.get(tempChar))
 	{
+		//inputFile >> tempChar;
 		/*通过crlfNum的值判断当前处于哪一行*/
 		switch (crlfNum)
 		{
@@ -136,6 +135,12 @@ void InputFile::readFile()
 		/*其余行：忽略当前行所有字符*/
 		default:
 			if (tempChar == '\n') crlfNum = (crlfNum + 1) % 5;
+			if (crlfNum == 4)
+			{
+				tag = 0;
+
+				tag = 0;
+			}
 			flag_count = false;
 			break;
 		}
@@ -164,14 +169,14 @@ void InputFile::readFile()
 			}
 			else if (!(tempChar >= '0' && tempChar <= '9')) 
 			{							
-				if (flag_numBefAlp && alpLength < 4) continue;	//如果前一个字符是数字且str数组开头连续字母数目<4,则一定不是单词，直接进行下一次读字符
-
+				if (flag_numBefAlp && alpLength < 4) continue;
 				if (tempChar >= 'A' && tempChar <= 'Z') tempChar = tempChar - 'A' + 'a';	
 				alpLength++;									//本单词开头的连续字母数目+1
-				if (alpLength == 1 && _phraseLength > 0)		/*新的单词读入，字符数组前一串为词缀*/
+				/*新的单词读入，字符数组前一串为词缀*/
+				if (alpLength == 1 && _phraseLength > 0 && phraseLength > 1)		
 				{
-					wordLength[tag] = tempInt;
-					tempInt = 0;
+					wordLength[tag] = tempInt;					//存入上一个词缀
+					tempInt = 0;								//重置当前词缀长度
 					tag = (tag + 1) % 10;
 				}
 			}
@@ -181,14 +186,13 @@ void InputFile::readFile()
 																/*读取字符为分隔符*/
 		else
 		{
+			if (flag_numBefAlp) flag_numBefAlp = false;
 			/*分隔符前是一个完整的单词*/
 			if (alpLength >= 4)
 			{
-				_phraseLength++;	
+				_phraseLength++;								//数组中单词个数+1
 				_wordNum++;
 				tempInt++;
-
-				cout << wordArray << endl;
 
 				/*单词个数满足词组个数要求*/
 																//满足要求应将当前词组存入phrase，并将后两个词缀留在数组
@@ -204,19 +208,23 @@ void InputFile::readFile()
 					else phraseMap[phrase] = _weight;
 				
 					/*将后两个词缀留在数组*/
-					tempTag = tag - phraseLength + 1;
-					if (tempTag < 0) tempTag += 10;
-					phrase = phrase.substr(wordLength[tempTag]);
-					strcpy_s(wordArray, phrase.c_str());
-					arrayLength -= (wordLength[tempTag]);		//相当于字符数组指针后移一个词缀的长度
+					if (phraseLength > 1)
+					{
+						tempTag = tag - phraseLength + 1;
+						if (tempTag < 0) tempTag += 10;
+						phrase = phrase.substr(wordLength[tempTag]);
+						strcpy_s(wordArray, phrase.c_str());
+						arrayLength -= (wordLength[tempTag]);	//相当于字符数组指针后移一个词缀的长度
+					}
 
 					_phraseLength--;							//字符数组中词缀数目-1
 				}
-				wordArray[arrayLength++] = tempChar;
+				if (phraseLength > 1) wordArray[arrayLength++] = tempChar;
+				else arrayLength = 0;
 				alpLength = 0;
 			}
 			/*分隔符在起词组间分割单词作用，需保存*/
-			else if (alpLength == 0 && _phraseLength > 0)
+			else if (alpLength == 0 && _phraseLength > 0 && phraseLength > 1)
 			{
 				wordArray[arrayLength++] = tempChar;
 				tempInt++;
@@ -256,19 +264,68 @@ void InputFile::readFile()
 		}
 	}
 	
+	/*文件最后一行为Abstract时需额外判断(最后一个单词末尾可能没有分隔符)*/
+	if (flag_hasCrt)
+	{
+		_lineNum++;
+		flag_hasCrt = false;
+	}
+	if (alpLength >= 4)
+	{
+		_phraseLength++;
+		_wordNum++;
+		tempInt++;
+
+		/*单词个数满足词组个数要求*/
+														//满足要求应将当前词组存入phrase，并将后两个词缀留在数组
+		if (_phraseLength == phraseLength)
+		{
+			/*词组存至phrase*/
+			wordArray[arrayLength] = 0;
+			phrase = wordArray;
+
+			/*词组存入无序容器*/
+			itor = phraseMap.find(phrase);
+			if (itor != phraseMap.end()) itor->second += _weight;
+			else phraseMap[phrase] = _weight;
+
+			/*将后两个词缀留在数组*/
+			if (phraseLength > 1)
+			{
+				tempTag = tag - phraseLength + 1;
+				if (tempTag < 0) tempTag += 10;
+				phrase = phrase.substr(wordLength[tempTag]);
+				strcpy_s(wordArray, phrase.c_str());
+				//arrayLength -= (wordLength[tempTag]);		//相当于字符数组指针后移一个词缀的长度
+			}
+			_phraseLength--;							//字符数组中词缀数目-1
+		}
+
+		alpLength = 0;
+	}
+
 	lineNum = _lineNum;
 	crtNum = _crtNum;
 	wordNum = _wordNum;
 }
 
 /*将单词按要求排序后保存到orderWord容器中*/
-void InputFile::sortPair() {
+void InputFile::sortPair() 
+{
 	/*通过迭代器将unordered_map中的pair数据复制到vector中*/
 	for (itor = phraseMap.begin(); itor != phraseMap.end(); itor++) {
 		orderWord.push_back(make_pair(itor->first, itor->second));
+		//cout << "<" << itor->first << ", " << itor->second << ">" << endl;
 	}
 	size_t i = phraseMap.size();	
 	if (i > sortNum) i = sortNum;
 	/*通过paritial_sort函数对vector中的单词按题目要求排序*/
 	partial_sort(orderWord.begin(), orderWord.begin() + i, orderWord.end(), PhraseCmp());
+}
+
+/*测试用函数*/
+vector<pair<string, int>> InputFile::getOrderWord()
+{
+	if (orderWord.empty()) sortPair();
+	return orderWord;
 }
