@@ -31,6 +31,7 @@ private:
 	vector<pair<string, int>> orderWord;				//按序存放词组的容器
 
 	/*InputFile类内部变量*/
+	bool hasSort;
 	bool hasCount;										//判断是否统计过单词数
 	bool hasOpenFile;
 	ifstream inputFile;

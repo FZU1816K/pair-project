@@ -24,6 +24,7 @@ InputFile::InputFile(string inputPath, int _phraseLength, int _weight, int _sort
 	phraseLength = _phraseLength;
 	weight = _weight;
 	hasCount = false;	
+	hasSort = false;
 
 	inputFile.open(inputPath, ios::in);
 
@@ -87,7 +88,7 @@ void InputFile::readFile()
 	char tempChar;											
 	int alpLength = 0;											//单个单词中字母长度
 	bool flag_numBefAlp = false;								//判断字母前是否存在数字
-	char wordArray[100];										//存放词组的数组	
+	char wordArray[500];										//存放词组的数组	
 	int arrayLength = 0;										//数组长度(用于char数组转string)
 
 
@@ -135,12 +136,6 @@ void InputFile::readFile()
 		/*其余行：忽略当前行所有字符*/
 		default:
 			if (tempChar == '\n') crlfNum = (crlfNum + 1) % 5;
-			if (crlfNum == 4)
-			{
-				tag = 0;
-
-				tag = 0;
-			}
 			flag_count = false;
 			break;
 		}
@@ -311,7 +306,8 @@ void InputFile::readFile()
 
 /*将单词按要求排序后保存到orderWord容器中*/
 void InputFile::sortPair() 
-{
+{	
+	hasSort = true;
 	/*通过迭代器将unordered_map中的pair数据复制到vector中*/
 	for (itor = phraseMap.begin(); itor != phraseMap.end(); itor++) {
 		orderWord.push_back(make_pair(itor->first, itor->second));
@@ -326,6 +322,6 @@ void InputFile::sortPair()
 /*测试用函数*/
 vector<pair<string, int>> InputFile::getOrderWord()
 {
-	if (orderWord.empty()) sortPair();
+	if (!hasSort) sortPair();
 	return orderWord;
 }
