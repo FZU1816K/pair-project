@@ -17,6 +17,8 @@ vector<pair<string, int>> wordRank;
 
 extern int phraseLen;
 extern int topN;
+extern int charAmount;
+extern int lineAmount;
 
 bool inTitle = false;
 bool inAbstract = false;
@@ -359,6 +361,7 @@ int CountWord(string inputFilename, bool weightOn)
 		{
 			inTitle = true;
 			oneLine = oneLine.substr(7, oneLine.length());
+			lineAmount += 1;
 			//stringCut(oneLine);
 			stringCutWithLen(oneLine,phraseLen);
 			inTitle = false;
@@ -367,12 +370,15 @@ int CountWord(string inputFilename, bool weightOn)
 		else if (oneLine.substr(0, 10) == "Abstract: ")
 		{
 			oneLine = oneLine.substr(10, oneLine.length());
+			lineAmount += 1;
 			//stringCut(oneLine);
 			stringCutWithLen(oneLine,phraseLen);
 		}
 	}
 	//showResult();
 	topNword(topN);
+	cout << "char:" << charAmount << endl;
+	cout << "line:" << lineAmount << endl;
 	//cout << wordFrequency["hello"] << endl;
 	return 0;
 }

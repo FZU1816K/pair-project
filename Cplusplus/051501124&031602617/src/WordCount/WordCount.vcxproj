@@ -152,11 +152,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="arg_handle.h" />
+    <ClInclude Include="CountChar.h" />
     <ClInclude Include="CountWords.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="arg_handle.cpp" />
+    <ClCompile Include="CountChar.cpp" />
     <ClCompile Include="CountWord.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
