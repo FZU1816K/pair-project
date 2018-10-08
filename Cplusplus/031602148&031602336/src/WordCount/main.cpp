@@ -60,6 +60,6 @@ int main(int argc, char *argv[])
 	s.display(outfile,n);
 	infile.close();
 	outfile.close();
-	//system("pause");
+	system("pause");
 	return 0;
 }

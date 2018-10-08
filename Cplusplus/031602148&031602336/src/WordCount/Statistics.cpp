@@ -69,6 +69,7 @@ int Statistics::w_words(ifstream& in)//统计权重单词
 						temp[i] = temp[i] + 32;
 					}
 				}
+				sum++;
 				if (t == 1 && a == 0)
 				{
 					if (trecord.count(temp))
@@ -304,7 +305,7 @@ int Statistics::nw_words(ifstream& in)//统计无权重单词
 			}
 		}
 	}
-	cout << "sum=" << sum << endl;
+	//cout << "sum=" << sum << endl;
 	in.clear();//指针重新定位至文件头部 
 	in.seekg(0, ios::beg);
 	return sum;
@@ -317,13 +318,13 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 	string abst = "";
 	string te = "";
 	int flag = 0;
-	int sum = 0;
 	int start = 0;
 	int t = 0;
 	int a = 0;
 	int turn = 0;
 	int mark = 0;
 	int star = 0;
+	int sum = get_wnum(in);
 	while (getline(in, str))//逐行读取
 	{
 		te = str;
@@ -341,7 +342,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				if (j == abst.length() - 1 && flag >= 4)
+				if (j == abst.length() - 1 && flag >= 3 && ((abst[abst.length() - 1] >= 'a'&&abst[abst.length() - 1] <= 'z') || (abst[abst.length() - 1] >= 'A'&&abst[abst.length() - 1] <= 'Z')))
 				{
 					sum++;
 				}
@@ -424,7 +425,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 							else
 							{
-								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
+								if (flag == 0 && !(abst[i] >= 'a'&&abst[i] <= 'z') && !(abst[i] >= 'A'&&abst[i] <= 'Z') && !(abst[i] >= '0'&&abst[i] <= '9'))
 								{
 									continue;
 								}
@@ -434,6 +435,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 									{
 										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
 										{
+											flag = 0;
 											j = k - 1;
 											break;
 										}
@@ -496,9 +498,9 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			//cout << titl << endl;
 			for (unsigned j = 0; j < titl.length(); j++)//提取合法词组并统计 
 			{
-				if (j == titl.length() - 1 && flag >= 4)
+				if (j == titl.length() - 1 && flag >= 3 && ((titl[titl.length() - 1] >= 'a'&&titl[titl.length() - 1] <= 'z') || (titl[titl.length() - 1] >= 'A'&&titl[titl.length() - 1] <= 'Z')))
 				{
-					sum++;
+					//sum++;
 				}
 				if (titl[j] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
 				{
@@ -538,7 +540,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 						}
 						//temp = titl.substr(star, flag);//截取合法单词
-						sum++;
+						//sum++;
 						flag = 0;
 						mark = 1;
 						for (unsigned i = j; i < titl.length(); i++)
@@ -583,7 +585,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 							else
 							{
-								if (flag == 0 && ((titl[i] < '0') || (titl[i] > '9'&&titl[i] < 'A') || (titl[i] > 'Z'&&titl[i] < 'a') && (titl[i] > 'z')))
+								if (flag == 0 && !(titl[i] >= 'a'&&titl[i] <= 'z') && !(titl[i] >= 'A'&&titl[i] <= 'Z') && !(titl[i] >= '0'&&titl[i] <= '9'))
 								{
 									continue;
 								}
@@ -593,6 +595,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 									{
 										if ((titl[k] >= 'a'&&titl[k] <= 'z') || (titl[k] >= 'A'&&titl[k] <= 'Z'))
 										{
+											flag = 0;
 											j = k - 1;
 											break;
 										}
@@ -639,6 +642,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 						}
 					}
+					flag = 0;
 				}
 			}
 			titl = "";
@@ -668,9 +672,9 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				if (j == abst.length() - 1 && flag >= 4)
+				if (j == abst.length() - 1 && flag >= 3 && ((abst[abst.length() - 1] >= 'a'&&abst[abst.length() - 1] <= 'z') || (abst[abst.length() - 1] >= 'A'&&abst[abst.length() - 1] <= 'Z')))
 				{
-					sum++;
+					//sum++;
 				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
@@ -712,7 +716,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 						//temp = abst.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
-						sum++;
+						//sum++;
 						for (unsigned i = j; i < abst.length(); i++)
 						{
 							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
@@ -751,7 +755,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 							else
 							{
-								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
+								if (flag == 0 && !(abst[i] >= 'a'&&abst[i] <= 'z') && !(abst[i] >= 'A'&&abst[i] <= 'Z') && !(abst[i] >= '0'&&abst[i] <= '9'))
 								{
 									continue;
 								}
@@ -761,6 +765,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 									{
 										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
 										{
+											flag = 0;
 											j = k - 1;
 											break;
 										}
@@ -804,6 +809,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 						}
 					}
+					flag = 0;
 				}
 			}
 			turn = 0;
@@ -846,13 +852,13 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 	string abst="";
 	string te="";
 	int flag = 0;
-	int sum = 0;
 	int start = 0;
 	int t=0;
 	int a=0;
 	int turn = 0;
 	int mark=0;
-	int star=0;
+	int star=0;	
+	int sum = get_wnum(in);
 	while (getline(in, str))//逐行读取
 	{
 		te = str;
@@ -870,9 +876,9 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				if (j == abst.length() - 1 && flag >= 4)
+				if (j == abst.length() - 1 && flag >= 3&&((abst[abst.length() - 1]>='a'&&abst[abst.length() - 1] <= 'z')|| (abst[abst.length() - 1] >= 'A'&&abst[abst.length() - 1] <= 'Z')))
 				{
-					sum++;
+					//sum++;
 				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
@@ -914,7 +920,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						//temp = abst.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
-						sum++;
+						//sum++;
 						for (unsigned i = j; i < abst.length(); i++)
 						{
 							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
@@ -953,7 +959,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 							}
 							else
 							{
-								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
+								if (flag == 0 && !(abst[i] >= 'a'&&abst[i] <= 'z') && !(abst[i] >= 'A'&&abst[i] <= 'Z')&& !(abst[i] >= '0'&&abst[i] <= '9'))
 								{
 									continue;
 								}
@@ -963,6 +969,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 									{
 										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
 										{
+											flag = 0;
 											j = k - 1;
 											break;
 										}
@@ -1006,6 +1013,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 							}
 						}
 					}
+					flag = 0;
 				}
 			}
 			turn = 0;
@@ -1025,9 +1033,9 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			//cout << titl << endl;
 			for (unsigned j = 0; j < titl.length(); j++)//提取合法词组并统计 
 			{
-				if (j == titl.length() - 1 && flag >= 4)
+				if (j == titl.length() - 1 && flag >= 3 && ((titl[titl.length() - 1] >= 'a'&&titl[titl.length() - 1] <= 'z') || (titl[titl.length() - 1] >= 'A'&&titl[titl.length() - 1] <= 'Z')))
 				{
-					sum++;
+					//sum++;
 				}
 				if (titl[j] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
 				{
@@ -1069,7 +1077,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						//temp = titl.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
-						sum++;
+						//sum++;
 						for (unsigned i = j; i < titl.length(); i++)
 						{
 							if (i == titl.length() - 1 && ((titl[i] >= 'a'&&titl[i] <= 'z') || (titl[i] >= 'A'&&titl[i] <= 'Z')) && flag >= 3)//特殊处理
@@ -1112,7 +1120,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 							}
 							else
 							{
-								if (flag==0&&((titl[i] < '0') || (titl[i] > '9'&&titl[i] < 'A') || (titl[i] > 'Z'&&titl[i] < 'a') && (titl[i] > 'z')))
+								if (flag == 0 && !(titl[i] >= 'a'&&titl[i] <= 'z') && !(titl[i] >= 'A'&&titl[i] <= 'Z') && !(titl[i] >= '0'&&titl[i] <= '9'))
 								{
 									continue;
 								}
@@ -1122,6 +1130,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 									{
 										if ((titl[k]>='a'&&titl[k]<='z')||(titl[k]>='A'&&titl[k]<='Z'))
 										{
+											flag = 0;
 											j = k - 1;
 											break;
 										}
@@ -1168,6 +1177,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 							}
 						}
 					}
+					flag = 0;
 				}
 			}
 			titl = "";
@@ -1197,9 +1207,9 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
-				if (j == abst.length() - 1 && flag >= 4)
+				if (j == abst.length() - 1 && flag >= 3 && ((abst[abst.length() - 1] >= 'a'&&abst[abst.length() - 1] <= 'z') || (abst[abst.length() - 1] >= 'A'&&abst[abst.length() - 1] <= 'Z')))
 				{
-					sum++;
+					//sum++;
 				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
@@ -1241,7 +1251,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						//temp = abst.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
-						sum++;
+						//sum++;
 						for (unsigned i = j; i < abst.length(); i++)
 						{
 							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
@@ -1280,7 +1290,7 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 							}
 							else
 							{
-								if (flag == 0 && ((abst[i] < '0') || (abst[i] > '9'&&abst[i] < 'A') || (abst[i] > 'Z'&&abst[i] < 'a') && (abst[i] > 'z')))
+								if (flag == 0 && !(abst[i] >= 'a'&&abst[i] <= 'z') && !(abst[i] >= 'A'&&abst[i] <= 'Z') && !(abst[i] >= '0'&&abst[i] <= '9'))
 								{
 									continue;
 								}
@@ -1290,7 +1300,9 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 									{
 										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
 										{
-											j = k - 1;
+											flag = 0;
+											j = k -2;
+											//cout <<"abst:   "<< abst[j] << endl;
 											break;
 										}
 									}
@@ -1333,10 +1345,95 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 							}
 						}
 					}
+					flag = 0;
 				}
 			}
 			turn = 0;
 			abst = "";
+		}
+	}
+	in.clear();//指针重新定位至文件头部 
+	in.seekg(0, ios::beg);
+	return sum;
+}
+int Statistics::get_wnum(ifstream& in)//在词组统计时获取单词数
+{
+	string str;
+	string te;
+	int flag = 0;
+	int sum = 0;
+	int star = 0;
+	while (getline(in, str))//逐行读取
+	{
+		te = str;
+		te.erase(std::remove(te.begin(), te.end(), ' '), te.end());//删除一行中的空格
+		te.erase(std::remove(te.begin(), te.end(), '\t'), te.end());//删除一行中的制表符
+		if (te.length() == 0)
+		{
+			continue;
+		}
+		flag = 0;
+		for (unsigned j = 0; j < str.length(); j++)//提取合法单词并统计 
+		{
+			if (str[j] == 'A'&&str[j + 1] == 'b'&&str[j + 2] == 's'&&str[j + 3] == 't'&&str[j + 4] == 'r' &&str[j + 5] == 'a' &&str[j + 6] == 'c' &&str[j + 7] == 't' && (str[j + 8] == ':' || str[j + 8] == '：'))
+			{
+				j = 9;
+				continue;
+			}
+			if (str[j] == 'T'&&str[j + 1] == 'i'&&str[j + 2] == 't'&&str[j + 3] == 'l'&&str[j + 4] == 'e' && (str[j + 5] == ':' || str[j + 5] == '：'))
+			{
+				j = 6;
+				continue;
+			}
+			if (j == str.length() - 1 && ((str[j] >= 'a'&&str[j] <= 'z') || (str[j] >= 'A'&&str[j] <= 'Z')) && flag >= 3)//特殊处理
+			{
+				flag++;
+				if (star >= 1)//修改部分
+				{
+					if (str[star - 1] >= '0'&&str[star - 1] <= '9')
+					{
+						flag = 0;
+						continue;
+					}
+				}
+				sum++;
+			}
+			if ((str[j] >= 'a'&&str[j] <= 'z') || (str[j] >= 'A'&&str[j] <= 'Z'))
+			{
+				if (flag == 0)
+				{
+					star = j;
+				}
+				flag++;
+			}
+			else
+			{
+				if (flag >= 4)
+				{
+					if (str[j] >= '0'&&str[j] <= '9')
+					{
+						if (j == str.length() - 1)
+						{
+							flag++;
+						}
+						else
+						{
+							flag++;
+							continue;
+						}
+					}
+					if (star >= 1)//修改部分
+					{
+						if (str[star - 1] >= '0'&&str[star - 1] <= '9')
+						{
+							flag = 0;
+							continue;
+						}
+					}
+					sum++;
+				}
+				flag = 0;
+			}
 		}
 	}
 	in.clear();//指针重新定位至文件头部 
@@ -1473,6 +1570,7 @@ void Statistics::display(ofstream& out,int temp)//将结果(词频)输出至指定文档
 	int n = 0;
 	int t;
 	int num = 0;
+	//int test = 0;
 	if (temp < 0)
 	{
 		n = 10;
@@ -1494,7 +1592,9 @@ void Statistics::display(ofstream& out,int temp)//将结果(词频)输出至指定文档
 		t = (*it).second;
 		a.push_back(t);
 		num++;
+		//test=test+ (*it).second;
 	}
+	//cout << test<<endl;
 	sort(a.begin(), a.end(), cmp);
 	for (int i = 0; i <num && i < n; i++)//修改部分
 	{

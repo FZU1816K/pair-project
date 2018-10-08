@@ -22,6 +22,7 @@ public:
 	int	w_words(ifstream& in);//统计权重单词
 	int	nw_phrase(ifstream& in,int m);//统计无权重词组
 	int	w_phrase(ifstream& in,int m);//统计权重词组
+	int get_wnum(ifstream& in);
 private:
 	int cnum;//字符数
 	int wnum;//单词数
