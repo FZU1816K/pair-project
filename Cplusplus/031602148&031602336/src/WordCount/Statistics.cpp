@@ -341,6 +341,10 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
+				if (j == abst.length() - 1 && flag >= 4)
+				{
+					sum++;
+				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
 					j = 9;
@@ -379,6 +383,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 						}
 						//temp = abst.substr(star, flag);//截取合法单词
+						sum++;
 						flag = 0;
 						mark = 1;
 						for (unsigned i = j; i < abst.length(); i++)
@@ -387,6 +392,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							{
 								mark++;
 								flag = 0;
+								//sum++;
 								if (mark - m == 0)
 								{
 									temp = abst.substr(star, (i - star + 1));//截取合法词组
@@ -401,12 +407,10 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 										if (arecord.count(temp))
 										{
 											arecord[temp]++;
-											sum++;//修改部分
 										}
 										else
 										{
 											arecord[temp] = 1;
-											sum++;
 										}
 									}
 								}
@@ -456,14 +460,12 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 										if (arecord.count(temp))
 										{
 											arecord[temp]++;
-											sum++;//修改部分
 											mark = 0;
 											flag = 0;
 										}
 										else
 										{
 											arecord[temp] = 1;
-											sum++;
 											mark = 0;
 											flag = 0;
 										}
@@ -494,6 +496,10 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			//cout << titl << endl;
 			for (unsigned j = 0; j < titl.length(); j++)//提取合法词组并统计 
 			{
+				if (j == titl.length() - 1 && flag >= 4)
+				{
+					sum++;
+				}
 				if (titl[j] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
 				{
 					j = 6;
@@ -532,6 +538,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							}
 						}
 						//temp = titl.substr(star, flag);//截取合法单词
+						sum++;
 						flag = 0;
 						mark = 1;
 						for (unsigned i = j; i < titl.length(); i++)
@@ -540,6 +547,7 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 							{
 								mark++;
 								flag = 0;
+								//sum++;
 								if (mark - m == 0)
 								{
 									temp = titl.substr(star, (i - star + 1));//截取合法词组
@@ -558,12 +566,10 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 										if (trecord.count(temp))
 										{
 											trecord[temp]++;
-											sum++;//修改部分
 										}
 										else
 										{
 											trecord[temp] = 1;
-											sum++;
 										}
 									}
 								}
@@ -616,14 +622,12 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 										if (trecord.count(temp))
 										{
 											trecord[temp]++;
-											sum++;//修改部分
 											mark = 0;
 											flag = 0;
 										}
 										else
 										{
 											trecord[temp] = 1;
-											sum++;
 											mark = 0;
 											flag = 0;
 										}
@@ -664,6 +668,10 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
+				if (j == abst.length() - 1 && flag >= 4)
+				{
+					sum++;
+				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
 					j = 9;
@@ -704,12 +712,14 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 						//temp = abst.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
+						sum++;
 						for (unsigned i = j; i < abst.length(); i++)
 						{
 							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
 								mark++;
 								flag = 0;
+								//sum++;
 								if (mark - m == 0)
 								{
 									temp = abst.substr(star, (i - star + 1));//截取合法词组
@@ -724,12 +734,10 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 										if (arecord.count(temp))
 										{
 											arecord[temp]++;
-											sum++;//修改部分
 										}
 										else
 										{
 											arecord[temp] = 1;
-											sum++;
 										}
 									}
 								}
@@ -779,14 +787,12 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 										if (arecord.count(temp))
 										{
 											arecord[temp]++;
-											sum++;//修改部分
 											mark = 0;
 											flag = 0;
 										}
 										else
 										{
 											arecord[temp] = 1;
-											sum++;
 											mark = 0;
 											flag = 0;
 										}
@@ -864,6 +870,10 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
+				if (j == abst.length() - 1 && flag >= 4)
+				{
+					sum++;
+				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
 					j = 9;
@@ -904,12 +914,14 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						//temp = abst.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
+						sum++;
 						for (unsigned i = j; i < abst.length(); i++)
 						{
 							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
 								mark++;
 								flag = 0;
+								//sum++;
 								if (mark - m == 0)
 								{
 									temp = abst.substr(star, (i - star+1));//截取合法词组
@@ -924,12 +936,10 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 										if (word.count(temp))
 										{
 											word[temp]++;
-											sum++;//修改部分
 										}
 										else
 										{
 											word[temp] = 1;
-											sum++;
 										}
 									}
 								}
@@ -979,14 +989,12 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 										if (word.count(temp))
 										{
 											word[temp]++;
-											sum++;//修改部分
 											mark = 0;
 											flag = 0;
 										}
 										else
 										{
 											word[temp] = 1;
-											sum++;
 											mark = 0;
 											flag = 0;
 										}
@@ -1017,6 +1025,10 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			//cout << titl << endl;
 			for (unsigned j = 0; j < titl.length(); j++)//提取合法词组并统计 
 			{
+				if (j == titl.length() - 1 && flag >= 4)
+				{
+					sum++;
+				}
 				if (titl[j] == 'T'&&titl[j + 1] == 'i'&&titl[j + 2] == 't'&&titl[j + 3] == 'l'&&titl[j + 4] == 'e' && (titl[j + 5] == ':' || titl[j + 5] == '：'))
 				{
 					j = 6;
@@ -1057,12 +1069,14 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						//temp = titl.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
+						sum++;
 						for (unsigned i = j; i < titl.length(); i++)
 						{
 							if (i == titl.length() - 1 && ((titl[i] >= 'a'&&titl[i] <= 'z') || (titl[i] >= 'A'&&titl[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
 								mark++;
 								flag = 0;
+								//sum++;
 								if (mark - m == 0)
 								{
 									temp = titl.substr(star, (i - star+1));//截取合法词组
@@ -1081,12 +1095,10 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 										if (word.count(temp))
 										{
 											word[temp]++;
-											sum++;//修改部分
 										}
 										else
 										{
 											word[temp] = 1;
-											sum++;
 										}
 									}
 								}
@@ -1139,14 +1151,12 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 										if (word.count(temp))
 										{
 											word[temp]++;
-											sum++;//修改部分
 											mark = 0;
 											flag = 0;
 										}
 										else
 										{
 											word[temp] = 1;
-											sum++;
 											mark = 0;
 											flag = 0;
 										}
@@ -1187,6 +1197,10 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			//cout << abst << endl;
 			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
 			{
+				if (j == abst.length() - 1 && flag >= 4)
+				{
+					sum++;
+				}
 				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
 				{
 					j = 9;
@@ -1227,12 +1241,14 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 						//temp = abst.substr(star, flag);//截取合法单词
 						flag = 0;
 						mark = 1;
+						sum++;
 						for (unsigned i = j; i < abst.length(); i++)
 						{
 							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
 							{
 								mark++;
 								flag = 0;
+								//sum++;
 								if (mark - m == 0)
 								{
 									temp = abst.substr(star, (i - star+1));//截取合法词组
@@ -1247,12 +1263,10 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 										if (word.count(temp))
 										{
 											word[temp]++;
-											sum++;//修改部分
 										}
 										else
 										{
 											word[temp] = 1;
-											sum++;
 										}
 									}
 								}
@@ -1302,14 +1316,12 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 										if (word.count(temp))
 										{
 											word[temp]++;
-											sum++;//修改部分
 											mark = 0;
 											flag = 0;
 										}
 										else
 										{
 											word[temp] = 1;
-											sum++;
 											mark = 0;
 											flag = 0;
 										}
@@ -1492,7 +1504,7 @@ void Statistics::display(ofstream& out,int temp)//将结果(词频)输出至指定文档
 			if ((*it).second == t)
 			{
 				out << "<" << (*it).first << ">: " << t << endl;
-				cout << "<" << (*it).first << ">: " << t << endl;
+				//cout << "<" << (*it).first << ">: " << t << endl;
 				(*it).second = 0;
 				break;
 			}
