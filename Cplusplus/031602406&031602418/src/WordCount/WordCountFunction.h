@@ -20,14 +20,14 @@ else if (ch >= 'A'&&ch <= 'Z')
 return true;
 else
 return false;
-}
+}*/
 bool digit(char ch)
 {
 if (ch >= '0'&&ch <= '9')
 return true;
 else
 return false;
-}*/
+}
 
 class WordCount
 {
@@ -35,16 +35,19 @@ public:
 	int numChar = 0;
 	int numWords = 0;
 	int numLines = 0;
-	char Filename[100];
-	void count1(ifstream& in)  //×Ö·ûÊıºÍĞĞÊı
+	void count1(ifstream& in)  //ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	{
 		char ch;
 		bool fg = true;
-
+		bool isdig = false;
 		while ((ch = in.get()) != EOF)
 		{
 			numChar++;
-			if (ch != '\n'&&ch != '\t'&&ch != ' '&&fg == true)
+			if(digit(ch))
+			{
+				isdig=true;
+			}
+			if ((!isdig)&&ch != '\n'&&ch != '\t'&&ch != ' '&&fg == true)
 			{
 				numLines++;
 				fg = false;
@@ -57,12 +60,13 @@ public:
 					fg = true;
 				}
 			}
+			isdig = false;
 		}
-		in.clear();//·µ»ØÎÄ¼ş¿ªÊ¼
+		in.clear();//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê¼
 		in.seekg(0);
 	}
 
-	void count2(ifstream& in, int weight)  //¼ÓÈ¨µ¥´ÊÊıÍ³¼Æ
+	void count2(ifstream& in, int weight)  //ï¿½ï¿½È¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½
 	{
 		string ss;
 		string str;
@@ -110,7 +114,7 @@ public:
 
 
 				unordered_map<string, int>::iterator it = My.find(stemp);
-					if (weight == 1) //ÓĞÈ¨ÖØ
+					if (weight == 1) //ï¿½ï¿½È¨ï¿½ï¿½
 					{
 						if (it == My.end())
 						{
@@ -136,7 +140,7 @@ public:
 							}
 						}
 					}
-				if (weight == 0)//ÎŞÈ¨ÖØ
+				if (weight == 0)//ï¿½ï¿½È¨ï¿½ï¿½
 				{
 					if (it == My.end())
 					{
@@ -157,11 +161,11 @@ public:
 		string ss;
 		string str;
 		string stemp, temp;
-		string cpwtp;
+		string cpwtp;//è¯ç»„
 		string strarr[10000];
 		int strnum;
 		//char ct[10000][100];
-		while (getline(in, str))
+		while (getline(in, str))//è¯»å–ä¸€è¡Œ
 		{
 			str.append(temp);
 			temp.clear();
@@ -174,7 +178,7 @@ public:
 					str[i] = ' ';
 			}
 			stringstream ss(str);
-			while (ss >> stemp)
+			while (ss >> stemp) //é€ä¸ªè¯»å–å•è¯
 			{
 				for (int i = 0; i < stemp.length(); i++)
 				{
@@ -192,13 +196,14 @@ public:
 					continue;
 				}
 				numWords++;
-				strarr[strnum] = stemp;
+				strarr[strnum] = stemp;//å°†æ¯ä¸€è¡Œçš„å•è¯é€ä¸ªå­˜å…¥å­—ç¬¦ä¸²æ•°ç»„ä¸­
 				//ct[strnum][100] = stemp;
 				strnum++;
 			}
 			int pn = 0;
-			for (int i = 0; i < strnum - cpw + 1; i++)
+			for (int i = 0; i < strnum - cpw + 1; i++) //éå†strarr,æ¯cpwä¸ªå•è¯åˆå¹¶
 			{
+				cpwtp = "";
 				for (int j = 0; j < cpw; j++)
 				{
 					//string tstrtp= ct[i + j + 1][100] ;
@@ -218,7 +223,7 @@ public:
 					My3[cpwtp]++;
 				}
 				for (int z = 0; z < 10000; z++)
-					strarr[z].clear;
+					strarr[z].clear();
 			}
 		}
 	}

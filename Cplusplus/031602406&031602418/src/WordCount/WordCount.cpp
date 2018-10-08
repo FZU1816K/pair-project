@@ -30,11 +30,13 @@ int main(int argc, char* argv[])
 	if (argc == 0)
 	{
 		cout << "Error:argc=0!" << endl;
+		system("pause");
 		exit(1);
 	}
 	else if (argc == 1)
 	{
 		cout << "Error:argc=1!" << endl;
+		system("pause");
 		exit(1);
 	}
 
@@ -64,7 +66,7 @@ int main(int argc, char* argv[])
 					weight = 0;
 				break;
 			case 'n':  //前n多频率
-				sscanf(argv[i + 1], "%d", &topn);//字符串数字转int
+				sscanf_s(argv[i + 1], "%d", &topn);//字符串数字转int
 
 				/*if (strlen(argv[i + 1]) == 1)
 				 {
@@ -77,7 +79,7 @@ int main(int argc, char* argv[])
 					 topn = atoi(argv[i + 1]);*/
 				break;
 			case 'm':  //词组长度
-				sscanf(argv[i + 1], "%d", &cpw);
+				sscanf_s(argv[i + 1], "%d", &cpw);
 				/*if (strlen(argv[i + 1]) == 1)
 				{
 				cpw = atoi(argv[i + 1]);
@@ -95,11 +97,13 @@ int main(int argc, char* argv[])
 	if (in.fail())
 	{
 		cout << "open input file failed!" << endl;
+		system("pause");
 		exit(1);
 	}
 	if (!out.is_open())
 	{
 		cout << "open output file error!";
+		system("pause");
 		exit(1);
 	}
 	if (in.is_open())
@@ -130,5 +134,6 @@ int main(int argc, char* argv[])
 
 	in.close();
 	out.close();
+	system("pause");
 	return 0;
 }
