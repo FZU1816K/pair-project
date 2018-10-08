@@ -4,6 +4,7 @@
 #include "../WordCount/Paper.h"
 #include "../WordCount/Statistics.h"
 #include "../WordCount/ArgProcessing.h"
+#include<stdio.h>
 
 #include<functional>
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
@@ -104,18 +105,79 @@ namespace UnitTestForWordCount
 			Statistics st(fileContent, useTitleWeight, phraseLen);
 			Assert::IsTrue(st.getCharNumber() == 74);
 		}
-		TEST_METHOD(TestFor_getTopPhrase)
+		TEST_METHOD(TestFor_getTopPhrase_1)
 		{
-			const char* inputfile = "TopPhrase(nw)_test.txt";
+			const char* inputfile = "TopPhrase_3(nw)_test.txt";
 			vector<Paper> fileContent;
-			int phraseLen = 1;
+			int topnum = 10;
+			int phraseLen = 3;
 			bool useTitleWeight = false;
 			bool showInConsole = false;
 			FileIO::readFile(fileContent, inputfile, showInConsole);
 			Statistics st(fileContent, useTitleWeight, phraseLen);
-
-			Assert::IsTrue(st.getCharNumber() == 74);
+			string answer[10] ={
+			"abcd_abcd_abcd","abcd_abcd.then",
+			"else_todo_abcd","then_else_todo","todo_abcd_abcd",
+			"abcd.abcd.abcd","abcd.then,else","abcd.then_else",
+			"abcd_abcd.abcd","then,else;todo"};
+			int frequence[10] = {9,6,6,6,6,3,3,3,3,3};
+			vector<unordered_map<string, int>::iterator> &tem = st.getTopPhrase(topnum);
+			//FILE *fp = NULL;
+			//fopen_s(&fp, "asd.txt", "w");
+			for (int i = 0; i < 10; i++)
+			{
+				/*fprintf(fp, "%d\n", tem[i]->second);*/
+				Assert::IsTrue(tem[i]->first == answer[i] && tem[i]->second == frequence[i]);
+			}
 		}
+		TEST_METHOD(TestFor_getTopPhrase_2)
+		{
+			const char* inputfile = "Top9Phrase_1(w)_test.txt";
+			vector<Paper> fileContent;
+			int topnum = 10;
+			int phraseLen = 1;
+			bool useTitleWeight = true;
+			bool showInConsole = false;
+			FileIO::readFile(fileContent, inputfile, showInConsole);
+			Statistics st(fileContent, useTitleWeight, phraseLen);
+			string answer[9] = {
+			"asdf","csdn",
+			"exce","gdfr","onin",
+			"prim","scan","thrx",
+			"ubyv" };
+			int frequence[9] = { 11,1,1,1,1,1,1,1,1};
+			vector<unordered_map<string, int>::iterator> &tem = st.getTopPhrase(topnum);
+			//FILE *fp = NULL;
+			//fopen_s(&fp, "asd.txt", "w");
 
+			for (int i = 0; i < 9; i++)
+			{
+				/*fprintf(fp, "%d\n", tem[i]->second);*/
+				Assert::IsTrue(tem[i]->first == answer[i] && tem[i]->second == frequence[i]);
+			}
+		}
+		TEST_METHOD(TestFor_getTopPhrase_3)
+		{
+			const char* inputfile = "Top2Phrase_3(nw)_test.txt";
+			vector<Paper> fileContent;
+			int topnum = 2;
+			int phraseLen = 3;
+			bool useTitleWeight = false;
+			bool showInConsole = false;
+			FileIO::readFile(fileContent, inputfile, showInConsole);
+			Statistics st(fileContent, useTitleWeight, phraseLen);
+			string answer[2] = {
+			"abcd_abcd_abcd","abcd_abcd.then" };
+			int frequence[2] = {9,6};
+			vector<unordered_map<string, int>::iterator> &tem = st.getTopPhrase(topnum);
+			//FILE *fp = NULL;
+			//fopen_s(&fp, "asd.txt", "w");
+			for (int i = 0; i < 2; i++)
+			{
+				/*fprintf(fp, "%d\n", tem[i]->second);*/
+				Assert::IsTrue(tem[i]->first == answer[i] && tem[i]->second == frequence[i]);
+			}
+			Assert::IsTrue(tem.size() == topnum);
+		}
 	};
 }
