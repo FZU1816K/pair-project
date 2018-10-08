@@ -10,9 +10,13 @@
 
 using namespace std;
 
+
+
 unordered_map<string, int> wordFrequency;
 vector<pair<string, int>> wordRank;
+
 extern int phraseLen;
+extern int topN;
 
 bool inTitle = false;
 bool inAbstract = false;
@@ -52,6 +56,13 @@ void topNword(int n)
 	}
 	sort(wordRank.begin(),wordRank.end(),mysort);
 	auto iter = wordRank.begin();
+	//avoid topN > wordRankSize
+	if (n > wordRank.size())
+	{
+		n = wordRank.size();
+	}
+
+	//
 	for (int i = 0; i < n; iter++,i++)
 	{
 		cout << iter->first << ":" << iter->second << endl;
@@ -346,21 +357,22 @@ int CountWord(string inputFilename, bool weightOn)
 			continue;
 		if (oneLine.substr(0, 7) == "Title: ")
 		{
-			
+			inTitle = true;
 			oneLine = oneLine.substr(7, oneLine.length());
 			//stringCut(oneLine);
-			stringCutWithLen(oneLine,2);
+			stringCutWithLen(oneLine,phraseLen);
+			inTitle = false;
 		}
 
 		else if (oneLine.substr(0, 10) == "Abstract: ")
 		{
 			oneLine = oneLine.substr(10, oneLine.length());
 			//stringCut(oneLine);
-			stringCutWithLen(oneLine,2);
+			stringCutWithLen(oneLine,phraseLen);
 		}
 	}
 	//showResult();
-	topNword(20);
+	topNword(topN);
 	//cout << wordFrequency["hello"] << endl;
 	return 0;
 }
