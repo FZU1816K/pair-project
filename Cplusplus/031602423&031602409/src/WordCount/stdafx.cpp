@@ -100,25 +100,17 @@ int character(char* path) {
 	map <string, int> m1;
 	map <string, int>::iterator m1_Iter;
 	vector<string> split = splitt(ff);
+    int mark=0;
 	for (vector<string>::size_type i = 0; i != split.size(); ++i) {
 		string key = split[i];
 		//cout << "before:" << key << endl;
-		if (i+2<=split.size()&&split[i + 1] == "Title"&&key.size() <= 3) {
-			count = count - key.size()-1;
+		if (i + 2 <= split.size() && split[i + 1] == "Title"&&key.size() <= 3) {
+			count = count - key.size() - 1;
+			mark++;
 			//cout << count << endl;
 		}
-			
-		if (m1.count(key) == 0)
-		{
-			m1.insert(pair <string, int>(key, 1));
-		}
-		else
-		{
-			m1[key]++;
-		}
 	}
-	//cout << count << endl;
-	count = count - m1["Title"] * 19 + 2;
+	count = count - mark * 19 + 2;
 	//cout << count << endl;
 	return count;
 }

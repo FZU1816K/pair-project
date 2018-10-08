@@ -87,7 +87,7 @@ int main(int args,char* argv[])
 	}
 	//printf("cizulen:%d weight:%d diy:%d ipath:%s opath:%s\n", cizulen, weight, diy, ipath, opath);
 	vector<pair<string, int>> tVector;
-	ofstream fout("result.txt");
+	ofstream fout(opath);
 	ifstream input;
 	input.open(ipath);
 	if (input.fail())
