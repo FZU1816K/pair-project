@@ -26,10 +26,10 @@ int CountLine(string input_path);
 int CountWord(string input_path);
 
 // 得到词频统计
-void GetWordCountMap(string input_path);
+void GetWordCountMap(string input_path, int word_group_length = 1);
 
 // return a orderd vector of WordNode
-vector<map<string, int>::iterator> GetFirstNWords(string file_location);
+vector<map<string, int>::iterator> GetFirstNWords(string file_location, int word_group_length = 1, int number_show = 10);
 
 // 展示结果
 void ShowResult(int characters, int words, int lines, vector<map<string, int>::iterator> first_n_words, string ouput_path);

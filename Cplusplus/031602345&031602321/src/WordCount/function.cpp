@@ -308,7 +308,7 @@ int CountLine(string input_path)
 }
 
 // 得到词(组)频统计
-void GetWordCountMap(string input_path)
+void GetWordCountMap(string input_path, int word_group_length)
 {
 	// 在得到词(组)频字典的过程中 可以顺路统计出字符数、有效行数
 	g_lines = 0;
@@ -363,7 +363,7 @@ void GetWordCountMap(string input_path)
 							g_words++;
 
 							// 队列中单词总数已到达词组长度
-							if (words_in_queue == p_length)
+							if (words_in_queue == word_group_length)
 							{
 								// 从前面弹出第一个单词
 								while (deque.size() > 0 && CharAlphaNumberJudge(deque.front()))
@@ -380,7 +380,7 @@ void GetWordCountMap(string input_path)
 							for (size_t i = 0; i < word.size(); i++)
 								deque.push_back(word[i]);
 
-							if (words_in_queue == p_length)
+							if (words_in_queue == word_group_length)
 							{
 								string word;
 								while (!deque.empty())
@@ -390,7 +390,7 @@ void GetWordCountMap(string input_path)
 								}
 
 								// 转为小写
-									transform(word.begin(), word.end(), word.begin(), ::tolower);
+								transform(word.begin(), word.end(), word.begin(), ::tolower);
 
 								// cout << word << endl;
 
@@ -450,7 +450,7 @@ void GetWordCountMap(string input_path)
 									deque.push_back(word[i]);
 								words_in_queue = 1;
 
-								if (words_in_queue == p_length)
+								if (words_in_queue == word_group_length)
 								{
 									string word;
 									while (!deque.empty())
@@ -493,10 +493,10 @@ void GetWordCountMap(string input_path)
 }
 
 // return a orderd vector of WordNode
-vector<map<string, int>::iterator> GetFirstNWords(string file_location)
+vector<map<string, int>::iterator> GetFirstNWords(string file_location, int word_group_length, int number_show)
 {
 	if (g_has_got_map == false)
-		GetWordCountMap(file_location);
+		GetWordCountMap(file_location, word_group_length);
 
 	vector<map<string, int>::iterator> word_node_vectors;
 	vector<map<string, int>::iterator> first_n_words;
@@ -507,10 +507,9 @@ vector<map<string, int>::iterator> GetFirstNWords(string file_location)
 		word_node_vectors.push_back(it);
 
 	int length = word_node_vectors.size();
-	int num_show_node = p_number_show;
 
 	// 使用sort的话 产生的是O(N*Log(N))的复杂度 直接选的复杂度O(N*n)
-	for (int step = 0; step < num_show_node; step++)
+	for (int step = 0; step < number_show; step++)
 	{
 		int max_node_id = step;
 		map<string, int>::iterator max_node = word_node_vectors[step];
@@ -526,7 +525,7 @@ vector<map<string, int>::iterator> GetFirstNWords(string file_location)
 	}
 
 	// 修改了一处BUG,应该只返回前n个词，旧版本改来改去最后疏忽了这一点
-	for (int i = 0; i < num_show_node; i++)
+	for (int i = 0; i < number_show; i++)
 		first_n_words.push_back(word_node_vectors[i]);
 
 	return first_n_words;
