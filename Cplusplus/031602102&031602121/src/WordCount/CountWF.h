@@ -133,8 +133,8 @@ void topK(map<string, int> &essay, vector<map<string, int>::iterator> &top, ofst
 		}
 		it++;
 	}
-	int a[1000];
-	string b[1000];
+	int a[10000];
+	string b[10000];
 
 	for (int i = K - 1; i >= 0; i--)
 	{
