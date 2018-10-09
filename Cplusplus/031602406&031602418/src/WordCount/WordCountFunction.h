@@ -35,7 +35,7 @@ public:
 	int numChar = 0;
 	int numWords = 0;
 	int numLines = 0;
-	void count1(ifstream& in)  //�ַ���������
+	void count1(ifstream& in)  //统计字符数和行数
 	{
 		char ch;
 		bool fg = true;
@@ -62,11 +62,11 @@ public:
 			}
 			isdig = false;
 		}
-		in.clear();//�����ļ���ʼ
+		in.clear();//清空并回移指针
 		in.seekg(0);
 	}
 
-	void count2(ifstream& in, int weight)  //��Ȩ������ͳ��
+	void count2(ifstream& in, int weight)  //带权值词频统计
 	{
 		string ss;
 		string str;
@@ -114,7 +114,7 @@ public:
 
 
 				unordered_map<string, int>::iterator it = My.find(stemp);
-					if (weight == 1) //��Ȩ��
+					if (weight == 1) //有权值
 					{
 						if (it == My.end())
 						{
@@ -140,7 +140,7 @@ public:
 							}
 						}
 					}
-				if (weight == 0)//��Ȩ��
+				if (weight == 0)//无权值
 				{
 					if (it == My.end())
 					{
