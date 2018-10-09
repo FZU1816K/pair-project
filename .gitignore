@@ -261,6 +261,6 @@ __pycache__/
 *.pyc
 
 # visual studio code dir
-**/.vsvode/
+**/.vscode/
 # test dir
 **/test/
