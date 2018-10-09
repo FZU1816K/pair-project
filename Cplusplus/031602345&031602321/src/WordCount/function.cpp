@@ -17,7 +17,7 @@ using namespace std;
 
 /* 参数部分 */
 extern int p_weight;
-extern int p_length;
+extern int p_group_length;
 extern int p_number_show;
 extern string p_input_path;
 extern string p_output_path;
@@ -84,7 +84,7 @@ void ParserParam(int argc, char *argv[])
 {
 	// 默认参数
 	p_weight = 0;
-	p_length = 1;
+	p_group_length = 1;
 	p_number_show = 10;
 
 	bool b_have_input = false;
@@ -117,7 +117,7 @@ void ParserParam(int argc, char *argv[])
 					p_weight = stoi(argv[i + 1]);
 					break;
 				case 'm':
-					p_length = stoi(argv[i + 1]);
+					p_group_length = stoi(argv[i + 1]);
 					break;
 				case 'n':
 					p_number_show = stoi(argv[i + 1]);
@@ -208,7 +208,10 @@ int CountChar(string input_path)
 	instream.open(input_path, ios::in);
 	assert(instream.is_open());
 
+	g_has_got_characters = false;
+	g_has_got_lines = false;
 	g_characters = 0;
+	g_lines = 0;
 
 	string line;
 	while (GetLine(instream, line));
@@ -231,6 +234,10 @@ int CountWord(string input_path)
 	instream.open(input_path, ios::in);
 	assert(instream.is_open());
 
+	g_has_got_characters = false;
+	g_has_got_lines = false;
+	g_characters = 0;
+	g_lines = 0;
 	g_words = 0;
 
 	// 遍历每一行 得到单词总数
@@ -269,6 +276,7 @@ int CountWord(string input_path)
 					if (WordCheck(word))
 						g_words++;
 				}
+				word_left_pos++;
 			}
 		}
 
@@ -296,6 +304,9 @@ int CountLine(string input_path)
 	instream.open(input_path, ios::in);
 	assert(instream.is_open());
 
+	g_has_got_characters = false;
+	g_has_got_lines = false;
+	g_characters = 0;
 	g_lines = 0;
 
 	string line;
@@ -507,6 +518,7 @@ vector<map<string, int>::iterator> GetFirstNWords(string file_location, int word
 		word_node_vectors.push_back(it);
 
 	int length = word_node_vectors.size();
+	number_show = min(number_show, length);
 
 	// 使用sort的话 产生的是O(N*Log(N))的复杂度 直接选的复杂度O(N*n)
 	for (int step = 0; step < number_show; step++)
@@ -547,4 +559,27 @@ void ShowResult(int characters, int words, int lines, vector<map<string, int>::i
 	}
 
 	outstream.close();
+}
+
+
+// 初始化
+void Init()
+{
+	g_has_got_characters = false;
+	g_has_got_map = false;
+	g_has_got_lines = false;
+	g_has_got_words = false;
+
+	g_lines = 0;
+	g_characters = 0;
+	g_words = 0;
+	g_word_count_map.clear();
+}
+
+
+// 手动设置weight group_length的参数 用于测试
+void SetParam(int weight, int group_length)
+{
+	p_weight = weight;
+	p_group_length = group_length;
 }

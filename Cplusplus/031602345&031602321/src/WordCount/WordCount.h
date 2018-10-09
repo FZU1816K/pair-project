@@ -33,3 +33,9 @@ vector<map<string, int>::iterator> GetFirstNWords(string file_location, int word
 
 // 展示结果
 void ShowResult(int characters, int words, int lines, vector<map<string, int>::iterator> first_n_words, string ouput_path);
+
+// 初始化
+void Init();
+
+// 手动设置weight group_length的参数 用于测试
+void SetParam(int weight, int group_length);
