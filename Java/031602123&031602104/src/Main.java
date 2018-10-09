@@ -4,24 +4,27 @@ import lib.*;
 public class Main {
 	public static void main(String[] args) throws Exception {
 		int mn = 1, nn = 10, wn = 0;
-		String fi = "input", fo = "output";
+		String fi = " ", fo = " ";
 		Map<String, Integer> words = new TreeMap<String, Integer>();
-		if (!args[0].equals("-i")) {
+		for(int i=0; i<args.length; i+=2) {
+			if(args[i].equals("-i"))
+				fi = args[i+1];
+			if(args[i].equals("-m"))
+				mn = Integer.parseInt((args[i+1]));
+			if(args[i].equals("-n"))
+				nn = Integer.parseInt((args[i+1]));
+			if(args[i].equals("-w"))
+				wn = Integer.parseInt((args[i+1]));
+			if(args[i].equals("-o"))
+				fo = args[i+1];
+		}
+		if (fi.equals(" ")) {
 			System.out.println("Please input \"-i any txt\"");
 			System.exit(0);
 		}
-		else {
-			fi = args[1];
-			for(int i=2; i<args.length; i+=2) {
-				if(args[i].equals("-m"))
-					mn = Integer.parseInt((args[i+1]));
-				if(args[i].equals("-n"))
-					nn = Integer.parseInt((args[i+1]));
-				if(args[i].equals("-w"))
-					wn = Integer.parseInt((args[i+1]));
-				if(args[i].equals("-o"))
-					fo = args[i+1];
-			}
+		if(fo.equals(" ")) {
+			System.out.println("Please input \"-o any txt\"");
+			System.exit(0);
 		}
 		PrintStream result = new PrintStream(fo);
 		File f = new File(fi);
