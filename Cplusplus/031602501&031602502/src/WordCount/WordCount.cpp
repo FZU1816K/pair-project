@@ -17,7 +17,7 @@ using namespace std;
 #define DIS_FILE_CONTENT_TO_CONSOLE false
 
 // 显示结果到控制台
-#define DIS_RESULT_TO_CONSOLE true
+#define DIS_RESULT_TO_CONSOLE false
 
 int main(int argc, char *argv[])
 {
