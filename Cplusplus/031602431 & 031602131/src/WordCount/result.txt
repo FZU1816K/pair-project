@@ -1,8 +1,0 @@
-characters: 58
-words: 5
-lines: 1
-<approach>: 10
-<generation>: 10
-<learning>: 10
-<papier>: 10
-<surface>: 10

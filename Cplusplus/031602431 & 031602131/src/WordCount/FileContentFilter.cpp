@@ -13,6 +13,7 @@ using namespace std;
 FileContentFilter::FileContentFilter()
     :status(NULL), file(NULL), processer(NULL),
     contStart(0), contEnd(0), fileContent(string()) {
+
     for (int i = 0; i < 2; i++) {
         statusOfDFA[i] = 0;
     }

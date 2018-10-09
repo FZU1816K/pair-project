@@ -15,7 +15,7 @@ public:
 	~ArgParser() {};
 private:
     string filename;
-	int inPhraseLength, inTopNum, titleWeight, titleAbstract;
+	int inPhraseLength, inTopNum, titleWeight, abstractWeight;
 	string inputName, outputName;
 };
 

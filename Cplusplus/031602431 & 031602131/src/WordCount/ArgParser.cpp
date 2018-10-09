@@ -10,10 +10,10 @@
 using namespace std;
 
 
-ArgParser::ArgParser(int argc, char * argv[], Status* status){
-    inPhraseLength = -1;
-	inTopNum = -1;
-    titleAbstract = 1;
+ArgParser::ArgParser(int argc, char * argv[], Status* status)
+    :inPhraseLength(1), inTopNum(10), abstractWeight(1),titleWeight(1),
+     inputName(string()), outputName(string()){
+
     int code = 0x00;
 	int i = 1;
 	while (i < argc) {
@@ -44,13 +44,20 @@ ArgParser::ArgParser(int argc, char * argv[], Status* status){
 				inTopNum = atoi(argv[i + 1]);
                 code = code | 0x10;
 			}
+            else if (strcmp(argv[i], "-g") == 0) {
+                code = code | 0x20;
+            }
 		}
 		i= i+ 2;
 	}
 
     status->setIdentifyCode(code);
-    status->setIOFile(inputName, outputName);
+    if (outputName.empty())
+        status->setIOFile(inputName);
+    else
+        status->setIOFile(inputName, outputName);
+
     status->setPharse(inPhraseLength);
     status->setTopNum(inTopNum);
-    status->setWeight(titleWeight, 1);
+    status->setWeight(titleWeight, abstractWeight);
 }
