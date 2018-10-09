@@ -260,3 +260,7 @@ paket-files/
 __pycache__/
 *.pyc
 
+# visual studio code dir
+**/.vs/
+# test dir
+**/test/
