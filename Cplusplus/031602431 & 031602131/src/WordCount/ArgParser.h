@@ -5,20 +5,18 @@
 #include <string>
 
 #include "Tools.h"
+#include "Status.h"
 
 using namespace std;
 
 class ArgParser{
 public:
-    ArgParser(int argc, char* argv[]);
-    ~ArgParser() {};
-    string getFileName();
-
-    int helpDoc();
-
+    ArgParser(int argc, char* argv[], Status* status);
+	~ArgParser() {};
 private:
     string filename;
-
+	int inPhraseLength, inTopNum, titleWeight, titleAbstract;
+	string inputName, outputName;
 };
 
 #endif

@@ -34,10 +34,10 @@ public:
     int wordTotalNum;
     int lineNum;
 
-
     static const int TITLE_CONTENT = 2;
     static const int ABSTRACT_CONTENT = 1;
     static const int FORMAT_CONTENT = 0;
+
 };
 
 #endif

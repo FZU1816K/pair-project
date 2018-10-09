@@ -192,7 +192,54 @@ Reporting| 	报告  | 120|
 
 # 单元测试
 
+测试采用Microsoft本机测试框架
+测试数据先测试基本情况的正确性，之后测试更难一点的情况的正确性
 
+    // path: /test/UnitTest_LexemeParser/unittest1.cpp
+    namespace UnitTest_LexemeParser
+    {        
+        TEST_CLASS(UnitTest1)
+        {
+        public:
+
+
+            TEST_METHOD(TestMethod1)
+            {
+                Status* status = new Status();
+                WordProcesser* lexProcesser = new WordProcesser(status);
+                LexemeParser* lexer = new LexemeParser(status, lexProcesser);
+
+                lexer->processStr("We present a new AI task -- Embodied Question Answering (E"
+                    "mbodiedQA) -- where an agent is spawned at a random location in a 3D envi"
+                    "ronment and asked a question", Status::TITLE_CONTENT);
+                lexer->sendToStatus();
+                lexProcesser->sendToStatus();
+
+                Assert::AreEqual<int>(159, status->charNum);
+                Assert::AreEqual<int>(1, status->lineNum);
+
+            }
+
+            TEST_METHOD(TestMethod2)
+            {
+                Status* status = new Status();
+                status->setPharse(3);
+
+                PhraseProcesser* lexProcesser = new PhraseProcesser(status);
+                LexemeParser* lexer = new LexemeParser(status, lexProcesser);
+
+                lexer->processStr("adbda \n afasdf asdfasdf aqsf", Status::TITLE_CONTENT);
+                lexer->sendToStatus();
+                lexProcesser->sendToStatus();
+
+                Assert::AreEqual<int>(28, status->charNum);
+                Assert::AreEqual<int>(2, status->lineNum);
+                Assert::AreEqual<int>(1, ((status->storeMap).strMap->size()));
+            }
+
+
+        };
+    }
 
 # Github的代码签入记录
 
@@ -203,7 +250,18 @@ Reporting| 	报告  | 120|
 ## 值得学习的地方
 
 
+
 ## 需要改进的地方
 
 
 # 学习进度条
+
+
+| | | | | | |
+|---|---|---|---|---|---|
+|第N周|新增代码（行)|累计代码（行）|本周学习耗时(小时)|累计学习耗时（小时）|重要成长|
+|1 |312|312|6|6|学习vs中单元测试、性能分析的用法，复习文件使用
+|2 | 0 |312|6|12|学习了NABCD模型，学习c多线程
+|3 | 0 |312|6|12|
+|4 | 0 |312|6|12|
+|5 | 0 |312|6|12|
