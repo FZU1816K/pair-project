@@ -2,10 +2,10 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import lib.Read;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
@@ -13,7 +13,7 @@ public class Main {
 		//split argument of arguments
 		String readFile = "";
 		String writeFile = "";
-		int number = 0, len = 0, weight = 0;
+		int number = 10, len = 1, weight = 0;
 		for (int i = 0; i < args.length; i+=2) {
 			switch (args[i]) {
 				case "-i":
@@ -29,7 +29,8 @@ public class Main {
 					number = Integer.parseInt(args[i+1]);
 					break;
 				case "-w":
-					weight = Integer.parseInt(args[i+1]);
+					weight = Integer.parseInt(args[i+1]) * 9;
+					weight ++;
 					break;
 			}
 		}
@@ -41,8 +42,8 @@ public class Main {
 //		System.out.println("-w " + weight);
 		
 		//file 
-    	new Read();
-		String pathname = Read.Read(readFile);
+//    	new lib.Read();
+		String pathname = lib.Read(readFile);
     	
     	BufferedReader bufferedReader = new BufferedReader(new FileReader(pathname));  
     	
@@ -50,16 +51,7 @@ public class Main {
     	int characterscount = 0;
         int wordline = 0;
         int wordcount = 0;
-    	
-    	//处理-w
-    	//w = 0;
-    	/*
-    	 *  Pattern p = Pattern.compile("a*b");
- 			Matcher m = p.matcher("aaaaab");
- 			boolean b = m.matches();
-    	 */
-    	List<String> titleLists = new ArrayList<String>();
-    	List<String> abstractLists = new ArrayList<String>();
+
     	String readLine = null;
     	Pattern pattern1 = Pattern.compile("(title): (.*)");
     	Pattern pattern2 = Pattern.compile("(abstract): (.*)");
@@ -71,17 +63,25 @@ public class Main {
         	{  
         		characterscount+=matcher1.group(2).length();
         		wordline++;
-        		//System.out.println(matcher1.group(2));
+//        		System.out.println(matcher1.group(2));
         		String[] wordsArr1 = matcher1.group(2).split("[^a-zA-Z0-9]");  //过滤
-        		for (String newword : wordsArr1) {  
+        		for (String newword : wordsArr1) {
         			if(newword.length() != 0){  
                     	if((newword.length()>=4)&&(Character.isLetter(newword.charAt(0))&&Character.isLetter(newword.charAt(1))&&Character.isLetter(newword.charAt(2))&&Character.isLetter(newword.charAt(3)))) 
                      	{
                      		wordcount++;
-                     		titleLists.add(newword);  
+                     		if(len == 1)
+                     			lib.titleLists.add(newword);
                      	}
                      }
-        		}  
+        		}
+        		
+        		//new
+        		String wordsLine = matcher1.group(2);
+//        		System.out.println("wordsLine " + wordsLine);
+        		if(len != 1 || wordsLine.length() < 4) {
+        			lib.FindWordArray(lib.titleLists, len, wordsLine);
+        		}
         	 }
         	 if(matcher2.find())
         	 {
@@ -94,11 +94,24 @@ public class Main {
                     	if((newword.length()>=4)&&(Character.isLetter(newword.charAt(0))&&Character.isLetter(newword.charAt(1))&&Character.isLetter(newword.charAt(2))&&Character.isLetter(newword.charAt(3)))) 
                     	{
                     		wordcount++;
-                    		abstractLists.add(newword);  
+                    		if(len == 1)
+                    			lib.abstractLists.add(newword);  
                     	}
                     }  
-                }  
+                }
+        		 
+        		 String AbsLine = matcher2.group(2);
+        		 if(len != 1 || AbsLine.length() < 4) {
+         			lib.FindWordArray(lib.abstractLists, len, AbsLine);
+        		 }
         	 }
     	}
+        bufferedReader.close();
+        
+        lib.WordCount(lib.titleLists,weight); 
+        lib.WordCount(lib.abstractLists,1);
+        
+        lib.SortMap(lib.wordsCount,wordline,wordcount,characterscount+wordline-1,number);    //排序并输出
+        // 字符数为characterscount+wordline-1，每行几个字符加上n行-1，n-1个换行符
 	}
 }
