@@ -9,12 +9,10 @@ using namespace std;
 
 void writeTxt(string *output, int &crtNum, int &lineNum, int &wordNum, int &sortNum, vector<pair<string, int>>::iterator outItor, vector<pair<string, int>>::iterator outItorEnd);
 
-int main()
+int main(int argc, char *argv[])
 {
-	for (int i = 0; i < 100; i++)
-	{
-	//ParaJudge paraJudge;
-	//paraJudge.paraJudge(argc, argv);
+	ParaJudge paraJudge;
+	paraJudge.paraJudge(argc, argv);
 
 	/*命令行参数相关，分别为：
 	 -i, -o, -w, -m, -n
@@ -24,21 +22,21 @@ int main()
 	int weight;
 	int phraseLength;
 	int sortNum;
-	///*
+	/*
 	input = "input.txt";
 	output = "output.txt";
 	weight = 0;
 	phraseLength = 3;
 	sortNum = 10;
-	//*/
+	*/
 
-	/*
+	
 	input = paraJudge.getInput();
 	output = paraJudge.getOutput();
 	weight = paraJudge.getWeight();
 	phraseLength = paraJudge.getPhraseLength();
 	sortNum = paraJudge.getSortNum();
-	*/
+	
 
 	InputFile inputFile(input, phraseLength, weight, sortNum);
 
@@ -65,7 +63,6 @@ int main()
 	}
 	system("pause");
 	*/
-	}
 	return 0;
 }
 

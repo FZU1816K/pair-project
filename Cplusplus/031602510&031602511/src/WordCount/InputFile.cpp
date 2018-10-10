@@ -32,7 +32,7 @@ InputFile::InputFile(string inputPath, int _phraseLength, int _weight, int _sort
 	{
 		hasOpenFile = false;
 		cerr << inputPath << "文件不存在！" << endl;
-		//exit(1);
+		exit(1);
 	}
 
 	hasOpenFile = true;
