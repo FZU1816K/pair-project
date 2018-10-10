@@ -10,4 +10,4 @@
 
 using namespace std;
 
-int Word_Fre(char * filename,int w,int m,int n);
+int Word_Fre(char * filename,char *outfile,int w,int m,int n);

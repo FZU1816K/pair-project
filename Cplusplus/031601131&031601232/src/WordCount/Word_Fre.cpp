@@ -8,7 +8,7 @@ struct CmpByValue {
 	}
 };
 
-int Word_Fre(char * filename,int w,int m,int n)
+int Word_Fre(char * filename,char * outfile,int w,int m,int n)
 {	
 	map<string, int> Word_Num_map;
 	int i;
@@ -105,14 +105,14 @@ int Word_Fre(char * filename,int w,int m,int n)
 		}
 	
 	}
-	printf("%d", Word_Num_map["machine learning"]);
+
 	vector <PAIR> Word_Num_vec(Word_Num_map.begin(), Word_Num_map.end());
 	sort(Word_Num_vec.begin(), Word_Num_vec.end(), CmpByValue());
 		
 
 
 	FILE * stream;
-	freopen_s(&stream, "result.txt", "a", stderr);
+	freopen_s(&stream, outfile, "a", stderr);
 	
 	if(Word_Num_vec.size()<n)
 		for (int i = 0; i != Word_Num_vec.size(); ++i) {
