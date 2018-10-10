@@ -40,18 +40,8 @@ public class Main {
         int wordnum = count.getwordnum();//读取单词数
         int linenum = count.getlinenum();//获取有效行数
       	int phrasenum = count.getphrasenum(gs);//获取有效词组数
-      	
-        List<HashMap.Entry<String, Integer>> m = count.getWords();
-        String output="characters:"+charnum+"\r\n"+"words:"+wordnum+"\r\n" + "lines:"+linenum+"\r\n";
-        String t = new String(); 
-        if(m != null){
-            if(m.size()!=0){
-                for(int j=0;((j<pl)&&(j<m.size()));j++){
-                    t = "<"+ m.get(j).getKey() + ">:" + m.get(j).getValue();
-                    output += t + "\r\n";
-                }
-            }
-        }
+      	String output="characters:"+charnum+"\r\n"+"words:"+wordnum+"\r\n" + "lines:"+linenum+"\r\n";
+        
         if(phrasenum != -1) {
         	List<HashMap.Entry<String, Integer>> m1 = count.getPharses();
         	String tt = new String(); 
@@ -60,6 +50,18 @@ public class Main {
                     for(int j=0;((j<pl)&&(j<m1.size()));j++){
                         tt = "<"+ m1.get(j).getKey() + ">:" + m1.get(j).getValue();
                         output += tt + "\r\n";
+                    }
+                }
+            }
+        }
+        else {
+        	List<HashMap.Entry<String, Integer>> m = count.getWords();
+            String t = new String(); 
+            if(m != null){
+                if(m.size()!=0){
+                    for(int j=0;((j<pl)&&(j<m.size()));j++){
+                        t = "<"+ m.get(j).getKey() + ">:" + m.get(j).getValue();
+                        output += t + "\r\n";
                     }
                 }
             }

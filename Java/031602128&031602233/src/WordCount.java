@@ -101,9 +101,9 @@ public class WordCount {
     }
     public int getphrasenum(int gs) {
     	if(gs == 0) return -1;
-    	int phrasenum = 0;
+    	int phrasenum = 0, quan = 1;
     	String temp;
-    	String[] contents1 = content.split("[^0-9A-Za-z]");
+    	String[] contents1 = content.toLowerCase().split("[^0-9A-Za-z]");
     	
     /*	String[] contents2 = null;
     	int pos = 0;
@@ -122,11 +122,14 @@ public class WordCount {
     	}*/
     	
     	
-    	for(int i = 0; i < contents1.length - gs; i++) {
+    	for(int i = 0; i <= contents1.length - gs; i++) {
     		int flag = 1;
-			if(contents1[i].equals("Abstract") || contents1[i].equals("Title")) continue;
 			temp = "";
+			if(contents1[i].equals("title")) {quan = (use_quan == true ? 10 : 1);continue;}
+			if(contents1[i].equals("abstract")) {quan = 1; continue;}
     		for(int j = 0; j < gs; j++) {
+    	//		if(i + j == contents1.length()) break;
+    			if(contents1[i + j].equals("abstract") || contents1[i + j].equals("title")) {flag = 0; break;}
     			if(contents1[i + j].length()>=4){
                     if(Character.isLetter(contents1[i + j].charAt(0))){
                         if(Character.isLetter(contents1[i + j].charAt(1))){
@@ -143,12 +146,13 @@ public class WordCount {
     			flag = 0;
     		}
     		if(flag == 1) {
+    			//System.out.println(temp);
     			if(mb.containsKey(temp)) {
     				int x = (int)mb.get(temp);
-    				mb.put(temp, x + 1);
+    				mb.put(temp, x + quan);
     				phrasenum++;
     			}
-    			else mb.put(temp, 1);
+    			else mb.put(temp, quan);
     		}
     	}
     	if(!mb.isEmpty()) phrases = Sort(mb);
@@ -176,7 +180,7 @@ public class WordCount {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if(o1.getValue()==o2.getValue())
                     return o1.getKey().compareTo(o2.getKey());//出现次数相等按字典序
-                return o2.getValue()-o1.getValue();//否者按照字典序排序
+                return o2.getValue()-o1.getValue();//从大到小
             }
         };
         wordList.sort(com);
