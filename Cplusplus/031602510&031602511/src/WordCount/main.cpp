@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
 	vector<pair<string, int>> orderWord = inputFile.getOrderWord();
 	vector<pair<string, int>>::iterator outItor;
 	outItor = orderWord.begin();
-	for (int i = 0; i < sortNum && outItor != orderWord.end(); i++, outItor++) 
+	for (int i = 0; i < sortNum && outItor != orderWord.end(); i++, outItor++)
 	{
 		cout << "<" << outItor->first << ">" << ": " << outItor->second << endl;
 	}

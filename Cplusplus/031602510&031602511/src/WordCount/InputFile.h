@@ -10,12 +10,11 @@ class InputFile
 {
 public:
 	InputFile(string inputPath, int _phraseLength, int _weight, int _sortNum);
-	~InputFile(); 
+	~InputFile();
 	int getCrtNum();									//返回字符数
 	int getLineNum();									//返回行数
 	int getWordNum();									//返回单词总数
-
-	/*测试用*/
+	int getPhraseNum();
 	vector<pair<string, int>> getOrderWord();
 
 private:
@@ -23,11 +22,12 @@ private:
 	int weight;											//Title单词权重（-w）
 	int phraseLength;									//设定词组长度（-m）
 	int sortNum;										//设定输出单词数量（-n）
-	
+
 	/*InputFile类成员信息*/
 	int crtNum;
 	int lineNum;
 	int wordNum;
+	int phraseNum;
 	vector<pair<string, int>> orderWord;				//按序存放词组的容器
 
 	/*InputFile类内部变量*/
