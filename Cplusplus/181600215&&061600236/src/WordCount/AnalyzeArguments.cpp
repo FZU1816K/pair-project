@@ -3,10 +3,10 @@
 
 string inputFile="input.txt";
 string outputFile="result.txt";
-bool weightOnWord=1;
+bool weightOnWord=0;
+bool countPhrase = 0;
 int phraseLen = 3;
 int topN = 10;
-bool _m=0;
 
 int AnalyseParameter(char **argv)
 {
@@ -36,7 +36,7 @@ int AnalyseParameter(char **argv)
 			id += 2;
 		}
 		else if (strcmp(argv[id], "-m") == 0) {
-			_m = 1;
+			countPhrase = 1;
 			if (argv[id + 1] != NULL) {
 				phraseLen = atoi(argv[id + 1]);
 			}

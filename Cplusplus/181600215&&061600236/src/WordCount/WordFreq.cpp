@@ -30,6 +30,7 @@ bool IsWord(string word)
 	return 0;
 }
 
+//count the word frequency of a line
 int WordFreq(string s)
 {
 	string word = "";
@@ -70,6 +71,7 @@ int WordFreq(string s)
 	return cnt;
 }
 
+//output the first n words
 void TopNWords() 
 {
 	for (auto x : mapWord) {
@@ -80,7 +82,6 @@ void TopNWords()
 	for (auto x : vecWord) {
 		if (!topN) break;
 		fout << "<" << x.first << ">: " << x.second << endl;
-		cout << "<" << x.first << ">: " << x.second << endl;
 		topN--;
 	}
 	fout.close();

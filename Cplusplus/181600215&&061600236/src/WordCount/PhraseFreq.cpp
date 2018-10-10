@@ -17,6 +17,7 @@ bool cmp2(pair<string, int> a, pair<string, int> b)
 	return a.first < b.first;
 }
 
+//count the phrase frequency of a line
 void PhraseFreq(string s)
 {
 	string word = "";
@@ -85,6 +86,7 @@ void PhraseFreq(string s)
 	}
 }
 
+//output the first n phrases
 void TopNPhrases()
 {
 	for (auto x : mapPhrase) {
@@ -96,7 +98,6 @@ void TopNPhrases()
 		if (!topN) break;
 		fout << "<" << x.first << ">: " << x.second << endl;
 		topN--;
-		cout << "<" << x.first << ">: " << x.second << endl;
 	}
 	fout.close();
 }

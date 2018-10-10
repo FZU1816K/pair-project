@@ -14,7 +14,7 @@ extern string outputFile;
 extern int phraseLen;
 extern int topN;
 extern bool weightOnWord;
-extern bool _m;
+extern bool countPhrase;
 bool inTitle;
 
 bool IsNum(char ch)
@@ -33,16 +33,16 @@ bool IsEmptyLine(string s) {
 }
 
 int main(int argc, char **argv)
-{
+{	
 	int x = AnalyseParameter(argv);
 	if (x == 0)
 		return 0;
 	ifstream fin(inputFile);
-	int characters = CountChar(inputFile);
-	int lines = CountLines(inputFile);
+	int characters = 0;
+	int lines = 0;
 	int words = 0;
 	string str;
-	while (getline(fin, str)) {
+	while (getline(fin, str)) { 
 		inTitle = 0;
 		if (str.substr(0, 7) == "Title: ") {
 			str = str.substr(7, str.length());
@@ -51,23 +51,26 @@ int main(int argc, char **argv)
 		else if (str.substr(0, 10) == "Abstract: ") {
 			str = str.substr(10, str.length());
 		}
-		else if (IsNum(str[0]) || IsEmptyLine(str)){
+		else if (IsNum(str[0]) || str==""){ //ignore paper number and empty lines
 			continue;
 		}
-		if (_m) {
+		if (countPhrase) {
 			PhraseFreq(str);
 		}
+		characters += CountChar(str);
 		words += WordFreq(str);
-				
+		lines += CountLines(str);
 	}
 	fin.close();
-	cout << "characters: " << characters << endl;
-	cout << "words: " << words << endl;
-	cout << "lines: " << lines << endl;
-	if (_m) {
+	ofstream fout(outputFile);
+	fout << "characters: " << characters - 1 << endl;
+	fout << "words: " << words << endl;
+	fout << "lines: " << lines << endl;
+	fout.close();
+	if (countPhrase) { //phrase statistics
 		TopNPhrases();
 	}
-	else {
+	else { //word statistics
 		TopNWords(); 
 	}
 	
