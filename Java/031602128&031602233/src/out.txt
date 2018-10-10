@@ -1,0 +1,12 @@
+characters:166
+words:19
+lines:3
+<asdf>:12
+<embodied>:5
+<answering>:1
+<question>:1
+<Embodied Embodied>:3
+<Answering Embodied>:1
+<Embodied Question>:1
+<Embodied asdf>:1
+<Question Answering>:1

@@ -1,4 +1,5 @@
-package PC;
+//package test1;
+
 
 import java.io.*;
 import java.util.*;
@@ -6,13 +7,18 @@ import java.util.*;
 public class WordCount {
     private static String content = new String();
     private static Map  ma= new HashMap();
+    private static Map  mb= new HashMap();
     private static List<HashMap.Entry<String, Integer>> words = null;
+    private static List<HashMap.Entry<String, Integer>> phrases = null;
     private static boolean use_quan = false;
     public static void set_quan(boolean a){
     	use_quan = a;
     }
     public static List<HashMap.Entry<String, Integer>> getWords() {
         return words;
+    }
+    public static List<HashMap.Entry<String, Integer>> getPharses() {
+        return phrases;
     }
 
     public WordCount(File fileIn) {
@@ -72,7 +78,7 @@ public class WordCount {
                     if(Character.isLetter(contents[i].charAt(1))){
                         if(Character.isLetter(contents[i].charAt(2))){
                             if(Character.isLetter(contents[i].charAt(3))){
-                                System.out.println(contents[i]);
+                                //System.out.println(contents[i]);
                             	if(contents[i].equals("title")){
                                 	if(use_quan) quan=10;
                                 	continue;
@@ -93,7 +99,62 @@ public class WordCount {
         }
         return wordnum;
     }
+    public int getphrasenum(int gs) {
+    	if(gs == 0) return -1;
+    	int phrasenum = 0;
+    	String temp;
+    	String[] contents1 = content.split("[^0-9A-Za-z]");
+    	
+    /*	String[] contents2 = null;
+    	int pos = 0;
+    	for(int i = 0; i < contents1.length - gs; i++) {
+    		pos += contents1[i].length();
 
+			System.out.println(pos);
+    		temp = "";
+    		while(true) {
+    			System.out.println(content.charAt(pos));
+    			
+    			temp += content.charAt(pos); pos++;
+    			if(content.charAt(pos) == (contents1[i + 1].charAt(0))) break;
+    		}
+    		contents2[i] = temp;
+    	}*/
+    	
+    	
+    	for(int i = 0; i < contents1.length - gs; i++) {
+    		int flag = 1;
+			if(contents1[i].equals("Abstract") || contents1[i].equals("Title")) continue;
+			temp = "";
+    		for(int j = 0; j < gs; j++) {
+    			if(contents1[i + j].length()>=4){
+                    if(Character.isLetter(contents1[i + j].charAt(0))){
+                        if(Character.isLetter(contents1[i + j].charAt(1))){
+                            if(Character.isLetter(contents1[i + j].charAt(2))){
+                                if(Character.isLetter(contents1[i + j].charAt(3))){
+                                	temp += contents1[i + j];
+                                	if(j != gs - 1) temp += " ";
+                                	continue;
+                                }
+                            }
+                        }
+                    }
+    			}
+    			flag = 0;
+    		}
+    		if(flag == 1) {
+    			if(mb.containsKey(temp)) {
+    				int x = (int)mb.get(temp);
+    				mb.put(temp, x + 1);
+    				phrasenum++;
+    			}
+    			else mb.put(temp, 1);
+    		}
+    	}
+    	if(!mb.isEmpty()) phrases = Sort(mb);
+    	return phrasenum;
+    }
+    
     //更新字典的函数
     public static Map Maps(Map m, String s,int t){
         if(m.containsKey(s)){
@@ -115,7 +176,7 @@ public class WordCount {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if(o1.getValue()==o2.getValue())
                     return o1.getKey().compareTo(o2.getKey());//出现次数相等按字典序
-                return o2.getValue()-o1.getValue();//从大到小
+                return o2.getValue()-o1.getValue();//否者按照字典序排序
             }
         };
         wordList.sort(com);
