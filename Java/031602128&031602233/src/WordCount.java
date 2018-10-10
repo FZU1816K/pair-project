@@ -1,4 +1,4 @@
-//package test1;
+package test1;
 
 
 import java.io.*;
@@ -11,8 +11,12 @@ public class WordCount {
     private static List<HashMap.Entry<String, Integer>> words = null;
     private static List<HashMap.Entry<String, Integer>> phrases = null;
     private static boolean use_quan = false;
+    private static boolean count_word = true;
     public static void set_quan(boolean a){
     	use_quan = a;
+    }
+    public static void set_isword(boolean a){
+    	count_word = a;
     }
     public static List<HashMap.Entry<String, Integer>> getWords() {
         return words;
@@ -78,16 +82,18 @@ public class WordCount {
                     if(Character.isLetter(contents[i].charAt(1))){
                         if(Character.isLetter(contents[i].charAt(2))){
                             if(Character.isLetter(contents[i].charAt(3))){
-                                //System.out.println(contents[i]);
-                            	if(contents[i].equals("title")){
-                                	if(use_quan) quan=10;
-                                	continue;
-                                }else if(contents[i].equals("abstract")){
-                                	if(use_quan) quan=1;
-                                	continue;
-                                }
+                            	if(count_word){
+                            		if(contents[i].equals("title")){
+                                		if(use_quan) quan=10;
+                                		continue;
+                                	}else if(contents[i].equals("abstract")){
+                                		if(use_quan) quan=1;
+                                		continue;
+                                	}
+                            		Maps(ma,contents[i],quan );
+                            	}
                             	wordnum++;
-                                Maps(ma,contents[i],quan );
+                            	
                             }
                         }
                     }

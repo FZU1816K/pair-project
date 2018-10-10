@@ -1,4 +1,4 @@
-//package test1;
+package test1;
 
 
 import java.io.*;
@@ -7,9 +7,10 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-    	String in_ads = "",out_ads = "";
+    	String in_ads = "input.txt",out_ads = "result.txt";
     	boolean use_quan = false;
     	int gs = 0, pl = 10;
+    	
     	//命令行参数接收
     	for(int i=0;i<args.length;i+=2){
     		if(args[i].charAt(1)=='i'){
@@ -36,6 +37,7 @@ public class Main {
         
         WordCount count = new WordCount(fileIn);//实例话WordCount类
         count.set_quan(use_quan);//设置是否使用词权
+        if(gs!=0)count.set_isword(false);
         int charnum = count.getcharnum();//获取字符数
         int wordnum = count.getwordnum();//读取单词数
         int linenum = count.getlinenum();//获取有效行数
