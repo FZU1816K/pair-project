@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <iterator>
 #include <vector>
+#include "Core.h"
 using namespace std;
 
 bool isLett(char c);
@@ -14,16 +15,7 @@ bool myFunc(const pair<string, int> &x, const pair<string, int> &y);
 
 int main(int argc, char* argv[]) {
 	string InputName, OutputName, Weight;
-	bool useWordGroup = false , useCustomOutput = false, findFirstSeparator = false;
-	int mNum, nNum, paperNum=0;
-	int characters = 0, lines = 0, words = 0;
-	int tc = 0, twords = 0, linefeedNum = 0, wordGroupNum = 0, ignoreNum = 0;
-	int k, pos, length = 0, flag = 0, flag0 = 0;
-	string strWords, wordGroup;
-	unordered_map<string, int> strMap;
-	unordered_map<string, int>::iterator it;
-	vector <pair<string, int>> vtMap;
-
+	int mNum = -1 , nNum = -1;
 	if (argc < 7) {
 		cerr << "命令行程序输入参数错误" << endl;
 		exit(1);
@@ -41,29 +33,102 @@ int main(int argc, char* argv[]) {
 			}
 			else if ('m' == argv[i][1]) {
 				mNum = atoi(argv[i + 1]);
-				useWordGroup = true;
 			}
 			else if ('n' == argv[i][1]) {
 				nNum = atoi(argv[i + 1]);
-				useCustomOutput = true;
 			}
 			i++;
 		}
 	}
-	char c;
-	ifstream infile;												//打开文件
+
+	Core core(InputName, OutputName, Weight, mNum, nNum);
+	vector <pair<string, int>> vtMap = core.getVector();
+	int n = 10;
+	if (nNum != -1) {
+		n = nNum;
+	}
+	//文件输出
+	ofstream outfile(OutputName, ios::out);
+	if (!outfile) {
+		cerr << "open error!" << endl;
+		exit(1);
+	}
+	int t = 0;
+	outfile << "characters: " << core.getCrt() << endl;
+	outfile << "words: " << core.getWords() << endl;
+	outfile << "lines: " << core.getLines() << endl;
+	for (auto it = vtMap.begin(); t<n && it != vtMap.end(); ++it, t++) {
+		outfile << "<" << it->first << ">: " << it->second << endl;
+	}
+	outfile.close();
+	return 0;
+}
+
+Core::Core(string InputNameTemp, string OutputNameTemp, string WeightTemp, int mNumTemp, int nNumTemp) {
+	InputName = InputNameTemp;
+	OutputName = OutputNameTemp;
+	Weight = WeightTemp;
+	mNum = mNumTemp;
+	nNum = nNumTemp;
 	infile.open(InputName, ios::in);								//将文件流对象与文件连接起来 														 
 	if (!infile) {													//若失败,则输出错误消息,并终止程序运行
 		cerr << "open error!" << endl;
 		exit(1);
 	}
-	infile >> noskipws;												//不忽略空白符，也不忽略换行符
+	if (-1 == mNum) {
+		useWordGroup = false;
+	}
+	else {
+		useWordGroup = true;
+	}
+	if (-1 == nNum) {
+		useCustomOutput = false;
+	}
+	else {
+		useCustomOutput = true;
+	}
+	hasRunKernel = false;
+}
+
+Core::~Core(){
+	infile.close();
+}
+
+int Core::getCrt() {
+	if (!hasRunKernel) kernelFunction();
+	return characters;
+}
+int Core::getWords() {
+	if (!hasRunKernel) kernelFunction();
+	return words;
+}
+int Core::getLines() {
+	if (!hasRunKernel) kernelFunction();
+	return lines;
+}
+vector <pair<string, int>> Core::getVector() {
+	if (strMap.empty()) kernelFunction();
+	if (vtMap.empty()) sort();
+	return vtMap;
+}
+
+void Core::kernelFunction() {
+	bool findFirstSeparator = false;
+	int tc = 0, twords = 0, linefeedNum = 0, wordGroupNum = 0, ignoreNum = 0, paperNum = 0;
+	int k, pos, length = 0, flag = 0, flag0 = 0;
+	string strWords, wordGroup;
+
+	infile.clear(ios::goodbit);
+	infile.seekg(ios::beg);
+	char c;
+	infile >> noskipws;
+
 	while (!infile.eof()) {
 		infile >> c;
-		if (infile.fail()) {										
-			if (!strWords.empty() && strWords.length() >= 4) {	
+		if (infile.fail()) {
+			if (!strWords.empty() && strWords.length() >= 4) {
 				if (!useWordGroup) {								//默认统计单词
-					//可能有最后一个单词，Abstract内容
+																	//可能有最后一个单词，Abstract内容
 					it = strMap.find(strWords);
 					if (it == strMap.end()) {
 						strMap[strWords] = 1;
@@ -90,7 +155,7 @@ int main(int argc, char* argv[]) {
 			}
 			break;
 		}
-		
+
 		//cout <<"c = "<<c<< "   tc = " <<tc<< endl;
 		if (ignoreNum>0) {
 			ignoreNum--;
@@ -106,10 +171,10 @@ int main(int argc, char* argv[]) {
 				ignoreNum = 2;
 				flag0 = 0;
 			}
-			
+
 			if (!strWords.empty() && strWords.length() >= 4) {
 				if (!useWordGroup) {								//默认统计单词
-					//可能有最后一个单词
+																	//可能有最后一个单词
 					if (linefeedNum % 2 == 0 || (linefeedNum % 1 == 0 && "0" == Weight)) {
 						k = 1;					//Abstract内容或者Weight为0时的Title内容
 					}
@@ -160,7 +225,7 @@ int main(int argc, char* argv[]) {
 			continue;
 		}
 
-		if (linefeedNum % 2 == 0 && paperNum == int(c)-48 && 0 == flag0) {		//跳过不需要统计的部分，无用的paperNum可能成为bug
+		if (linefeedNum % 2 == 0 && paperNum == int(c) - 48 && 0 == flag0) {		//跳过不需要统计的部分，无用的paperNum可能成为bug
 			paperNum++;
 			flag0 = 1;
 			ignoreNum = 8;
@@ -169,7 +234,7 @@ int main(int argc, char* argv[]) {
 		tc++;
 
 		if (!useWordGroup) {												//默认统计单词	
-			//判断单词
+																			//判断单词
 			if (flag == 0) {
 				if (isLett(c)) {
 					//大写字母改为小写
@@ -219,11 +284,11 @@ int main(int argc, char* argv[]) {
 					flag = 0;
 				}
 			}
-		}	
+		}
 		else {																//统计词组
 			if (flag == 0) {
 				if (isLett(c)) {						//读到字母
-					//大写字母改为小写
+														//大写字母改为小写
 					if (c >= 'A' && c <= 'Z')
 						c += 32;
 					strWords = strWords + c;
@@ -306,9 +371,11 @@ int main(int argc, char* argv[]) {
 		}
 	}
 	characters = tc;
-	lines = linefeedNum+1;
+	lines = linefeedNum + 1;
 	words = twords;
-	
+}
+
+void Core::sort() {
 	//词频排序
 	for (auto it = strMap.begin(); it != strMap.end(); it++) {
 		vtMap.push_back(make_pair(it->first, it->second));
@@ -318,23 +385,6 @@ int main(int argc, char* argv[]) {
 		n = nNum;
 	}
 	partial_sort(vtMap.begin(), vtMap.begin() + n, vtMap.end(), myFunc);
-
-	//文件输出
-	ofstream outfile(OutputName, ios::out);
-	if (!outfile) {
-		cerr << "open error!" << endl;
-		exit(1);
-	}
-	int t = 0;
-	outfile << "characters: " << characters << endl;
-	outfile << "words: " << words << endl;
-	outfile << "lines: " << lines << endl;
-	for (auto it = vtMap.begin(); t<n && it != vtMap.end(); ++it, t++) {
-		outfile << "<" << it->first << ">: " << it->second << endl;
-	}
-	infile.close();
-	outfile.close();
-	return 0;
 }
 
 bool isLett(char c) {

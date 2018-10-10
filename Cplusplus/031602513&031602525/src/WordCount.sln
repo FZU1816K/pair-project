@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WordCount", "WordCount\WordCount.vcxproj", "{7F19E689-F772-4AE1-AB59-96B8FD2F3E66}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WordCountTest", "UnitTest1\UnitTest1.vcxproj", "{34836E25-ACF1-4315-8880-5F9FAB4D487B}"
+EndProject
 Global
 	GlobalSection(Performance) = preSolution
 		HasPerformanceSessions = true
@@ -24,11 +26,34 @@ Global
 		{7F19E689-F772-4AE1-AB59-96B8FD2F3E66}.Release|x64.Build.0 = Release|x64
 		{7F19E689-F772-4AE1-AB59-96B8FD2F3E66}.Release|x86.ActiveCfg = Release|Win32
 		{7F19E689-F772-4AE1-AB59-96B8FD2F3E66}.Release|x86.Build.0 = Release|Win32
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Debug|x64.ActiveCfg = Debug|x64
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Debug|x64.Build.0 = Debug|x64
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Debug|x86.ActiveCfg = Debug|Win32
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Debug|x86.Build.0 = Debug|Win32
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Release|x64.ActiveCfg = Release|x64
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Release|x64.Build.0 = Release|x64
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Release|x86.ActiveCfg = Release|Win32
+		{34836E25-ACF1-4315-8880-5F9FAB4D487B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6860B797-CD54-4574-B866-096A9B37D774}
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
+	EndGlobalSection
+	GlobalSection(Performance) = preSolution
+		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
