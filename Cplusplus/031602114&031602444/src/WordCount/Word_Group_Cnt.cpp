@@ -51,7 +51,7 @@ bool Is_Engch(char ch)					//字符是a~z或A~Z之间的英文字母
 /*判断是否是数字*/
 bool Is_Num(char ch)					//字符是0~9之间的数字
 {
-	if (ch >= '1'&& ch <= '9')
+	if (ch >= '0'&& ch <= '9')
 	{
 		return true;
 	}
@@ -70,12 +70,12 @@ void Word_Group_Cnt(int word_Group_Len, string str, map <string, int > &group_Ma
 	queue <int> que;
 	for (int i = 0; i < lenth; i++)
 	{
-		if (Is_Num(str[i]) || Is_Engch(str[i]) && i != lenth - 1)
+		if (Is_Num(str[i]) || Is_Engch(str[i]) && i != lenth - 1)					//字符是字母或数字就将其连接到word_Now
 		{
 			word_Now += str[i];
 			continue;
 		}
-		else if (Is_Num(str[i]) || Is_Engch(str[i]) && i == lenth - 1)
+		else if (Is_Num(str[i]) || Is_Engch(str[i]) && i == lenth - 1)				//字符是字母或数字且为字段末位连接后就需要对末尾的单词判断是否为合法单词，否则会跳出循环漏掉末尾一个单词；
 		{
 			word_Now += str[i];
 			word_Now = Is_Word(word_Now);
@@ -106,7 +106,7 @@ void Word_Group_Cnt(int word_Group_Len, string str, map <string, int > &group_Ma
 			if (word_Len >= 4)
 			{
 				word_Group += word_Now;
-				if (que.size() < word_Group_Len - 1)
+				if (que.size() < word_Group_Len - 1)					//队列大小比所需合法单词数word_Group_Len-1小情况
 				{
 					word_Group += str[i];
 					word_Len += 1;
@@ -119,7 +119,7 @@ void Word_Group_Cnt(int word_Group_Len, string str, map <string, int > &group_Ma
 					que.push(word_Len);
 					word_Now = "";
 				}
-				else if (que.size() == word_Group_Len - 1)
+				else if (que.size() == word_Group_Len - 1)				//队列大小=所需合法单词数word_Group_Len-1情况
 				{
 					group_Map[word_Group] += ttl_Abs;
 					word_Group += str[i];
@@ -133,7 +133,7 @@ void Word_Group_Cnt(int word_Group_Len, string str, map <string, int > &group_Ma
 					que.push(word_Len);
 					word_Now = "";
 				}
-				else if (que.size() > word_Group_Len - 1)
+				else if (que.size() > word_Group_Len - 1)				//队列大小等于词组所需合法单词数量，则对队列进行进队和出队操作更新string并进行截取
 				{
 					word_Group = word_Group.substr(que.front());
 					group_Map[word_Group] += ttl_Abs;
@@ -150,7 +150,7 @@ void Word_Group_Cnt(int word_Group_Len, string str, map <string, int > &group_Ma
 					word_Now = "";
 				}
 			}
-			else if (word_Len > 0 && word_Len < 4)
+			else if (word_Len > 0 && word_Len < 4)				//遇到不合法单词且不是分隔符或空串的，则返回为no，将队列清空
 			{
 				while (que.empty() != 1)
 				{
@@ -205,31 +205,9 @@ void Cut_Ttl_Abs(int word_Group_Len, char* filename, map<string, int> &group_Map
 			}
 			else if (if_Abs == "Abstract: ")
 			{
-				if (str_len == 1024)
-				{
-					abs_Str += str.substr(10);
-					continue;
-				}
-				else
-				{
 					abs_Str += str.substr(10);
 					Word_Group_Cnt(word_Group_Len, abs_Str, group_Map, 1);
 					abs_Str = "";
-				}
-			}
-			else
-			{
-				if (str_len == 1024)
-				{
-					abs_Str += str;
-					continue;
-				}
-				else
-				{
-					abs_Str += str;
-					Word_Group_Cnt(word_Group_Len, abs_Str, group_Map, 1);
-					abs_Str = "";
-				}
 			}
 		}
 		else if (str_len < 7)

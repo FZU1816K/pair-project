@@ -1,5 +1,6 @@
 #include"pch.h"
 #include"CharCount.h"
+#include"Word_Group_Cnt.h"
 #include<iostream>
 #include<string>
 #include<fstream>
@@ -10,7 +11,9 @@ int CharCount(char *filename)
 {
 	char ch_tmp;
 	int ch_cnt = 0;
-	int flag = -1;
+	int flag = 0;
+	int num_Line = 0;						//编号行数；
+	int num_Ch = 0;							//编号行的编号字符总数；
 	string str;
 	fstream f_tmp;
 	f_tmp.open(filename);
@@ -19,47 +22,39 @@ int CharCount(char *filename)
 		cout << "Can't open file :" << filename << "\nUsage:countch filename" << endl;
 		exit(0);
 	}
+	while (f_tmp.get(ch_tmp))
+	{
+		ch_cnt++;							//先统计所有字符数；
+	}
+	f_tmp.close();
+//	cout << ch_cnt << endl;
+	f_tmp.open(filename);
 	while (!f_tmp.eof())
 	{
 		getline(f_tmp, str);
+		flag = 0;
 		int str_len = str.length();
-		if ((str[0] >= '0' && str[0] <= '9') && (str[str_len - 1] >= '0' && str[str_len - 1] <= '9'))			//将编号行排除在字符统计中
+		for (int i = 0; i < str_len; i++)
 		{
-			continue;
-		}
-		if (str_len > 7)																						//该行字符串长度大于Title长度
-		{
-			string no_Count_Ttl = str.substr(0, 7);
-			string no_Count_Abs = str.substr(0, 10);
-			if (no_Count_Ttl == "Title: ")
+			if (!Is_Num(str[i]))
 			{
-				ch_cnt += str_len - 7;
-			}
-			else if (no_Count_Abs == "Abstract: ")
-			{
-				ch_cnt += str_len - 10;
-			}
-			else								//该行是没有Title: 也没有Abstract: 的有效行；
-			{
-				ch_cnt += str_len;
-			}
-			if (str_len != 1024)				//若该行1024全满，则最后没有换行符；否则最后会有一个换行符；
-			{
-				ch_cnt++;
-			}
-		}
-		else									//该行字符串长度小于7，可能是空行或者只有几个短单词总长小于7；
-		{
-			if (str_len == 0)
-			{
-				continue;
+				flag = 0;
+				break;
 			}
 			else
 			{
-				ch_cnt += str_len + 1;
+				flag = 1;
 			}
+		}
+		if (flag == 1)
+		{
+//			cout << str << endl;
+			num_Line++;
+			num_Ch += str_len;				//编号行的长度；
+			num_Ch += 3;					//每遇到一个编号行会多计算三个换行符；
 		}
 	}
 	f_tmp.close();
-	return ch_cnt - 1;
+	ch_cnt = ch_cnt - 17 * num_Line - num_Ch;
+	return ch_cnt + 2;
 }

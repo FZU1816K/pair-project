@@ -21,7 +21,7 @@ using namespace std;
 **	算法：
 **	附加说明：
 ****************************************************************************************/
-void SortTopN(int N, map<string, int> &m0, vector<pair<string, int>>& x);/**词频排序**/
+void SortTopN(int N, map<string, int> &m0, vector<pair<string, int>>& x);
 
 
 
@@ -32,5 +32,5 @@ void SortTopN(int N, map<string, int> &m0, vector<pair<string, int>>& x);/**词频
 **	算法：
 **	附加说明：
 ****************************************************************************************/
-void Display(vector<pair<string, int>>& x, ofstream &out_file);/**输出**/
+void Display(vector<pair<string, int>>& x, ofstream &out_file);
 
