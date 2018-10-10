@@ -1,4 +1,13 @@
-#include"stdafx.h"
+//#include"stdafx.h"
+#pragma once
+#include<iostream>
+#include<string>
+#include"winsock2.h"
+#include<fstream>
+#include<queue>
+#pragma comment(lib, "ws2_32.lib")
+using namespace std;
+#define DEFAULT_PAGE_BUF_SIZE 1048576
 
 queue<string> Texturl;
 
@@ -30,22 +39,22 @@ void GetHttpRespons(char * &response, string source)
 	memcpy(&sa.sin_addr, hp->h_addr, 4);
 
 	//建立连接
-	if (0 != connect(sock, (SOCKADDR*)&sa, sizeof(sa))) {
-		cout << "can not connet" << endl;
-		closesocket(sock);
-		exit(0);
-	}
-	//connect(sock, (SOCKADDR*)&sa, sizeof(sa));
+	//if (0 != connect(sock, (SOCKADDR*)&sa, sizeof(sa))) {
+	//	cout << "can not connet" << endl;
+	//	closesocket(sock);
+	//	exit(0);
+	//}
+	connect(sock, (SOCKADDR*)&sa, sizeof(sa));
 
 	//准备发送数据
 	string request = "GET " + resource + " HTTP/1.1\r\nHost:" + host + "\r\nConnection:Close\r\n\r\n";
 	//发送数据
 	send(sock, request.c_str(), request.size(), 0);
-	if (SOCKET_ERROR == send(sock, request.c_str(), request.size(), 0)) {
+	/*if (SOCKET_ERROR == send(sock, request.c_str(), request.size(), 0)) {
 		cout << "send error" << endl;
 		closesocket(sock);
 		exit(0);
-	}
+	}*/
 	//接收数据
 	int m_nContentLength = DEFAULT_PAGE_BUF_SIZE;
 	int bytesRead = 0;
@@ -183,13 +192,25 @@ void GetText()
 	//free(response);
 	outfile.close();
 }
+void startupWSA()
+{
+	WSADATA wsadata;
+	WSAStartup(MAKEWORD(2, 0), &wsadata);
+}
+
+inline void cleanupWSA()
+{
+	WSACleanup();
+}
+
 
 int main()
 {
-	WSADATA wsadata;
+	startupWSA();
+	/*WSADATA wsadata;
 	if (WSAStartup(MAKEWORD(2, 0), &wsadata) != 0) {
 		return 0;
-	}
+	}*/
 	GetTexturl();
 	GetText();
 	WSACleanup();
