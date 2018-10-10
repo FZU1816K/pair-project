@@ -1,0 +1,8 @@
+characters: 1801
+words: 175
+lines: 4
+curriculum when:2
+hard curriculum:2
+question answering:2
+show that:2
+when learning:2

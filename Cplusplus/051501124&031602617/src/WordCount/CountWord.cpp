@@ -15,26 +15,20 @@ using namespace std;
 unordered_map<string, int> wordFrequency;
 vector<pair<string, int>> wordRank;
 
+
 extern int phraseLen;
+extern string outputFilename;
 extern int topN;
 extern int charAmount;
 extern int lineAmount;
+extern int wordAmount;
 
 bool inTitle = false;
 bool inAbstract = false;
 int titleWeight = 1;
 int cnt = 0;
 
-void showResult()
-{
-	int cnt = 0;
-	for (auto iter = wordFrequency.begin(); iter != wordFrequency.end(); iter++)
-	{
-		cnt++;
-		cout << iter->first << " : " << iter->second << endl;
-	}
-	//cout << cnt << endl;
-}
+
 
 bool mysort(const pair<string, int> &left, const pair<string, int> &right)
 {
@@ -48,8 +42,14 @@ bool mysort(const pair<string, int> &left, const pair<string, int> &right)
 	}
 }
 
-void topNword(int n)
+void showResult(int n)
 {
+	ofstream output;
+	output.open(outputFilename);
+	output << "characters: " << charAmount << endl;
+	output << "words: " << wordAmount << endl;
+	output << "lines: " << lineAmount << endl;
+
 	for (auto iter = wordFrequency.begin(); iter != wordFrequency.end(); iter++) // iterate all words in WordFrequency
 	{
 		pair<string, int> word = make_pair(iter->first, iter->second);
@@ -67,7 +67,7 @@ void topNword(int n)
 	//
 	for (int i = 0; i < n; iter++,i++)
 	{
-		cout << iter->first << ":" << iter->second << endl;
+		output << iter->first << ":" << iter->second << endl;
 	}
 }
 
@@ -110,83 +110,83 @@ void WordClassify(string word)
 
 }
 
-void stringCut(string inStr)
-{
-	int slen = inStr.length();
-	bool is_head = true;//at the beginning of a word
-	bool not_a_word = false;
-	string word;
-	for (int i = 0; i < slen; i++)  //todo:avoid digit-first-word
-	{
-		if (!(inStr[i] >= 1 && inStr[i] <= 255))
-		{
-			continue;
-		}
-		if ((inStr[i] <= '9') && (inStr[i]) >= '0') // deal with digit
-		{
-			if (is_head)
-			{
-				not_a_word = true;
-				continue;
-			}
-			else
-			{
-				word += inStr[i];
-			}
-		}
-		if ((inStr[i] >= 'a') && (inStr[i] <= 'z') || (inStr[i] >= 'A') && (inStr[i] <= 'Z'))
-		{
-			if (!not_a_word)
-			{
-				is_head = false;
-				word += tolower(inStr[i]);
-			}
-		}
-		if (inStr[i] == ' ')
-		{
-			not_a_word = false;
-			// 9/30
-			is_head = true;
-			if (word.length() >= 4)
-			{
-				//cnt++;
-				//cout << word << endl;
-				WordClassify(word);
-			}
-			word = "";
-			continue;
-		}
-
-
-		if (ispunct(inStr[i]))//deal with punctions (i.e ',')
-		{
-			not_a_word = false;
-			// 9/30
-			is_head = true;
-			if (word.length() >= 4)
-			{
-				//cnt++;
-				//cout << word << endl;
-				WordClassify(word);
-			}
-			word = "";
-			continue;
-		}
-		if (i == slen - 1)
-		{
-			//cout << word << endl;
-			// 9/30
-			is_head = true;
-			if (word.length() >= 4)
-			{
-				//cnt++;
-				WordClassify(word);
-			}
-		}
-
-	}
-
-}
+//void stringCut(string inStr)
+//{
+//	int slen = inStr.length();
+//	bool is_head = true;//at the beginning of a word
+//	bool not_a_word = false;
+//	string word;
+//	for (int i = 0; i < slen; i++)  //todo:avoid digit-first-word
+//	{
+//		if (!(inStr[i] >= 1 && inStr[i] <= 255))
+//		{
+//			continue;
+//		}
+//		if ((inStr[i] <= '9') && (inStr[i]) >= '0') // deal with digit
+//		{
+//			if (is_head)
+//			{
+//				not_a_word = true;
+//				continue;
+//			}
+//			else
+//			{
+//				word += inStr[i];
+//			}
+//		}
+//		if ((inStr[i] >= 'a') && (inStr[i] <= 'z') || (inStr[i] >= 'A') && (inStr[i] <= 'Z'))
+//		{
+//			if (!not_a_word)
+//			{
+//				is_head = false;
+//				word += tolower(inStr[i]);
+//			}
+//		}
+//		if (inStr[i] == ' ')
+//		{
+//			not_a_word = false;
+//			// 9/30
+//			is_head = true;
+//			if (word.length() >= 4)
+//			{
+//				//cnt++;
+//				//cout << word << endl;
+//				WordClassify(word);
+//			}
+//			word = "";
+//			continue;
+//		}
+//
+//
+//		if (ispunct(inStr[i]))//deal with punctions (i.e ',')
+//		{
+//			not_a_word = false;
+//			// 9/30
+//			is_head = true;
+//			if (word.length() >= 4)
+//			{
+//				//cnt++;
+//				//cout << word << endl;
+//				WordClassify(word);
+//			}
+//			word = "";
+//			continue;
+//		}
+//		if (i == slen - 1)
+//		{
+//			//cout << word << endl;
+//			// 9/30
+//			is_head = true;
+//			if (word.length() >= 4)
+//			{
+//				//cnt++;
+//				WordClassify(word);
+//			}
+//		}
+//
+//	}
+//
+//}
 
 // 9/30
 void stringCutWithLen(string inStr,int phraseLen)
@@ -249,6 +249,7 @@ void stringCutWithLen(string inStr,int phraseLen)
 			is_head = true;
 			if (word.length() >= 4)
 			{
+				wordAmount += 1;
 				if (phraseLenCnt == phraseLen)
 				{
 					phrase = inStr.substr(phraseHead, i - phraseHead );
@@ -270,6 +271,7 @@ void stringCutWithLen(string inStr,int phraseLen)
 				phraseLenCnt = 0;
 			}
 			word = "";
+			
 			continue;
 		}
 
@@ -281,7 +283,7 @@ void stringCutWithLen(string inStr,int phraseLen)
 			is_head = true;
 			if (word.length() >= 4)
 			{
-				//cout << word << endl;
+				wordAmount += 1;
 				if (phraseLenCnt == phraseLen)
 				{
 					phrase = inStr.substr(phraseHead, i - phraseHead );
@@ -305,6 +307,7 @@ void stringCutWithLen(string inStr,int phraseLen)
 				phraseLenCnt = 0;
 			}
 			word = "";
+			
 			continue;
 		}
 
@@ -316,10 +319,10 @@ void stringCutWithLen(string inStr,int phraseLen)
 			is_head = true;
 			if (word.length() >= 4)
 			{
-				
+				wordAmount += 1;
 				if (phraseLenCnt == phraseLen)
 				{
-					phrase = inStr.substr(phraseHead, i - phraseHead );
+					phrase = inStr.substr(phraseHead, i - phraseHead + 1);
 					//cout << phrase << endl;
 					WordClassify(phrase);
 					phraseHead = i;
@@ -329,8 +332,8 @@ void stringCutWithLen(string inStr,int phraseLen)
 					
 				}
 			}
-			phraseHead = i;
-			phraseLenCnt -= 1;
+			//phraseHead = i;
+			//phraseLenCnt -= 1;
 			
 		}
 
@@ -362,7 +365,7 @@ int CountWord(string inputFilename, bool weightOn)
 			inTitle = true;
 			oneLine = oneLine.substr(7, oneLine.length());
 			lineAmount += 1;
-			//stringCut(oneLine);
+			
 			stringCutWithLen(oneLine,phraseLen);
 			inTitle = false;
 		}
@@ -371,15 +374,14 @@ int CountWord(string inputFilename, bool weightOn)
 		{
 			oneLine = oneLine.substr(10, oneLine.length());
 			lineAmount += 1;
-			//stringCut(oneLine);
+			
 			stringCutWithLen(oneLine,phraseLen);
 		}
 	}
-	//showResult();
-	topNword(topN);
-	cout << "char:" << charAmount << endl;
-	cout << "line:" << lineAmount << endl;
-	//cout << wordFrequency["hello"] << endl;
+	
+	showResult(topN);
+	
+	
 	return 0;
 }
 

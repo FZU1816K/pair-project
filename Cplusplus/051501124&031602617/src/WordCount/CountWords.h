@@ -7,8 +7,8 @@
 using namespace std;
 
 int lineAmount;
-
+int wordAmount;
 int CountWord(string inputFilename,bool weightOn);
-void stringCut(string inStr);
+
 void WordClassify(string word);
 void stringCutWithLen(string inStr,int phraseLen);
