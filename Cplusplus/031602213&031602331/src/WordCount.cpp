@@ -12,7 +12,7 @@
 #include<assert.h>
 
 using namespace std;
-int flag;//弗拉格 
+int flag;
 int mode = -1;//用于判断0 TITLE ABSTRACT \N
 int groupmode = 0;//用于开启词组统计模式           对应-m
 int weightmode = 0;//用于开启权重模式                对应-w
@@ -20,7 +20,6 @@ int outctrmode = 10;//用于开启输出个数控制模式     对应-n
 int grouplen;
 string file_Inname;
 string file_Outname;
-
 map<string, int>wordgroup;
 map<string, int>::iterator iter;
 
@@ -39,7 +38,7 @@ bool cmp(WGnode a, WGnode b)
 	return a.count > b.count;
 }
 
-void  groupFreqout()
+void  groupFreqout(ofstream &fout)
 {
 	map<string, int>::iterator it;
 	vector<WGnode> vec;
@@ -54,7 +53,8 @@ void  groupFreqout()
 
 	for (int i = 0; i < length; i++)
 	{
-		cout << "<" << vec[i].group << ">: " << vec[i].count << endl;
+		fout << "<" << vec[i].group << ">: " << vec[i].count << endl;
+		//cout << "<" << vec[i].group << ">: " << vec[i].count << endl;
 	}
 }
 
@@ -231,7 +231,7 @@ void wordfreq(wordtreeNode *root)//词频统计
 	}
 }
 
-void wordfreqout()//高频词输出
+void wordfreqout(ofstream &fout)//高频词输出
 {
 	int j = 0;
 	wordtreeNode *t = NULL;
@@ -241,6 +241,7 @@ void wordfreqout()//高频词输出
 		if (j == outctrmode)
 			break;
 		*t = wordqueue.top();
+		fout << "<" << t->ch << ">: " << t->end << endl;
 		cout << "<" << t->ch << ">: " << t->end << endl;
 		wordqueue.pop();
 		j++;
@@ -353,107 +354,19 @@ void groupinsert(string str, int len)
 	}
 }
 
-/*int cmdLine(char ** argv)
-{
-	int i = 1;
-	while (argv[i] != NULL)
-	{
-		if (argv[i] == "-i")
-		{
-			if (argv[i + 1] == NULL)
-			{
-				printf("error: no input file name!\n");
-				return -1;
-			}
-
-			file_Inname = argv[i + 1];
-			i += 2;
-		}
-
-		else  if (argv[i] == "-o")
-		{
-			if (argv[i + 1] == NULL)
-			{
-				printf("error: no output file name!\n");
-				return -1;
-			}
-
-			file_Outname = argv[i + 1];
-			i += 2;
-		}
-
-		else if (argv[i] == "-w")
-		{
-			if (argv[i + 1] == NULL)
-			{
-				return -1;
-			}
-
-			if ((strcmp(argv[i + 1], "1") || strcmp(argv[i + 1], "0")) != 0)
-			{
-				printf("error: -w must  0 or 1!\n");
-				return -1;
-			}
-
-			int num = atoi(argv[i + 1]);
-			weightmode = num;
-
-			i += 2;
-		}
-
-		else if (argv[i] == "-m")
-		{
-			if (argv[i + 1] == NULL)
-			{
-				printf("error: -m must >= 0!\n");
-				return -1;
-			}
-
-			grouplen = atoi(argv[i + 1]);
-			if (grouplen < 2) {
-				printf("error: -m must >= 2!\n");
-				return -1;
-			}
-			groupmode = 1;
-			i += 2;
-		}
-
-		else if (argv[i] == "-n")
-		{
-			if (argv[i + 1] == NULL)
-			{
-				printf("error: -n must >= 0!\n");
-				return -1;
-			}
-
-			outctrmode = atoi(argv[i + 1]);
-			if (outctrmode == -1)
-			{
-				printf("error: -n must >= 0!\n");
-				return -1;
-			}
-			i += 2;
-		}
-	}
-
-}*/
-
 int main(int argc, char * argv[])
 {
 	int CHARnum = 0, LINEnum = 0, WORDnum = 0;
 	//int grouplen;
 	string readtxt;
 	wordtreeNode *root = NULL;
-	
-	ifstream infile(file_Inname);
-	
-	assert(infile.isopen());
-	ofstream outfile(file_Outname);
+
+
 
 	int i = 1;
 	while (argv[i] != NULL)
 	{
-		if (strcmp(argv[i],"-i"))
+		if (strcmp(argv[i], "-i") == 0)
 		{
 			if (argv[i + 1] == NULL)
 			{
@@ -463,10 +376,10 @@ int main(int argc, char * argv[])
 
 			file_Inname = argv[i + 1];
 			i += 2;
-			cout << file_Inname << endl;
+			//cout << file_Inname << endl;
 		}
 
-		else  if (strcmp(argv[i], "-o"))
+		else  if (strcmp(argv[i], "-o") == 0)
 		{
 			if (argv[i + 1] == NULL)
 			{
@@ -475,20 +388,14 @@ int main(int argc, char * argv[])
 			}
 
 			file_Outname = argv[i + 1];
-			cout << file_Outname << endl;
+			//cout << file_Outname << endl;
 			i += 2;
 		}
 
-		else if (strcmp(argv[i], "-w"))
+		else if (strcmp(argv[i], "-w") == 0)
 		{
 			if (argv[i + 1] == NULL)
 			{
-				return -1;
-			}
-
-			if ((strcmp(argv[i + 1], "1") || strcmp(argv[i + 1], "0")) != 0)
-			{
-				printf("error: -w must  0 or 1!\n");
 				return -1;
 			}
 
@@ -498,7 +405,7 @@ int main(int argc, char * argv[])
 			i += 2;
 		}
 
-		else if (strcmp(argv[i], "-m"))
+		else if (strcmp(argv[i], "-m")==0)
 		{
 			if (argv[i + 1] == NULL)
 			{
@@ -506,16 +413,15 @@ int main(int argc, char * argv[])
 				return -1;
 			}
 
-			grouplen = atoi(argv[i + 1]);
-			if (grouplen < 2) {
+			groupmode = atoi(argv[i + 1]);
+			if (groupmode < 2) {
 				printf("error: -m must >= 2!\n");
 				return -1;
 			}
-			groupmode = 1;
 			i += 2;
 		}
 
-		else if (strcmp(argv[i], "-n"))
+		else if (strcmp(argv[i], "-n")==0)
 		{
 			if (argv[i + 1] == NULL)
 			{
@@ -530,11 +436,18 @@ int main(int argc, char * argv[])
 				return -1;
 			}
 			i += 2;
+			cout << "-n:" << outctrmode << endl;
 		}
-		
+
 	}
 
-	
+	//cout << " *** " << file_Inname << endl;
+	ifstream infile(file_Inname);
+
+	//assert(infile.is_open());
+	ofstream outfile(file_Outname);
+
+
 	root = new wordtreeNode;//初始化树 
 	while (getline(infile, readtxt))
 	{
@@ -561,14 +474,15 @@ int main(int argc, char * argv[])
 		CHARnum--;
 
 	outfile << "characters: " << CHARnum << endl << "words: " << WORDnum << endl << "lines: " << LINEnum << endl;
-	cout << "characters1: " << CHARnum << endl << "words: " << WORDnum << endl << "lines: " << LINEnum << endl;
+	//cout << "characters1: " << CHARnum << endl << "words: " << WORDnum << endl << "lines: " << LINEnum << endl;
 	if (groupmode == 0)
 	{
 		wordfreq(root);
-		wordfreqout();
+		wordfreqout(outfile);
 	}
 	else
-		groupFreqout();
+		groupFreqout(outfile);
+	outfile.close();
 	system("pause");
 	return 0;
 
