@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class spyder
+public class Main
 {
-	public static List<String> getMailsByWeb() throws IOException
+	public static List<String> getPaperssByWeb() throws IOException
 	{
 		URL url=new URL("http://openaccess.thecvf.com/CVPR2018.py");
 		BufferedReader bufr=new BufferedReader(new InputStreamReader(url.openStream()));
@@ -30,8 +30,8 @@ public class spyder
 	{
 		try{
 			String head = "http://openaccess.thecvf.com/"; 
-			List<String> list=getMailsByWeb();
-			File f = new File("./Spider_result.txt");      
+			List<String> list=getPaperssByWeb();
+			File f = new File("result.txt");      
 			if (!f.exists())
 			{       
 				f.createNewFile();      
@@ -45,7 +45,7 @@ public class spyder
 				mail = head + mail;
 				URL url=new URL(mail);
 				System.out.println(mail);
-				System.out.println("\n");		
+				//System.out.println("\n");		
 				BufferedReader bufred=new BufferedReader(new InputStreamReader(url.openStream(),"UTF-8"));				
 				String title_regex = "<div id=\"papertitle\">\\n(.*?)</div>";
 				String abstract_regex = "<div id=\"abstract\" >\\n(.*?)</div>";

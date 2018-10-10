@@ -62,7 +62,7 @@ ArgProcessing::ArgProcessing(int &argc, char *argv[])		// 构造  对参数进�
 				if (has_m)
 					throw "-m 参数重复";
 				has_m = true;
-				int len = strlen(m_argv[i + 1]);
+				int len = (int)strlen(m_argv[i + 1]);
 				for (int j = 0; j < len; j++)
 				{
 					if (m_argv[i + 1][j] > '9' || m_argv[i + 1][j] < '0')
@@ -77,7 +77,7 @@ ArgProcessing::ArgProcessing(int &argc, char *argv[])		// 构造  对参数进�
 				if (has_n)
 					throw "-n 参数错误";
 				has_n = true;
-				int len = strlen(m_argv[i + 1]);
+				int len = (int)strlen(m_argv[i + 1]);
 				for (int j = 0; j < len; j++)
 				{
 					if (m_argv[i + 1][j] > '9' || m_argv[i + 1][j] < '0')
