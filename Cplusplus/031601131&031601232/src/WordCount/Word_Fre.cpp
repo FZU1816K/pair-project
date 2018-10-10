@@ -10,13 +10,14 @@ struct CmpByValue {
 
 int Word_Fre(char * filename,char * outfile,int w,int m,int n)
 {	
-	map<string, int> Word_Num_map;
+	unordered_map<string, int> Word_Num_map;
 	int i;
 		
 		int word_group;
 		word_group = m;
 		
-	int quanzhong = 1;  
+	int quanzhong = 9*w+1;  
+	int word_num = 0;
 	char ch;
 	FILE *file;
 	fopen_s(&file, filename, "rt");
@@ -29,6 +30,47 @@ int Word_Fre(char * filename,char * outfile,int w,int m,int n)
 
 	for (; (ch = fgetc(file)) != EOF;)				//Determine the word and insert map
 	{
+		
+
+		if ('A' <= ch && ch <= 'Z')
+			ch = ch + 32;
+		if (flag == 0) {
+			if (ch >= 'a'&&ch <= 'z') { flag = 1;	word = word + ch; }
+			else if (ch !=' ') { wn = 0;	re_word_num=m; }
+		}
+		else if (flag == 1) {
+			if (ch >= 'a'&&ch <= 'z') { flag = 2;	word = word + ch; }
+			else { flag = 0; word = ""; wn = 0;	re_word_num = m;}
+		}
+		else if (flag == 2) {
+			if (ch >= 'a'&&ch <= 'z') { flag = 3;	word = word + ch; }
+			else { flag = 0; word = ""; wn = 0;	re_word_num = m;}
+		}
+		else if (flag == 3) {
+			if (ch >= 'a'&&ch <= 'z') { flag = 4;	word = word + ch; }
+			else { flag = 0; word = ""; wn = 0;	re_word_num = m;}
+		}
+		else if (flag == 4) {
+			if (ch >= 'a'&&ch <= 'z' || (ch >= '0'&&ch <= '9')) { word = word + ch; }
+			else {
+				word_array[wn % 20] = word;
+				word_num++;
+				wn++;
+				re_word_num--;
+				word = "";
+				if (re_word_num == 0)
+				{
+					for (int j = m; j > 1; j--)
+						word = word + word_array[(wn - j) % 20]+" ";
+					word = word + word_array[(wn - 1) % 20];
+					Word_Num_map[word] = Word_Num_map[word] + quanzhong;
+					re_word_num = 1;
+				}
+				word = "";
+				flag = 0;
+			
+			}
+		}
 		if (ch == '\n')//ªª––≥ı ºªØ°£
 		{
 			wn = 0;
@@ -50,45 +92,7 @@ int Word_Fre(char * filename,char * outfile,int w,int m,int n)
 					quanzhong = 1;
 				}
 			}
-			
-		}	
-		if ('A' <= ch && ch <= 'Z')
-			ch = ch + 32;
-		if (flag == 0) {
-			if (ch >= 'a'&&ch <= 'z') { flag = 1;	word = word + ch; }
-			else if (ch >= '0'&&ch <= '9') { wn = 0;	re_word_num=m; }
-		}
-		else if (flag == 1) {
-			if (ch >= 'a'&&ch <= 'z') { flag = 2;	word = word + ch; }
-			else { flag = 0; word = ""; wn = 0;	re_word_num = m;}
-		}
-		else if (flag == 2) {
-			if (ch >= 'a'&&ch <= 'z') { flag = 3;	word = word + ch; }
-			else { flag = 0; word = ""; wn = 0;	re_word_num = m;}
-		}
-		else if (flag == 3) {
-			if (ch >= 'a'&&ch <= 'z') { flag = 4;	word = word + ch; }
-			else { flag = 0; word = ""; wn = 0;	re_word_num = m;}
-		}
-		else if (flag == 4) {
-			if (ch >= 'a'&&ch <= 'z' || (ch >= '0'&&ch <= '9')) { word = word + ch; }
-			else {
-				word_array[wn % 20] = word;
-				wn++;
-				re_word_num--;
-				word = "";
-				if (re_word_num == 0)
-				{
-					for (int j = m; j > 1; j--)
-						word = word + word_array[(wn - j) % 20]+" ";
-					word = word + word_array[(wn - 1) % 20];
-					Word_Num_map[word] = Word_Num_map[word] + quanzhong;
-					re_word_num = 1;
-				}
-				word = "";
-				flag = 0;
-			
-			}
+
 		}
 	}
 
@@ -98,10 +102,11 @@ int Word_Fre(char * filename,char * outfile,int w,int m,int n)
 		wn++;
 		if (re_word_num == 0)
 		{
+			word = "";
 			for (int j = m; j > 1; j--)
 				word = word + word_array[(wn - j) % 30] + " ";
 			word = word + word_array[(wn - 1) % 30];
-			Word_Num_map[word] = Word_Num_map[word] + quanzhong;
+			Word_Num_map[word] = Word_Num_map[word] ++;
 		}
 	
 	}
