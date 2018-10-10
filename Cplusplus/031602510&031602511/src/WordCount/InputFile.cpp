@@ -32,7 +32,7 @@ InputFile::InputFile(string inputPath, int _phraseLength, int _weight, int _sort
 	{
 		hasOpenFile = false;
 		cerr << inputPath << "文件不存在！" << endl;
-		exit(1);
+		//exit(1);
 	}
 
 	hasOpenFile = true;
@@ -80,6 +80,7 @@ void InputFile::readFile()
 	int _lineNum = 0;
 	int _crtNum = 0;
 	int _wordNum = 0;
+	int _phraseNum = 0;
 
 	/*判断字符是否有效所用的局部变量*/
 	int crlfNum = 0;											//换行符数目
@@ -202,13 +203,15 @@ void InputFile::readFile()
 					/*词组存至phrase*/
 					wordArray[arrayLength] = 0;
 					phrase = wordArray;
-					phraseNum++;
 
 					/*词组存入无序容器*/
 					itor = phraseMap.find(phrase);
 					if (itor != phraseMap.end()) itor->second += _weight;
-					else phraseMap[phrase] = _weight;
-
+					else
+					{
+						phraseMap.insert(make_pair(phrase, _weight));
+						_phraseNum++;
+					}
 					/*将后两个词缀留在数组*/
 					if (phraseLength > 1)
 					{
@@ -248,7 +251,7 @@ void InputFile::readFile()
 		if (tempChar != ' ' && !flag_hasCrt && tempChar != '\t' && tempChar != '\n') flag_hasCrt = true;
 		if (tempChar == '\n')
 		{
-			if (flag_hasCrt = true)
+			if (flag_hasCrt)
 			{
 				_lineNum++;
 				flag_hasCrt = false;
@@ -289,8 +292,11 @@ void InputFile::readFile()
 			/*词组存入无序容器*/
 			itor = phraseMap.find(phrase);
 			if (itor != phraseMap.end()) itor->second += _weight;
-			else phraseMap[phrase] = _weight;
-
+			else
+			{
+				phraseMap.insert(make_pair(phrase, _weight));
+				_phraseNum++;
+			}
 			/*将后两个词缀留在数组*/
 			if (phraseLength > 1)
 			{
@@ -309,6 +315,7 @@ void InputFile::readFile()
 	lineNum = _lineNum;
 	crtNum = _crtNum;
 	wordNum = _wordNum;
+	phraseNum = _phraseNum;
 }
 
 /*将单词按要求排序后保存到orderWord容器中*/

@@ -1,0 +1,10 @@
+<Ming-Hsuan Yang>: 17
+<Luc Van Gool>: 16
+<Wei Liu>: 13
+<Xiaogang Wang>: 13
+<Jan Kautz>: 11
+<Chunhua Shen>: 10
+<Jiashi Feng>: 10
+<Bernt Schiele>: 9
+<Gang Wang>: 9
+<Huchuan Lu>: 9
