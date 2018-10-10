@@ -279,6 +279,7 @@ int Statistics::nw_words(ifstream& in)//统计无权重单词
 						}
 					}
 					temp = str.substr(star, flag);//截取合法单词 
+					//cout << temp << endl;
 					for (unsigned i = 0; i < temp.length(); i++)//将大写字母转为小写字母 
 					{
 						if (temp[i] >= 'A'&&temp[i] <= 'Z')

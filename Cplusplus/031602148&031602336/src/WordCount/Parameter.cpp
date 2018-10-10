@@ -18,12 +18,12 @@ void Parameter::get_Parameter(int argc, char *argv[])//提取参数
 		if (strcmp(argv[j], "-i") == 0)
 		{
 			i = j + 1;
-			//cout << argv[i] << endl;
+			//cout << i<< endl;
 		}
 		if (strcmp(argv[j], "-o") == 0)
 		{
 			o = j + 1;
-			//cout << argv[o] << endl;
+			//cout << o<< endl;
 		}
 		if (strcmp(argv[j], "-w") == 0)
 		{
