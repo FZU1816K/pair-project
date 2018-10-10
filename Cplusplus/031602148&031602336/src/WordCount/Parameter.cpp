@@ -27,17 +27,17 @@ void Parameter::get_Parameter(int argc, char *argv[])//提取参数
 		}
 		if (strcmp(argv[j], "-w") == 0)
 		{
-			w = atoi(argv[j + 1]);;
+			w = atoi(argv[j + 1]);
 			//cout << "w=" << w << "   " << endl;
 		}
 		if (strcmp(argv[j], "-m") == 0)
 		{
-			m = atoi(argv[j + 1]);;
+			m = atoi(argv[j + 1]);
 			//cout << "m=" << m << "   " << endl;
 		}
 		if (strcmp(argv[j], "-n") == 0)
 		{
-			n = atoi(argv[j + 1]);;
+			n = atoi(argv[j + 1]);
 			//cout << "n=" << n << "   " << endl;
 		}
 	}
@@ -47,3 +47,4 @@ void Parameter::get_Parameter(int argc, char *argv[])//提取参数
 		exit(1);
 	}
 }
+
