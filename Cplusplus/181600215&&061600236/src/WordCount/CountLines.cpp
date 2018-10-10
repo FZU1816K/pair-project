@@ -1,17 +1,19 @@
-#include "stdafx.h"
+#include "pch.h"
 #include "CountLines.h"
 
-int CountLines(string filename)
-{
+int CountLines(string name) {
 	ifstream file;
-	file.open(filename);
-	string str;
-	int count = 0;
-	regex rx("^\\s*$");//空行表达式
-	while (getline(file, str)) {
-		if (!regex_match(str, rx)) count++;
+	file.open(name);
+	int line = 0, rnow = 0;
+	int ch;
+	while (ch = getchar()) {
+		if (ch == '\n' || ch == -1) {
+			if (rnow == 1) line++;
+			if (rnow == 2) line++;
+			rnow = (rnow + 1) % 5;
+			if (ch == -1) break;
+		}
 	}
 	file.close();
-
-	return count;
+	return line;
 }
