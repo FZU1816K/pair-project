@@ -1,8 +1,8 @@
-characters: 1801
-words: 175
-lines: 4
-curriculum when:2
-hard curriculum:2
-question answering:2
-show that:2
-when learning:2
+characters: 1193412
+words: 119769
+lines: 1948
+<this paper>: 464
+<show that>: 336
+<neural networks>: 207
+<convolutional neural>: 185
+<neural network>: 185

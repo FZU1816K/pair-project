@@ -41,6 +41,9 @@ int Argv_handle(char **argv) //return 0 -everything is ok,-1 something wrong
 	phraseLen = 1;
 	topN = 10;
 	
+
+	int argvFlag = 0; //
+
 	inputPos = 9;
 	int idx = 1;
 	while (argv[idx]!=NULL)

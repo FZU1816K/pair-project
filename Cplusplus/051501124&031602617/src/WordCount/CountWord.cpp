@@ -46,6 +46,7 @@ void showResult(int n)
 {
 	ofstream output;
 	output.open(outputFilename);
+	charAmount = charAmount - lineAmount - 7 * lineAmount / 2 - 10 * lineAmount / 2;
 	output << "characters: " << charAmount << endl;
 	output << "words: " << wordAmount << endl;
 	output << "lines: " << lineAmount << endl;
@@ -67,7 +68,7 @@ void showResult(int n)
 	//
 	for (int i = 0; i < n; iter++,i++)
 	{
-		output << iter->first << ":" << iter->second << endl;
+		output << "<" << iter->first << ">" << ": " << iter->second << endl;
 	}
 }
 
@@ -82,7 +83,7 @@ void WordClassify(string word)
 		}
 	}
 
-	if (wordFrequency.count(word) == 0)
+	if (wordFrequency[word] == 0)
 	{
 		if (inTitle)
 		{
