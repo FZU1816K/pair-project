@@ -111,7 +111,7 @@ public class Main {
         lib.WordCount(lib.titleLists,weight); 
         lib.WordCount(lib.abstractLists,1);
         
-        lib.SortMap(lib.wordsCount,wordline,wordcount,characterscount+wordline-1,number);    //排序并输出
+        lib.SortMap(lib.wordsCount,wordline,wordcount,characterscount+wordline-1,number,writeFile);    //排序并输出
         // 字符数为characterscount+wordline-1，每行几个字符加上n行-1，n-1个换行符
 	}
 }
