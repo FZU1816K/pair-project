@@ -21,4 +21,4 @@ lines: 1958
 <video object segmentation>: 23
 <experiments demonstrate that>: 21
 <datasets demonstrate that>: 20
-E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i shit.txt -m 3 -n 20 -w 0 -o fuck2.txt 
+E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i input.txt -m 3 -n 20 -w 0 -o test2.txt 

@@ -21,4 +21,3 @@ lines: 1958
 <facial action unit>: 52
 <weakly supervised object>: 48
 <conditional generative adversarial>: 46
-E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i shit.txt -m 3 -n 20 -w 1 -o fuck3.txt 

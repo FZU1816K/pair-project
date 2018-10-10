@@ -1,0 +1,24 @@
+characters: 1196572
+words: 120320
+lines: 1958
+<this paper>: 470
+<show that>: 340
+<neural networks>: 209
+<neural network>: 189
+<convolutional neural>: 186
+<large scale>: 138
+<object detection>: 138
+<demonstrate that>: 135
+<this work>: 135
+<deep learning>: 119
+<proposed method>: 114
+<experimental results>: 111
+<real world>: 103
+<pose estimation>: 100
+<semantic segmentation>: 100
+<extensive experiments>: 97
+<deep neural>: 93
+<weakly supervised>: 91
+<generative adversarial>: 89
+<computer vision>: 85
+E:\code\software-engineering\pair-project\Cplusplus\031602215&111500206\src\WordCount\Debug\WordCount.exe -i result.txt -m 2 -n 20 -w 0 -o wangbin.txt 

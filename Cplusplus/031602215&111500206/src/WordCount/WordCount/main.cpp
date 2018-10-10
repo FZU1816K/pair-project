@@ -90,6 +90,6 @@ int main(int argc, char **argv)
 	
 	OutputToFile(numChar, numWords, numLines);
 	OutputToFile(wordsFrequencyList);
-	OutputToFile(argc, argv);
+	//OutputToFile(argc, argv);
 	return 0;
 }
