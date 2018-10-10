@@ -7,6 +7,8 @@ map<string, int> mapPhrase;
 extern string outputFile;
 extern int phraseLen;
 extern int topN;
+extern bool weightOnWord;
+extern bool inTitle;
 
 bool cmp2(pair<string, int> a, pair<string, int> b)
 {
@@ -40,7 +42,11 @@ void PhraseFreq(string s)
 					secWord = i - word.size()-1;
 				}
 				if (cnt == phraseLen) {
-					mapPhrase[phrase]++;
+					if (weightOnWord && inTitle) {
+						mapPhrase[phrase] += 10;
+					}
+					else
+						mapPhrase[phrase]++;
 					i = secWord;
 				}
 			}
@@ -59,7 +65,11 @@ void PhraseFreq(string s)
 					secWord = i - word.size()-1;
 				}
 				if (cnt == phraseLen) {
-					mapPhrase[phrase]++;
+					if (weightOnWord && inTitle) {
+						mapPhrase[phrase]+=10;
+					}
+					else
+						mapPhrase[phrase]++;
 					i = secWord;
 					cnt = 0;
 					phrase = "";

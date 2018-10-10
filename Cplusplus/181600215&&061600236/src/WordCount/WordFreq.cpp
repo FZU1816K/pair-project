@@ -6,6 +6,8 @@ extern string inputFile;
 extern string outputFile;
 extern int wordNum;
 extern int topN;
+extern bool inTitle;
+extern bool weightOnWord;
 map<string, int> mapWord;
 vector < pair<string, int>> vecWord;
 
@@ -40,14 +42,26 @@ int WordFreq(string s)
 		if ((s[i] >= '0'&&s[i] <= '9') || (s[i] >= 'a'&&s[i] <= 'z')) {
 			word += s[i];
 			if (i == len - 1 && IsWord(word)) {
-				mapWord[word]++;
-				cnt++;
+				if (weightOnWord && inTitle) {
+					mapWord[word] += 10;
+					cnt++;
+				}
+				else {
+					mapWord[word]++;
+					cnt++;
+				}		
 			}
 		}
 		else {
 			if (IsWord(word)) {
-				mapWord[word]++;
-				cnt++;
+				if (weightOnWord && inTitle) {
+					mapWord[word] += 10;
+					cnt++;
+				}
+				else {
+					mapWord[word]++;
+					cnt++;
+				}
 			}		
 			word = "";
 		}
