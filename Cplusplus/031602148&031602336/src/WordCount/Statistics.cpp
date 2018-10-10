@@ -2,10 +2,6 @@
 #include "Statistics.h"
 using namespace std;
 
-bool cmp(int a, int b)
-{
-	return a > b;
-}
 int Statistics::w_words(ifstream& in)//统计权重单词
 {
 	string str;
@@ -167,7 +163,7 @@ int Statistics::w_words(ifstream& in)//统计权重单词
 	{
 		if (word.count((*tit).first))
 		{
-			word[(*tit).first] = (*tit).second * 10;//不会运行
+			word[(*tit).first] = (*tit).second * 10;//不会真正运行
 		}
 		else
 		{
@@ -340,147 +336,6 @@ int Statistics::w_phrase(ifstream& in, int m)//统计权重词组
 			mark = 0;
 			//cout << "deal abst" << endl;
 			//cout << abst << endl;
-			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
-			{
-				if (j == abst.length() - 1 && flag >= 3 && ((abst[abst.length() - 1] >= 'a'&&abst[abst.length() - 1] <= 'z') || (abst[abst.length() - 1] >= 'A'&&abst[abst.length() - 1] <= 'Z')))
-				{
-					sum++;
-				}
-				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
-				{
-					j = 9;
-					continue;
-				}
-				if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
-				{
-					if (flag == 0)
-					{
-						star = j;
-					}
-					flag++;
-				}
-				else
-				{
-					if (flag >= 4)
-					{
-						if (abst[j] >= '0'&&abst[j] <= '9')
-						{
-							if (j == abst.length() - 1)
-							{
-								flag++;
-							}
-							else
-							{
-								flag++;
-								continue;
-							}
-						}
-						if (star >= 1)//修改部分
-						{
-							if (abst[star - 1] >= '0'&&abst[star - 1] <= '9')
-							{
-								flag = 0;
-								continue;
-							}
-						}
-						//temp = abst.substr(star, flag);//截取合法单词
-						sum++;
-						flag = 0;
-						mark = 1;
-						for (unsigned i = j; i < abst.length(); i++)
-						{
-							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
-							{
-								mark++;
-								flag = 0;
-								//sum++;
-								if (mark - m == 0)
-								{
-									temp = abst.substr(star, (i - star + 1));//截取合法词组
-									{
-										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
-										{
-											if (temp[g] >= 'A'&&temp[g] <= 'Z')
-											{
-												temp[g] = temp[g] + 32;
-											}
-										}
-										if (arecord.count(temp))
-										{
-											arecord[temp]++;
-										}
-										else
-										{
-											arecord[temp] = 1;
-										}
-									}
-								}
-								mark = 0;
-								flag = 0;
-								break;
-							}
-							if ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z'))
-							{
-								flag++;
-							}
-							else
-							{
-								if (flag == 0 && !(abst[i] >= 'a'&&abst[i] <= 'z') && !(abst[i] >= 'A'&&abst[i] <= 'Z') && !(abst[i] >= '0'&&abst[i] <= '9'))
-								{
-									continue;
-								}
-								if (flag < 4)
-								{
-									for (unsigned k = i; k < abst.length(); k++)
-									{
-										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
-										{
-											flag = 0;
-											j = k - 1;
-											break;
-										}
-									}
-									break;
-								}
-								if (flag >= 4 && (abst[i] >= '0'&&abst[i] <= '9'))
-								{
-									continue;
-								}
-								mark++;
-								flag = 0;
-								if (mark - m == 0)
-								{
-									temp = abst.substr(star, (i - star));//截取合法词组
-									{
-										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
-										{
-											if (temp[g] >= 'A'&&temp[g] <= 'Z')
-											{
-												temp[g] = temp[g] + 32;
-											}
-										}
-										if (arecord.count(temp))
-										{
-											arecord[temp]++;
-											mark = 0;
-											flag = 0;
-										}
-										else
-										{
-											arecord[temp] = 1;
-											mark = 0;
-											flag = 0;
-										}
-									}
-									mark = 0;
-									flag = 0;
-									break;
-								}
-							}
-						}
-					}
-				}
-			}
 			turn = 0;
 			abst = "";
 			continue;
@@ -874,148 +729,6 @@ int Statistics::nw_phrase(ifstream& in,int m)//统计无权重词组
 			mark = 0;
 			//cout << "deal abst" << endl;
 			//cout << abst << endl;
-			for (unsigned j = 0; j < abst.length(); j++)//提取合法词组并统计 
-			{
-				if (j == abst.length() - 1 && flag >= 3&&((abst[abst.length() - 1]>='a'&&abst[abst.length() - 1] <= 'z')|| (abst[abst.length() - 1] >= 'A'&&abst[abst.length() - 1] <= 'Z')))
-				{
-					//sum++;
-				}
-				if (abst[j] == 'A'&&abst[j + 1] == 'b'&&abst[j + 2] == 's'&&abst[j + 3] == 't'&&abst[j + 4] == 'r' &&abst[j + 5] == 'a' &&abst[j + 6] == 'c' &&abst[j + 7] == 't' && (abst[j + 8] == ':' || abst[j + 8] == '：'))
-				{
-					j = 9;
-					continue;
-				}
-				if ((abst[j] >= 'a'&&abst[j] <= 'z') || (abst[j] >= 'A'&&abst[j] <= 'Z'))
-				{
-					if (flag == 0)
-					{
-						star = j;
-					}
-					flag++;
-				}
-				else
-				{
-					if (flag >= 4)
-					{
-						if (abst[j] >= '0'&&abst[j] <= '9')
-						{
-							if (j == abst.length() - 1)
-							{
-								flag++;
-							}
-							else
-							{
-								flag++;
-								continue;
-							}
-						}
-						if (star >= 1)//修改部分
-						{
-							if (abst[star - 1] >= '0'&&abst[star - 1] <= '9')
-							{
-								flag = 0;
-								continue;
-							}
-						}
-						//temp = abst.substr(star, flag);//截取合法单词
-						flag = 0;
-						mark = 1;
-						//sum++;
-						for (unsigned i = j; i < abst.length(); i++)
-						{
-							if (i == abst.length() - 1 && ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z')) && flag >= 3)//特殊处理
-							{
-								mark++;
-								flag = 0;
-								//sum++;
-								if (mark - m == 0)
-								{
-									temp = abst.substr(star, (i - star+1));//截取合法词组
-									{
-										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
-										{
-											if (temp[g] >= 'A'&&temp[g] <= 'Z')
-											{
-												temp[g] = temp[g] + 32;
-											}
-										}
-										if (word.count(temp))
-										{
-											word[temp]++;
-										}
-										else
-										{
-											word[temp] = 1;
-										}
-									}
-								}
-								mark = 0;
-								flag = 0;
-								break;
-							}
-							if ((abst[i] >= 'a'&&abst[i] <= 'z') || (abst[i] >= 'A'&&abst[i] <= 'Z'))
-							{
-								flag++;
-							}
-							else
-							{
-								if (flag == 0 && !(abst[i] >= 'a'&&abst[i] <= 'z') && !(abst[i] >= 'A'&&abst[i] <= 'Z')&& !(abst[i] >= '0'&&abst[i] <= '9'))
-								{
-									continue;
-								}
-								if (flag < 4)
-								{
-									for (unsigned k = i; k < abst.length(); k++)
-									{
-										if ((abst[k] >= 'a'&&abst[k] <= 'z') || (abst[k] >= 'A'&&abst[k] <= 'Z'))
-										{
-											flag = 0;
-											j = k - 1;
-											break;
-										}
-									}
-									break;
-								}
-								if (flag >= 4 && (abst[i] >= '0'&&abst[i] <= '9'))
-								{
-									continue;
-								}
-								mark++;
-								flag = 0;
-								if (mark - m == 0)
-								{
-									temp = abst.substr(star, (i - star));//截取合法词组
-									{
-										for (unsigned g = 0; g < temp.length(); g++)//将大写字母转为小写字母 
-										{
-											if (temp[g] >= 'A'&&temp[g] <= 'Z')
-											{
-												temp[g] = temp[g] + 32;
-											}
-										}
-										if (word.count(temp))
-										{
-											word[temp]++;
-											mark = 0;
-											flag = 0;
-										}
-										else
-										{
-											word[temp] = 1;
-											mark = 0;
-											flag = 0;
-										}
-									}
-									mark = 0;
-									flag = 0;
-									break;
-								}
-							}
-						}
-					}
-					flag = 0;
-				}
-			}
 			turn = 0;
 			abst = "";
 			continue;
@@ -1444,6 +1157,7 @@ int Statistics::characters(ifstream& in)//统计字符数
 {
 	int num = 0;
 	int rnum = 0;
+	int test = 0;
 	string str;
 	string te;
 	while (getline(in, str))
@@ -1451,6 +1165,8 @@ int Statistics::characters(ifstream& in)//统计字符数
 		te = str;
 		te.erase(std::remove(te.begin(), te.end(), ' '), te.end());//删除一行中的空格
 		te.erase(std::remove(te.begin(), te.end(), '\t'), te.end());//删除一行中的制表符
+		te.erase(std::remove(te.begin(), te.end(), '\n'), te.end());//删除一行中的换行符
+		te.erase(std::remove(te.begin(), te.end(), '\r'), te.end());//删除一行中的回车符
 		te.erase(std::remove(te.begin(), te.end(), '0'), te.end());//删除一行中的0
 		te.erase(std::remove(te.begin(), te.end(), '1'), te.end());//删除一行中的1
 		te.erase(std::remove(te.begin(), te.end(), '2'), te.end());//删除一行中的2
@@ -1461,7 +1177,7 @@ int Statistics::characters(ifstream& in)//统计字符数
 		te.erase(std::remove(te.begin(), te.end(), '7'), te.end());//删除一行中的7
 		te.erase(std::remove(te.begin(), te.end(), '8'), te.end());//删除一行中的8
 		te.erase(std::remove(te.begin(), te.end(), '9'), te.end());//删除一行中的9
-		if (te.length()== 0) //如果删除制表符和空格之后的一行还有其他字符就算有效行
+		if (te.length()== 0)
 		{
 			rnum--;
 			continue;
@@ -1500,7 +1216,10 @@ int Statistics::characters(ifstream& in)//统计字符数
 		in.get(ch);
 		if(ch=='\n')
 			rnum++;
+		//if (ch == '\r')
+			//test++;
 	}
+	//cout << test << endl;
 	//cout << "rnum" << rnum << endl;
 	in.clear();//指针重新定位至文件头部 
 	in.seekg(0, ios::beg);
@@ -1515,6 +1234,8 @@ int Statistics::lines(ifstream& in)	//统计有效行数
 	{
 		str.erase(std::remove(str.begin(), str.end(), ' '), str.end());//删除一行中的空格
 		str.erase(std::remove(str.begin(), str.end(), '\t'), str.end());//删除一行中的制表符
+		str.erase(std::remove(str.begin(), str.end(), '\r'), str.end());//删除一行中的回车符
+		str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());//删除一行中的换行符
 		str.erase(std::remove(str.begin(), str.end(), '0'), str.end());//删除一行中的0
 		str.erase(std::remove(str.begin(), str.end(), '1'), str.end());//删除一行中的1
 		str.erase(std::remove(str.begin(), str.end(), '2'), str.end());//删除一行中的2
@@ -1527,7 +1248,7 @@ int Statistics::lines(ifstream& in)	//统计有效行数
 		str.erase(std::remove(str.begin(), str.end(), '9'), str.end());//删除一行中的9
 		if (str.length() > 0) //如果删除制表符和空格(+数字)之后的一行数据还有其他字符就算有效行
 		{
-
+			//cout << str<<endl;
 			line++;
 		}
 	}
@@ -1540,74 +1261,22 @@ void Statistics::set(ifstream& in,int w,int m)//调用统计功能
 	cnum = 0;
 	lnum = 0;
 	wnum = 0;
-	cnum = characters(in);
-	lnum = lines(in);
-	//cout << "w=" << w << endl;
-	//cout << "m=" << m << endl;
-	if (w == 0 && m >= 2)
+	cnum = characters(in);//字符数统计
+	lnum = lines(in);//有效行数统计
+	if (w == 0 && m >= 2)//无权重词组词频统计
 	{		
-		//cout << "nwp" << endl;
 		wnum=nw_phrase(in,m);
 	}
-	if (w == 1 && m >= 2)
+	if (w == 1 && m >= 2)//权重词组词频统计
 	{	
-		//cout << "wp" << endl;
 		wnum=w_phrase(in,m);
 	}
-	if (w == 0 && m < 2)
+	if (w == 0 && m < 2)//无权重词频统计
 	{		
-		//cout << "nww" << endl;
 		wnum=nw_words(in);
 	}
-	if (w == 1 && m < 2)
+	if (w == 1 && m < 2)//权重词频统计
 	{	
-		//cout << "ww" << endl;
 		wnum=w_words(in);
-	}
-}
-void Statistics::display(ofstream& out,int temp)//将结果(词频)输出至指定文档
-{
-	int n = 0;
-	int t;
-	int num = 0;
-	//int test = 0;
-	if (temp < 0)
-	{
-		n = 10;
-	}
-	else
-	{
-		n = temp;
-	}
-	//cout << "n=" << n << endl;
-	out << "characters: " << cnum << endl;
-	//cout << "characters: " << cnum << endl;
-	out << "words: " << wnum << endl;
-	//cout << "words: " << wnum << endl;
-	out << "lines: " << lnum << endl;
-	//cout << "lines: " << lnum << endl;
-	map<string, int>::iterator it;
-	for (it = word.begin(); it != word.end(); it++)
-	{
-		t = (*it).second;
-		a.push_back(t);
-		num++;
-		//test=test+ (*it).second;
-	}
-	//cout << test<<endl;
-	sort(a.begin(), a.end(), cmp);
-	for (int i = 0; i <num && i < n; i++)//修改部分
-	{
-		t = a[i];
-		for (it = word.begin(); it != word.end(); it++)
-		{
-			if ((*it).second == t)
-			{
-				out << "<" << (*it).first << ">: " << t << endl;
-				//cout << "<" << (*it).first << ">: " << t << endl;
-				(*it).second = 0;
-				break;
-			}
-		}
 	}
 }

@@ -5,7 +5,7 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LocalDebuggerCommandArguments>WordCount.exe -i input.txt -w 0 -o output.txt -m 3</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>WordCount.exe -i input.txt -o output.txt -w 1 -m 3 -n 10</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

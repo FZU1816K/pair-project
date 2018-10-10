@@ -122,6 +122,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="Parameter.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
     </ClCompile>
@@ -129,8 +131,10 @@
     <ClCompile Include="Statistics.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Parameter.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Statistics.h" />
+    <ClInclude Include="File.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
