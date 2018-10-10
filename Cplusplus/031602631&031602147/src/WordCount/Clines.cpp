@@ -4,7 +4,7 @@
 #include "Clines.h"
 using namespace std;
 
-Line::Line() {}
+//Line::Line() {}
 
 Line::Line(string filein, string fileout)
 {
@@ -38,13 +38,17 @@ void Line::Count()
 		getline(fin,buffer);
 		int i = buffer.size();
 		if (i != 0)
-			while (--i)
+		{
+			while (i--)
 			{
 				if (buffer[i] != ' '&& buffer[i] != '\n')
 				{
 					number++; break;
 				}
 			}
+
+		}
+			
 	}
 	if (fin.eof()) {}
 	else if (fin.fail())

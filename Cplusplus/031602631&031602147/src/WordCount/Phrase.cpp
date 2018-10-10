@@ -12,14 +12,16 @@ Psort::Psort()
 	finname = "input.txt";
 	foutname = "result.txt";
 	len = 2;
+	weight = 0;               //weight
 	num = 10;
 }
 
-Psort::Psort(string filein, string fileout, int length, int number)
+Psort::Psort(string filein, string fileout, int length, int number, int w)
 {
 	finname = filein;
 	foutname = fileout;
 	len = length;
+	weight = w;
 	num = number;
 }
 
@@ -227,7 +229,13 @@ void Psort::PS()
 							continue;
 					}
 				}
-				++phrase_count[P];
+				if (weight == 1)
+				{
+					phrase_count[P] += 10;
+				}
+				else
+					++phrase_count[P];
+				
 				flags = 0;
 			}
 			else //(sign.flag==0)
@@ -281,7 +289,12 @@ void Psort::PS()
 			}
 			if (flag)
 			{
-				++phrase_count[P];
+				if (weight == 1)
+				{
+					phrase_count[P] += 10;
+				}
+				else
+					++phrase_count[P];
 				flags = 0;
 				start = 1;
 				bool flagi = 1;

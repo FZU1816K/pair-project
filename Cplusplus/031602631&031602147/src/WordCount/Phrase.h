@@ -23,11 +23,12 @@ private:
 	std::string foutname;
 	std::vector<PAIR>phrase_v;  //story phrase(sequenced)
 	int len;                    //argument, the length of phrase(how many words)
+	int weight;               //weight
 	int num;                    //TOP n
 
 public:
 
-	Psort(std::string filein, std::string fileout, int length, int number);
+	Psort(std::string filein, std::string fileout, int length, int number, int w);
 	Psort();
 	/*************************************************/
 	///////////////////FOR UnitTest////////////////////

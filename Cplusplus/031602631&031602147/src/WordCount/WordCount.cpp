@@ -87,11 +87,11 @@ int main(int argc, char * argv[])       //FOR windows IDE
 
 	/*******************************************************
 	//   FOR  TEST   //
-	para.inFile = "E:/学习/软工实践/作业2/2/修改_R1/Debug/CountFrequency_3.txt";
+	para.inFile = "E:/学习/软工实践/作业2/2/修改_R2(注释已修改）/Debug/test4.txt";
 	para.outFile = "output.txt";
-	para.weight = 0;
-	para.length = 2;
-	para.num = 10;
+	para.weight = 1;
+	para.length = 3;
+	para.num = 20;
     //for (int i = 0; i < 10000; i++) {
 	/*********************************************************/
 
@@ -108,18 +108,13 @@ int main(int argc, char * argv[])       //FOR windows IDE
 		cerr << "Input too little filenames.\n";
 		exit(EXIT_FAILURE);
 	}
-	/*
-	for (int file = 1; file < argc; file++)
-	{
-		string f = argv[file];
-	*/
 
 	/*********************************************************/
 		Character cc(para.inFile,para.outFile);
 		Word cw(para.inFile,para.outFile);
 		Line cl(para.inFile,para.outFile);
 		Wsort sw(para.inFile,para.outFile,para.weight,para.num);
-		Psort ps(para.inFile, para.outFile, para.length, para.num);
+		Psort ps(para.inFile, para.outFile, para.length, para.num,para.weight);
 
 		cc.Count();
 		cl.Count();
@@ -128,34 +123,32 @@ int main(int argc, char * argv[])       //FOR windows IDE
 		int line = cl.Get();          //get the number of lines
 
 		cc.Adjust(line);              //Without manual annotation
-		cc.Show();
+		//cc.Show();
 		cc.Fwrite();
 		////////////////////////////////////////////////
 		
-		cw.Show();
+		//cw.Show();
 		cw.Fwrite();
 		////////////////////////////////////////////////
 		
 		
-		cl.Show();
+		//cl.Show();
 		cl.Fwrite();
 		////////////////////////////////////////////////
 		if (!flagm)
 		{
 			sw.CS();
-		    sw.Show();
+		    //sw.Show();
 		    sw.Fwrite();
 		}
 		////////////////////////////////////////////////
 		if (flagm)
 		{
 			ps.PS();
-		    ps.Show();
+		    //ps.Show();
 		    ps.Fwrite();
 		}
 		
 	/**********************************************************/
-
-//	}
 	return 0;
 }

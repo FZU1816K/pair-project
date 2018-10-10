@@ -31,7 +31,7 @@ void Character::Count()
 	fin >> c;
 	while (fin.good())
 	{
-		if ((c >= 32 && c <= 254)||c==' '||c=='\t'||c=='\n')//Visible ASCII characters plus spaces, horizontal tabs, line breaks.
+		if ((c >= 32 && c <= 254) || c == ' ' || c == '\t' || c == '\n')//Visible ASCII characters plus spaces, horizontal tabs, line breaks.
 			++number;
 		fin >> c;
 	}
@@ -41,11 +41,59 @@ void Character::Count()
 	else
 		printf("Input terminated for unknown reason.\n");
 	fin.close();
+	/************/
+	
+	int lastnumber = 0;
+	fin.open(finname);
+	short int flag = 1;
+	fin.seekg(0, ios::end); // Locate to end of file
+	while (flag)
+	{
+		
+		fin.seekg(-1, ios::cur); 
+		c = fin.peek();
+		if (c >= 32 && c <= 254)
+		{
+			flag = 0;
+		}
+		if (c == '\n')
+		{
+			lastnumber++;
+		}
+	}
+
+	fin.close();
+	if (lastnumber > 3)
+	{
+		number = number - (lastnumber - 3);
+	}
+	else if (lastnumber < 3)
+	{
+		number = number + (3 - lastnumber);
+	}
+	/******/
 }
 
 void Character::Adjust(int line)                       //Without manual annotation
-{
-	number = number - line / 2 * 21;
+{	
+	int n = line / 2;
+	if (n<= 10)
+	{
+		number = number - line / 2 * 21;
+		if (number < 0) number = 0;
+	}
+	else if (11 <= n && n <= 100)
+	{
+		number = number - (n-10) * 22-210;
+	}
+	else if (101 <= n && n <= 1000)
+	{
+		number = number - (n - 100) * 23 - 1980 - 210;
+	}
+	else
+	{
+		number = number - (n - 100) * 24 - 20700 - 1980 - 210;
+	}
 }
 
 void Character::Show()
