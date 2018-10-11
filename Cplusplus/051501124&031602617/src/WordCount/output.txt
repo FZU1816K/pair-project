@@ -1,0 +1,8 @@
+characters: 1193412
+words: 119769
+lines: 1948
+<this paper>: 464
+<show that>: 336
+<neural networks>: 207
+<convolutional neural>: 185
+<neural network>: 185
