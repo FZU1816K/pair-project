@@ -1,0 +1,5 @@
+﻿  WordCount.cpp
+c:\users\kami\desktop\软工第二次实验\wordcount\wordcount\countwf.h(21): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\kami\desktop\软工第二次实验\wordcount\wordcount\countwf.h(190): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\kami\desktop\软工第二次实验\wordcount\wordcount\countwords.h(27): warning C4018: “<”: 有符号/无符号不匹配
+  WordCount.vcxproj -> C:\Users\KAMI\Desktop\软工第二次实验\WordCount\Debug\WordCount.exe
