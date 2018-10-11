@@ -1,0 +1,21 @@
+[2018-10-09 18:29:38] [info] Start Program:
+Path:"D:\Study\SoftwareStudy\WordCount\WordCount\Debug\WordCount.exe"
+Arguments:WordCount.exe -i input.txt -o output.txt 
+Working directory: "D:\Study\SoftwareStudy\WordCount\WordCount\WordCount\"
+Modules: Selected: D:\Study\SoftwareStudy\WordCount\WordCount\Debug\WordCount.exe D:\Study\SoftwareStudy\WordCount\WordCount\Debug\WordCountTest.dll Excluded: 
+Sources: Selected: D:\Study\SoftwareStudy\WordCount\WordCount\WordCount D:\Study\SoftwareStudy\WordCount\WordCount\WordCountTest Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: Binary C:\Users\嗯哼\AppData\Local\Temp\05hlk4tk.fpq 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+
+[2018-10-09 18:29:38] [info] Module: D:\Study\SoftwareStudy\WordCount\WordCount\Debug\WordCount.exe is selected because it matches selected pattern: 
+[2018-10-09 18:29:38] [info] ----------------------------------------------------
+[2018-10-09 18:29:38] [info] Coverage binary generated in file: C:\Users\嗯哼\AppData\Local\Temp\05hlk4tk.fpq
+[2018-10-09 18:29:38] [info] ----------------------------------------------------

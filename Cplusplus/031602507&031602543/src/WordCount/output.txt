@@ -1,0 +1,13 @@
+characters: 1196950
+words: 120374
+lines: 1958
+<that>: 1757
+<with>: 1475
+<this>: 1444
+<image>: 1224
+<from>: 1097
+<network>: 973
+<learning>: 971
+<which>: 808
+<model>: 762
+<images>: 732
