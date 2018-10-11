@@ -1,0 +1,70 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.util.Iterator;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class Main {
+    public Main() {
+    }
+
+    public static void main(String[] args) throws IOException {
+        Document document = Jsoup.connect("http://openaccess.thecvf.com/CVPR2018.py").timeout(50000).maxBodySize(0).get();
+        Elements mainPage = document.select("dt.ptitle");
+        int t = mainPage.size();
+        System.out.println((String)t);
+        Elements urlLink = mainPage.select("a[href^=content_cvpr_2018/html/]");
+        int size = urlLink.size();
+        int paperid = -1;
+        PrintStream ps = new PrintStream("e:/results.txt");
+        System.setOut(ps);
+        Iterator var8 = urlLink.iterator();
+
+        while(var8.hasNext()) {
+            Element paper = (Element)var8.next();
+            String URL = paper.attr("href");
+            if (!URL.contains("https://")) {
+                URL = URL;
+            }
+
+            Document doc = Jsoup.connect(URL).timeout(80000).maxBodySize(0).get();
+            Elements paperdatas = doc.select("#content");
+            Elements title1 = paperdatas.select("#papertitle");
+            Elements abs = paperdatas.select("#abstract");
+            Elements authors = paperdatas.select("#authors");
+            Elements opway = paperdatas.select("a[href]");
+            String author = authors.select("b").text();
+            String title = title1.text();
+            ++paperid;
+            String abst = abs.text();
+            String openway = opway.text();
+            System.out.println(paperid);
+            System.out.println(title);
+            System.out.println(abst);
+            System.out.println(URL);
+            System.out.println(author);
+            System.out.println(openway);
+            System.out.println("Relate link: ");
+            Iterator var21 = opway.iterator();
+
+            while(var21.hasNext()) {
+                Element linklink = (Element)var21.next();
+                String oplink = linklink.attr("href");
+                System.out.println(oplink);
+            }
+
+            System.out.println("Month: June");
+            System.out.println("\n");
+            System.out.println("\n");
+        }
+
+        System.out.println("////结束////");
+    }
+}
