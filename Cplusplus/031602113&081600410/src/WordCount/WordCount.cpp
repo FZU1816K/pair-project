@@ -7,7 +7,7 @@
 #include"phrase.h"
 #include"w-frequency.h"
 #include"cmp.h"*/
-#include"all.h"
+#include"WordCount.h"
 #include<math.h>
 
 
